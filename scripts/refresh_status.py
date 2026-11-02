@@ -12,7 +12,7 @@ video as published.
 import re
 import subprocess
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 try:
@@ -27,8 +27,8 @@ STATUS = CHANNEL / "STATUS.md"
 IDEAS = CHANNEL / "ideas" / "first-12-ideas.md"
 START, END = "<!-- AUTO:START -->", "<!-- AUTO:END -->"
 SERIES = {"AI in 60", "Mind Hacks", "Learn Faster"}
-STAGES = [("Script", "scripts"), ("Motion", "motion"),
-          ("Voiceover", "voiceover"), ("Package", "published")]
+STAGES = [("Script", "scripts"), ("Voiceover", "voiceover"),
+          ("Motion", "motion"), ("Package", "published")]
 
 
 def read_ideas():
@@ -72,14 +72,25 @@ def count_files(folder):
 
 
 def git_log():
+    """Last 10 commits, without the daily status-refresh commits."""
     try:
         out = subprocess.run(
-            ["git", "-C", str(ROOT), "log", "-10",
+            ["git", "-C", str(ROOT), "log", "-60",
              "--pretty=format:%ad  %s", "--date=short"],
             capture_output=True, text=True, timeout=20, check=True).stdout
-        return out.strip().splitlines() or ["(no commits)"]
+        lines = [l for l in out.strip().splitlines()
+                 if "chore: daily status refresh" not in l]
+        return lines[:10] or ["(no commits)"]
     except Exception:
         return ["(git history not available)"]
+
+
+def next_workday(d):
+    """Next Monday-to-Friday date after d (no work on Saturday and Sunday)."""
+    d = d + timedelta(days=1)
+    while d.weekday() >= 5:
+        d += timedelta(days=1)
+    return d
 
 
 def build_block():
@@ -103,6 +114,7 @@ def build_block():
         "",
         "### Snapshot",
         "",
+        f"- Today: {NOW:%a %Y-%m-%d} ({'work day' if NOW.weekday() < 5 else 'weekend, no work'}); next work day: {next_workday(NOW):%a %Y-%m-%d}",
         f"- Stage: {'pre-launch, nothing published yet' if published == 0 else f'{published} video(s) published'}",
         f"- Next in the pipeline: {next_item or 'all listed ideas are published'}",
         f"- Skills installed: {len(skills)} (`.claude/skills/`)",
@@ -113,7 +125,7 @@ def build_block():
         "",
         "### Pipeline (from `channel/ideas/first-12-ideas.md`)",
         "",
-        "| # | Series | Working title | Script | Motion | Voiceover | Package | Published |",
+        "| # | Series | Working title | Script | Voiceover | Motion | Package | Published |",
         "|---|---|---|---|---|---|---|---|",
         *rows,
         "",

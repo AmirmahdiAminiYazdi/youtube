@@ -94,16 +94,30 @@ Scores come from `yt-script/hookscore.py` (a rough pattern heuristic, 55 and abo
     Concept: learning-styles matching has little supporting evidence. Check: Pashler, McDaniel, Rohrer and Bjork, 2008.
     Visual: four labeled doors that all open to the same room.
 
-## Suggested first 4 weeks (3 per week, one per series)
+## Posting rhythm and calendar
 
-| Week | AI in 60 | Mind Hacks | Learn Faster |
-|---|---|---|---|
-| 1 | #1 3 Lines | #6 Always Late | #9 Stop Rereading |
-| 2 | #3 Catch AI Lying | #7 Spotlight | #11 10-Year-Old Test |
-| 3 | #2 Make AI Quiz You | #5 If-Then | #10 When to Review |
-| 4 | #4 Voice Note | #8 Lawyer | #12 Learning Styles |
+Decision: one new video every working day, Monday to Friday. No work on Saturday and Sunday. That is 5 videos per week, with the three series rotating so each appears evenly.
 
-After week 4 compare the three series by saves, completion rate and shares, then give the winning series more slots. Adjust the cadence to the hours you actually have.
+Dates are targets. If a video is not approved in time, everything after it moves one working day.
+
+| Date | Day | # | Series | Title | Note |
+|---|---|---|---|---|---|
+| 2026-11-03 | Tue | 1 | AI in 60 | 3 Lines That Make AI Useful | Script ready for review |
+| 2026-11-04 | Wed | 6 | Mind Hacks | Why You're Always Late | Verify sources first |
+| 2026-11-05 | Thu | 9 | Learn Faster | Stop Rereading | Rewrite hook first (52) |
+| 2026-11-06 | Fri | 3 | AI in 60 | Catch AI Lying in 10 Seconds | |
+| 2026-11-09 | Mon | 7 | Mind Hacks | The Spotlight Effect | Verify sources first |
+| 2026-11-10 | Tue | 11 | Learn Faster | The 10-Year-Old Test | |
+| 2026-11-11 | Wed | 2 | AI in 60 | Make AI Quiz You | |
+| 2026-11-12 | Thu | 5 | Mind Hacks | The If-Then Trick | Verify sources first |
+| 2026-11-13 | Fri | 10 | Learn Faster | When to Review | |
+| 2026-11-16 | Mon | 4 | AI in 60 | Voice Note to Plan | Rewrite hook first (47) |
+| 2026-11-17 | Tue | 8 | Mind Hacks | Your Brain Is a Lawyer | Verify sources first |
+| 2026-11-18 | Wed | 12 | Learn Faster | Learning Styles Are a Myth | Rewrite hook first (52) |
+
+These 12 ideas last exactly until Wednesday 2026-11-18. The next batch of ideas must be ready by Friday 2026-11-13 so the pipeline never runs dry.
+
+Working rhythm that makes daily posting realistic: each video is scripted, voiced and animated the working day before it goes out, and approved by the owner before the voiceover is generated. After 4 weeks compare the three series by saves, completion rate and shares, then give the winning series more slots.
 
 ## Per-platform notes
 

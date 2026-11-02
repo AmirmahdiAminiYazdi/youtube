@@ -25,7 +25,7 @@ Content rules: every video has its own visual metaphor (consistent style, varied
 - Channel name / handle: [TODO]
 - Video language(s): English
 - Target audience: [TODO]
-- Posting rhythm: [TODO]
+- Posting rhythm: one new video every working day, Monday to Friday, none on Saturday and Sunday (calendar in `channel/ideas/first-12-ideas.md`)
 - Monetization goal: [TODO]
 
 Voice profile: fill in `channel/voice.md`, then copy it to `~/.claude/youtube/voice.md`
