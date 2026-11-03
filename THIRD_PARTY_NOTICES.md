@@ -11,6 +11,8 @@ This repository includes the following agent skills, copied unmodified from thei
 | `.claude/skills/prompt-master/` (SKILL.md only) | https://github.com/nidhinjs/prompt-master | (c) 2026 Nidhin Joseph Nelson | `third_party_licenses/prompt-master-LICENSE` |
 | `.claude/skills/gsap-*/` | https://github.com/greensock/gsap-skills | (c) 2026 GreenSock | `third_party_licenses/gsap-skills-LICENSE` |
 
+Provenance: the `yt-*` skills were verified identical to upstream commit `a2feb21` (2026-09-16, "The YouTube agent skill: eleven skills, six tools") on 2026-11-03. To update them later, re-clone upstream and compare before copying, and re-read the scripts first.
+
 The GSAP animation library itself is licensed separately by GreenSock and is not included here. Check https://gsap.com/licensing/ before using it in published work.
 
 `channel/templates-reference/` contains the channel templates shipped with the claude-youtube skill, under the same MIT license. `channel/voice.md` is the voice-profile template from youtube-agent-skill, also MIT.

@@ -3,7 +3,7 @@
 Read this file first at the start of every session. The block between the AUTO markers is rewritten every day by `scripts/refresh_status.py` (scheduled task, early morning Europe/Berlin). Everything outside the markers is maintained by hand and by Claude during work sessions, and the daily job never touches it.
 
 <!-- AUTO:START -->
-_Auto-refreshed: 2026-11-03 06:11 (Europe/Berlin)._
+_Auto-refreshed: 2026-11-03 15:04 (Europe/Berlin)._
 
 ### Snapshot
 
@@ -49,6 +49,7 @@ _Auto-refreshed: 2026-11-03 06:11 (Europe/Berlin)._
 - Motion graphics are built with Claude (HTML + GSAP, or HyperFrames), voiceover with ElevenLabs.
 - One channel with three fixed series: AI in 60 (beginner AI tutorials), Mind Hacks (psychology), Learn Faster (learning and thinking techniques).
 - Posting rhythm: one new video every working day, Monday to Friday. No work on Saturday and Sunday. Calendar is in `channel/ideas/first-12-ideas.md`.
+- The most popular YouTube skill found (Jakeschincariol/youtube-agent-skill, about 3k stars) is installed unmodified as the `yt-*` skills. The voice profile is read from `channel/voice.md` in this repo, not from `~/.claude`.
 - First months: grow the audience; monetization is a later goal.
 - Every video has its own visual metaphor and one original element; no invented numbers or sources.
 
@@ -56,6 +57,7 @@ _Auto-refreshed: 2026-11-03 06:11 (Europe/Berlin)._
 
 - Channel name and handle.
 - Daily time the owner can spend on review, approval and uploading to three platforms.
-- Voice profile in `channel/voice.md` is still the empty template.
+- `channel/voice.md` now holds defaults taken from the channel decisions; the owner still needs to fill the lines marked OWNER TO FILL (viewer picture, narrator style, own phrases).
+- Video #1 was targeted for Tue 2026-11-03 but the script is not approved yet, so the calendar slips by one working day unless it is approved today.
 - Hooks for ideas #4, #9 and #12 should be rewritten before recording.
 - Scientific sources listed in `channel/ideas/first-12-ideas.md` are to be verified before publishing.

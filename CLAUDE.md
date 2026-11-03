@@ -28,8 +28,7 @@ Content rules: every video has its own visual metaphor (consistent style, varied
 - Posting rhythm: one new video every working day, Monday to Friday, none on Saturday and Sunday (calendar in `channel/ideas/first-12-ideas.md`)
 - Monetization goal: [TODO]
 
-Voice profile: fill in `channel/voice.md`, then copy it to `~/.claude/youtube/voice.md`
-(the yt-* skills read it from there). Never invent numbers, results or sources in scripts.
+Voice profile: it lives in this repo at `channel/voice.md`. The yt-* skills say they read `~/.claude/youtube/voice.md`, but that file does not exist in a fresh environment. Whenever a skill says to read `~/.claude/youtube/voice.md`, read `channel/voice.md` instead. Do not ask for three of the owner's videos: the channel is faceless, so the voice is the narration style written down in that file. Never invent numbers, results or sources in scripts.
 
 ## Folder layout
 
