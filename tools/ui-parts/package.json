@@ -1,0 +1,10 @@
+{
+  "name": "channel-ui-parts",
+  "private": true,
+  "version": "1.0.0",
+  "description": "shadcn CLI, pinned. The component sources themselves are fetched by scripts/setup.sh into vendor/ (not committed).",
+  "engines": { "node": ">=22" },
+  "dependencies": {
+    "shadcn": "4.23.0"
+  }
+}

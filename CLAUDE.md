@@ -51,6 +51,23 @@ Voice profile: it lives in this repo at `channel/voice.md`. The yt-* skills say 
 | `humanizer` | Remove AI-sounding phrasing from scripts and descriptions |
 | `prompt-master` | Prompts for image, video and voice AI tools |
 | `gsap-*` | Animation code for HTML-based motion graphics |
+| `hyperframes`, `hyperframes-cli`, `hyperframes-registry`, `media-use` | HTML to MP4 renders (the default video pipeline), ready-made blocks, TTS/transcribe/music helpers |
+| `brand-intake`, `motion-effects`, `motion-brief-writer`, `reel-export`, `vox-explainer`, `animated-chart`, ... (15 motion-pack skills) | Motion briefs and effects; run `brand-intake` once first; `reel-export` before every upload |
+| `threejs-*` (13), `title-sequence-3d` | 3D scenes and openers |
+| `text-to-speech`, `speech-to-text`, `music`, `sound-effects`, `voice-isolator`, ... (12 ElevenLabs skills) | Voiceover, captions, music, SFX (needs `ELEVENLABS_API_KEY`) |
+| `canvas-design`, `algorithmic-art`, `slack-gif-creator`, `theme-factory`, `21st-ui` | Static art, generative art, GIFs, themes, UI via 21st.dev |
+| `remotion-*` (13) | Only after `bash scripts/setup.sh` (fetched, not committed) |
+
+All 28 motion tools, their versions and what was actually tested are in `TOOLS.md`. In a fresh environment run `bash scripts/setup.sh` first.
+
+## Toolbox rules
+
+- Never use `@latest`. HyperFrames is `npx hyperframes@0.9.8`; other versions are pinned in `tools/`.
+- Run every HyperFrames command with `HYPERFRAMES_NO_TELEMETRY=1 DO_NOT_TRACK=1`, and `init` with `--skip-skills` (the skills are already in this repo).
+- Never run HyperFrames `publish`, `cloud`, `lambda`, `cloudrun`, `auth` or `feedback`: they upload project files or account data to third parties. The owner publishes videos by hand.
+- The cloud container blocks cdn.jsdelivr.net, huggingface.co and the shadcn registries. A motion project must carry its own copy of `gsap.min.js` and fonts (no CDN `<script src>`).
+- MCP servers (Blender, After Effects, 21st) stay off until the owner enables them, see `tools/mcp/README.md`.
+- Third-party licenses: before committing code from another repo, check its license and update `THIRD_PARTY_NOTICES.md`. No license file means do not commit it.
 
 ## Workflow
 

@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "blender": {
+      "command": "uvx",
+      "args": ["mcp-for-blender@2.2.6"],
+      "env": { "DISABLE_TELEMETRY": "1", "BLENDER_MCP_SAFE_MODE": "1" }
+    },
+    "after-effects": {
+      "command": "node",
+      "args": ["tools/mcp/vendor/after-effects-mcp/build/index.js"]
+    },
+    "21st": {
+      "url": "https://21st.dev/api/mcp",
+      "headers": { "x-api-key": "${API_KEY_21ST}" }
+    }
+  }
+}

@@ -1,0 +1,3 @@
+# Direct dependencies, pinned. requirements.lock holds the full resolved set.
+manim==0.22.1
+faster-whisper==1.2.1

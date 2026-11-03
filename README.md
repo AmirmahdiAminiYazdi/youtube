@@ -28,6 +28,8 @@ The skills live in `.claude/skills/` and are active only inside this project. Pr
 | `channel/voice.md` | Voice profile template (fill it in) |
 | `channel/scripts`, `thumbnails`, `motion`, `voiceover`, `published`, `research` | Working folders |
 | `.claude/skills/` | Installed third-party skills |
+| `TOOLS.md` ([فارسی](TOOLS.fa.md)) | The 28 motion tools: versions, what was tested, how to install (`bash scripts/setup.sh`) |
+| `tools/` | Pinned libraries (`motion-lab`, `python`, `ui-parts`) and optional MCP configs (`mcp`) |
 | `third_party_licenses/` | License texts of the skills |
 
 ## Third-party skills

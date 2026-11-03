@@ -31,6 +31,8 @@ claude
 - `channel/voice.md`: قالب پروفایل صدا (پرش کن).
 - `channel/scripts`، `thumbnails`، `motion`، `voiceover`، `published`، `research`: پوشه‌های کار.
 - `.claude/skills/`: اسکیل‌های نصب‌شده (فقط در همین پروژه فعال‌اند).
+- `TOOLS.fa.md` (و `TOOLS.md`): ۲۸ ابزار موشن‌گرافیک با نسخه، وضعیت تست و روش نصب (`bash scripts/setup.sh`).
+- `tools/`: کتابخانه‌های قفل‌شده (`motion-lab`، `python`، `ui-parts`) و تنظیمات اختیاری MCP.
 - `third_party_licenses/`: متن لایسنس اسکیل‌ها.
 
 ## روند کار پیشنهادی

@@ -3,14 +3,14 @@
 Read this file first at the start of every session. The block between the AUTO markers is rewritten every day by `scripts/refresh_status.py` (scheduled task, early morning Europe/Berlin). Everything outside the markers is maintained by hand and by Claude during work sessions, and the daily job never touches it.
 
 <!-- AUTO:START -->
-_Auto-refreshed: 2026-11-03 15:04 (Europe/Berlin)._
+_Auto-refreshed: 2026-11-03 15:21 (Europe/Berlin)._
 
 ### Snapshot
 
 - Today: Tue 2026-11-03 (work day); next work day: Wed 2026-11-04
 - Stage: pre-launch, nothing published yet
 - Next in the pipeline: #1 "3 Lines That Make AI Useful": next stage is Voiceover
-- Skills installed: 23 (`.claude/skills/`)
+- Skills installed: 72 committed in `.claude/skills/` (+13 fetched by `scripts/setup.sh`, present in this environment)
 - Files: ideas 2, scripts 1, thumbnails 0, motion 0, voiceover 0, published 0, research 0
 
 ### Pipeline (from `channel/ideas/first-12-ideas.md`)
@@ -32,6 +32,7 @@ _Auto-refreshed: 2026-11-03 15:04 (Europe/Berlin)._
 
 ### Last 10 commits
 
+- 2026-11-03  Verify yt-* skills against upstream, move voice profile into the repo
 - 2026-11-02  Set daily Mon-Fri posting rhythm, add calendar and script for video 1
 - 2026-11-02  Set up YouTube channel workspace with skills, plan and daily status
 - 2026-11-02  Initial commit
@@ -41,7 +42,8 @@ _Auto-refreshed: 2026-11-03 15:04 (Europe/Berlin)._
 
 - Next: video #1 "3 Lines That Make AI Useful", target post date Tuesday 2026-11-03. Script drafted in `channel/scripts/`, waiting for the owner's approval before the voiceover is generated.
 - By Friday 2026-11-13: write the next batch of ideas (the first 12 end on Wednesday 2026-11-18).
-- Check how video files will be rendered (headless browser and ffmpeg available or not) before promising daily motion-graphic exports.
+- Rendering is confirmed: Remotion (1080x1920 H.264) and manim rendered real clips in the cloud container with system Chrome and ffmpeg. HyperFrames `doctor` passes. Still to do: the channel template in `channel/motion/_template` (1080x1920, vendored gsap.min.js and fonts, navy/teal/off-white palette, safe zones) and one test render with HyperFrames before video #1 goes to motion.
+- Toolbox from the 28-tool list is installed (see `TOOLS.md`). Run `bash scripts/setup.sh` in any fresh environment.
 
 ## Decisions made
 
@@ -52,6 +54,9 @@ _Auto-refreshed: 2026-11-03 15:04 (Europe/Berlin)._
 - The most popular YouTube skill found (Jakeschincariol/youtube-agent-skill, about 3k stars) is installed unmodified as the `yt-*` skills. The voice profile is read from `channel/voice.md` in this repo, not from `~/.claude`.
 - First months: grow the audience; monetization is a later goal.
 - Every video has its own visual metaphor and one original element; no invented numbers or sources.
+- Toolbox (2026-11-03): the 28 tools are pinned (`tools/pins.env`, lock files). Skills with a redistributable license are committed (72); Remotion skills and UI component sources are fetched by `scripts/setup.sh` because upstream has no license file (Remotion) or forbids redistribution (react-bits). Default video pipeline is HyperFrames + ElevenLabs + ffmpeg; Remotion and manim are for special cases.
+- HyperFrames rules: pinned `hyperframes@0.9.8`, telemetry off (project `.claude/settings.json`), never `publish`/`cloud`/`lambda`/`cloudrun`/`auth`/`feedback`, no CDN scripts (vendor gsap and fonts).
+- MCP servers (Blender, After Effects, 21st) are configs only and stay off until the owner enables them (`tools/mcp/README.md`).
 
 ## Open questions
 
@@ -61,3 +66,6 @@ _Auto-refreshed: 2026-11-03 15:04 (Europe/Berlin)._
 - Video #1 was targeted for Tue 2026-11-03 but the script is not approved yet, so the calendar slips by one working day unless it is approved today.
 - Hooks for ideas #4, #9 and #12 should be rewritten before recording.
 - Scientific sources listed in `channel/ideas/first-12-ideas.md` are to be verified before publishing.
+- Not testable in the cloud container, so unverified: Blender and After Effects MCP against the real apps, 21st MCP (needs a key), faster-whisper transcription (model download from huggingface.co is blocked here), shadcn/magicui/motion-primitives registries, motion-canvas and revideo scene renders. Test them on the owner's computer.
+- Remotion license: free for individuals and small teams, paid for larger companies. Read `/remotion-license` before using Remotion in anything monetized.
+- Does the owner have an ElevenLabs account and API key (`ELEVENLABS_API_KEY` in `.env`)? Needed for the voiceover step.

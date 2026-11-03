@@ -1,0 +1,36 @@
+{
+  "name": "channel-motion-lab",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Pinned motion-graphics libraries for the channel (animation engines, render tools, sound). Versions are exact on purpose.",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "smoke": "node smoke/smoke.mjs",
+    "smoke:remotion": "remotion render smoke/remotion/index.jsx Smoke \"${TMPDIR:-/tmp}/remotion-smoke.mp4\" --browser-executable=\"$(command -v google-chrome || command -v chromium || command -v chromium-browser)\" --log=warn"
+  },
+  "dependencies": {
+    "three": "0.187.0",
+    "animejs": "4.5.0",
+    "motion": "14.9.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "@react-three/fiber": "9.8.2",
+    "@react-three/drei": "10.7.9",
+    "lottie-web": "5.13.0",
+    "gsap": "3.15.0",
+    "tone": "15.1.22",
+    "wavesurfer.js": "8.0.5",
+    "remotion": "4.0.540",
+    "@remotion/cli": "4.0.540",
+    "@remotion/renderer": "4.0.540",
+    "@motion-canvas/core": "3.17.2",
+    "@motion-canvas/2d": "3.17.2",
+    "@revideo/core": "0.11.0",
+    "@revideo/2d": "0.11.0",
+    "@revideo/renderer": "0.11.0",
+    "@revideo/cli": "0.11.0"
+  }
+}

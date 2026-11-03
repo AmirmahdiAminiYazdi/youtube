@@ -109,6 +109,20 @@ def build_block():
                     break
     skills = sorted(p.parent.name for p in
                     (ROOT / ".claude" / "skills").glob("*/SKILL.md"))
+    # Skills fetched by scripts/setup.sh (not committed) must not make the
+    # count flip between environments: count committed skills, then mention
+    # how many extra ones are present locally.
+    try:
+        tracked = subprocess.run(
+            ["git", "ls-files", ".claude/skills"], cwd=ROOT, capture_output=True,
+            text=True, timeout=20, check=True).stdout.splitlines()
+        committed = sorted({f.split("/")[2] for f in tracked
+                            if f.endswith("/SKILL.md") and f.count("/") == 3})
+    except Exception:
+        committed = skills
+    extra = len(set(skills) - set(committed))
+    skills_line = f"- Skills installed: {len(committed)} committed in `.claude/skills/`" + (
+        f" (+{extra} fetched by `scripts/setup.sh`, present in this environment)" if extra else "")
     lines = [
         f"_Auto-refreshed: {NOW:%Y-%m-%d %H:%M} (Europe/Berlin)._",
         "",
@@ -117,7 +131,7 @@ def build_block():
         f"- Today: {NOW:%a %Y-%m-%d} ({'work day' if NOW.weekday() < 5 else 'weekend, no work'}); next work day: {next_workday(NOW):%a %Y-%m-%d}",
         f"- Stage: {'pre-launch, nothing published yet' if published == 0 else f'{published} video(s) published'}",
         f"- Next in the pipeline: {next_item or 'all listed ideas are published'}",
-        f"- Skills installed: {len(skills)} (`.claude/skills/`)",
+        skills_line,
         "- Files: " + ", ".join(
             f"{f} {count_files(f)}" for f in
             ["ideas", "scripts", "thumbnails", "motion", "voiceover",

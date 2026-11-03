@@ -3,3 +3,12 @@ channel/**/*.mp4
 channel/**/*.wav
 *.pyc
 __pycache__/
+
+# Toolbox: installed by scripts/setup.sh, never committed
+node_modules/
+.venv/
+tools/ui-parts/vendor/
+tools/mcp/vendor/
+# Remotion agent skills (upstream has no license file): fetched by setup.sh
+.claude/skills/remotion-*/
+*.log
