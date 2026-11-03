@@ -3,7 +3,7 @@
 Read this file first at the start of every session. The block between the AUTO markers is rewritten every day by `scripts/refresh_status.py` (scheduled task, early morning Europe/Berlin). Everything outside the markers is maintained by hand and by Claude during work sessions, and the daily job never touches it.
 
 <!-- AUTO:START -->
-_Auto-refreshed: 2026-11-03 17:27 (Europe/Berlin)._
+_Auto-refreshed: 2026-11-03 17:29 (Europe/Berlin)._
 
 ### Snapshot
 
@@ -32,6 +32,7 @@ _Auto-refreshed: 2026-11-03 17:27 (Europe/Berlin)._
 
 ### Last 10 commits
 
+- 2026-11-03  Add Brainmaxx brand guide PDF and overview, record font and usage rules
 - 2026-11-03  Add Brainmaxx brand assets (logo, profile, banner) and record channel name and palette
 - 2026-11-03  Add pinned motion toolbox, setup script, MCP configs and docs
 - 2026-11-03  Add 49 vetted skills: threejs, motion pack, ElevenLabs, HyperFrames, design
