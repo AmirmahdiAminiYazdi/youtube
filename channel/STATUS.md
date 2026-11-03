@@ -3,11 +3,11 @@
 Read this file first at the start of every session. The block between the AUTO markers is rewritten every day by `scripts/refresh_status.py` (scheduled task, early morning Europe/Berlin). Everything outside the markers is maintained by hand and by Claude during work sessions, and the daily job never touches it.
 
 <!-- AUTO:START -->
-_Auto-refreshed: 2026-11-02 18:32 (Europe/Berlin)._
+_Auto-refreshed: 2026-11-03 06:11 (Europe/Berlin)._
 
 ### Snapshot
 
-- Today: Mon 2026-11-02 (work day); next work day: Tue 2026-11-03
+- Today: Tue 2026-11-03 (work day); next work day: Wed 2026-11-04
 - Stage: pre-launch, nothing published yet
 - Next in the pipeline: #1 "3 Lines That Make AI Useful": next stage is Voiceover
 - Skills installed: 23 (`.claude/skills/`)
@@ -32,6 +32,7 @@ _Auto-refreshed: 2026-11-02 18:32 (Europe/Berlin)._
 
 ### Last 10 commits
 
+- 2026-11-02  Set daily Mon-Fri posting rhythm, add calendar and script for video 1
 - 2026-11-02  Set up YouTube channel workspace with skills, plan and daily status
 - 2026-11-02  Initial commit
 <!-- AUTO:END -->
