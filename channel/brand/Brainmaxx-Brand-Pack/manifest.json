@@ -1,0 +1,351 @@
+{
+  "version": "1.0",
+  "created": "2026-11-03",
+  "files": [
+    {
+      "path": "01-Vector/horizontal-color-dark.svg",
+      "bytes": 94173,
+      "sha256": "5816c3728c646dfcec52011a45d1f8dfd212efe49e711719a38bea173571c412"
+    },
+    {
+      "path": "01-Vector/horizontal-color-light.svg",
+      "bytes": 94173,
+      "sha256": "c0f935bf8d3bd7282998c60c411dafd0700774c41e4f442b3d704a6a5cefbf55"
+    },
+    {
+      "path": "01-Vector/horizontal-navy.svg",
+      "bytes": 94173,
+      "sha256": "8b1767d2eaa6abe81b72d2f522275394e2a683bb2495835ccda147eab761c0e9"
+    },
+    {
+      "path": "01-Vector/horizontal-white.svg",
+      "bytes": 94173,
+      "sha256": "9c55afd1cad917cb5589d4c1851867fbd17978dfed687ded2297ae9b27d1eeea"
+    },
+    {
+      "path": "01-Vector/mark-color-dark.svg",
+      "bytes": 90244,
+      "sha256": "ec102dc871dfd202c49b56453919674b97de8b484e4e540f516e57c06d65250f"
+    },
+    {
+      "path": "01-Vector/mark-color-light.svg",
+      "bytes": 90244,
+      "sha256": "2c1863452b20764158cf22a561e99bca9b48d8d1bb876e424467ff6d8087520a"
+    },
+    {
+      "path": "01-Vector/mark-digital-glow.svg",
+      "bytes": 90445,
+      "sha256": "3d305df21db28c90b239c6add58489efc5d9bed3f2572099dc107b2083d8515f"
+    },
+    {
+      "path": "01-Vector/mark-navy.svg",
+      "bytes": 90244,
+      "sha256": "084b42fd7e2426043786b728223af07290445dc9cfc00de9636a4de5e4d876ed"
+    },
+    {
+      "path": "01-Vector/mark-white.svg",
+      "bytes": 90244,
+      "sha256": "74d7840e100fb7bc6e4a7f42594b1e5fe295462be16d9cedb6209839683e96b2"
+    },
+    {
+      "path": "01-Vector/signature-color-dark.svg",
+      "bytes": 108925,
+      "sha256": "86a911fded06dc11a1961a36f790376d62a8de3d767663bc57ea77bcad625343"
+    },
+    {
+      "path": "01-Vector/signature-color-light.svg",
+      "bytes": 108925,
+      "sha256": "902529c541e939056d9b14bfac83f53a115e5f3417879f04884dfc280ee9fabc"
+    },
+    {
+      "path": "01-Vector/stacked-color-dark.svg",
+      "bytes": 108837,
+      "sha256": "f32f85d61a2df0ae02890237325d436c90d5fa16d6a7025cd242afa05de7f266"
+    },
+    {
+      "path": "01-Vector/stacked-color-light.svg",
+      "bytes": 108837,
+      "sha256": "596905730a51857a8e48702887a1f7df58763b024d1d894f68f72462f7956ad6"
+    },
+    {
+      "path": "01-Vector/wordmark-color-dark.svg",
+      "bytes": 3792,
+      "sha256": "ef36b5ec9c99b4b7aaeb5f7a213ac3a397b520d8342af2ec2e7fa1c850348d0a"
+    },
+    {
+      "path": "01-Vector/wordmark-color-light.svg",
+      "bytes": 3792,
+      "sha256": "b0916a5831c086bb8e8ae22efaec7b7421282cdd077e7df7e1fdc712b00c3885"
+    },
+    {
+      "path": "02-Transparent-PNG/horizontal-color-dark-3200.png",
+      "bytes": 109024,
+      "sha256": "76291812079c01daa9fcafc3b404184f2a7c81e6ae486cca1423e51252af95ab"
+    },
+    {
+      "path": "02-Transparent-PNG/horizontal-color-light-3200.png",
+      "bytes": 108781,
+      "sha256": "464c1daf49134f440d986c30a25075485f7c79ce614f492ebf5f3022aceec684"
+    },
+    {
+      "path": "02-Transparent-PNG/horizontal-navy-3200.png",
+      "bytes": 103071,
+      "sha256": "4d19fa2f39da61ce15fb2d072bfd3284ba4d1bdeefc99f028cda37ab69e10b30"
+    },
+    {
+      "path": "02-Transparent-PNG/horizontal-white-3200.png",
+      "bytes": 102854,
+      "sha256": "8226ad86da8a9dd496cdfe1b699f3c37885d9a02a07d662778681154f1267fe3"
+    },
+    {
+      "path": "02-Transparent-PNG/mark-color-dark-1600.png",
+      "bytes": 112740,
+      "sha256": "4b66a091e7e0ec0abeeb60a1a718fe7b48afaffb413f6e66f24ef96f1a4c748e"
+    },
+    {
+      "path": "02-Transparent-PNG/mark-color-dark-4096.png",
+      "bytes": 392012,
+      "sha256": "c189e74394736e1c1e09e47a672da8410274b299a7e57b54c2c6eb2de89ff9c1"
+    },
+    {
+      "path": "02-Transparent-PNG/mark-color-light-1600.png",
+      "bytes": 112562,
+      "sha256": "766ce06f0861b85da50741a0354787527f2c3ac852dccbee6c07066e8bbb58af"
+    },
+    {
+      "path": "02-Transparent-PNG/mark-color-light-4096.png",
+      "bytes": 391426,
+      "sha256": "7ed7296f45b4e5abba2c6da61d3b49bb0746923fa729ad09db6871400d57c03c"
+    },
+    {
+      "path": "02-Transparent-PNG/mark-digital-glow-2400.png",
+      "bytes": 1115553,
+      "sha256": "a61c86399ad50ba36ee036bdf14e039d91b323a68134430600931074205186d9"
+    },
+    {
+      "path": "02-Transparent-PNG/mark-navy-1600.png",
+      "bytes": 107057,
+      "sha256": "248efec0baa6f06a3fa1b67eb8a1346074660049ba53f37d2db0ce79fd4c3045"
+    },
+    {
+      "path": "02-Transparent-PNG/mark-navy-4096.png",
+      "bytes": 377194,
+      "sha256": "beb3ec85c12a26f5009c6e7b10b7c7c6d5f8754cb4840054926b18212c81f673"
+    },
+    {
+      "path": "02-Transparent-PNG/mark-white-1600.png",
+      "bytes": 106440,
+      "sha256": "af86ec413550c208d01aab996ec36cae868a5fed6bd6cb6f728d47eb5916e3ef"
+    },
+    {
+      "path": "02-Transparent-PNG/mark-white-4096.png",
+      "bytes": 376733,
+      "sha256": "a716c5ddb8defc33793878bd45cb4eb6caf7afae370d915529ba8a90313a8e57"
+    },
+    {
+      "path": "02-Transparent-PNG/signature-color-dark-3200.png",
+      "bytes": 122325,
+      "sha256": "aa7cd4d90bc8181d6577bfe7c7d93f798505ee6c7e2211abe8d3b08f493531c8"
+    },
+    {
+      "path": "02-Transparent-PNG/signature-color-light-3200.png",
+      "bytes": 122233,
+      "sha256": "a902e8d3ea59f16d1c0314d4dfb0ff37e67212fdd00ac5f6758f251174887a74"
+    },
+    {
+      "path": "02-Transparent-PNG/stacked-color-dark-2000.png",
+      "bytes": 140238,
+      "sha256": "1cbc270f2197486816d41d7a11812996841d05a5722605bdc496b9c4be7decbf"
+    },
+    {
+      "path": "02-Transparent-PNG/stacked-color-light-2000.png",
+      "bytes": 140295,
+      "sha256": "eb0bc53764181293206c1520d7fb89cd98b2ea7d90dfe993856312e62a2998fe"
+    },
+    {
+      "path": "02-Transparent-PNG/wordmark-color-dark-2600.png",
+      "bytes": 53999,
+      "sha256": "8b1ba2ae4b719e88e9a57b936fcc575774c14fce1f1e7fbc5e36aa55e61a5782"
+    },
+    {
+      "path": "02-Transparent-PNG/wordmark-color-light-2600.png",
+      "bytes": 54111,
+      "sha256": "7b4870c40e564d215347041ca55ca0fca73178ec6a4af95a4c07181621bb5685"
+    },
+    {
+      "path": "03-Digital/favicon.ico",
+      "bytes": 5558,
+      "sha256": "10f9e69763ac52d03dc820d47aec7efb9977981e560dd4ba31eb936a44fdf7e4"
+    },
+    {
+      "path": "03-Digital/icon-16.png",
+      "bytes": 685,
+      "sha256": "1904c5445c878cdf63b5a39df6db4a243cbd8a57c46c024b58225e0fa7c30a60"
+    },
+    {
+      "path": "03-Digital/icon-180.png",
+      "bytes": 16304,
+      "sha256": "82e099964b31a5009ec2f0ce7a5e23f0ddfdd984c5a2fae3961d01ea12d6c11f"
+    },
+    {
+      "path": "03-Digital/icon-32.png",
+      "bytes": 1737,
+      "sha256": "873878f614fe673e7ae5480450aba74f755315c187379ff4c6234c98adad0b20"
+    },
+    {
+      "path": "03-Digital/icon-48.png",
+      "bytes": 3082,
+      "sha256": "d171579f82358bbdba77687139cd03423ae41c93b909ca3492d4d12f7163bd20"
+    },
+    {
+      "path": "03-Digital/icon-512.png",
+      "bytes": 65003,
+      "sha256": "b1c4acf27bcb34d19ae073a5f768f9bf2f5c2c9c17696151233de8011204e418"
+    },
+    {
+      "path": "03-Digital/profile-1600.png",
+      "bytes": 216693,
+      "sha256": "bd357f3275d85e8b5e414dcf22d6a64c716c0d0abd31d66f00426cf77dfa2cc7"
+    },
+    {
+      "path": "03-Digital/profile-400.png",
+      "bytes": 48642,
+      "sha256": "bfa05b6d2a7878c2d828d64e34f58fe3e3b5bf54131b89e46950c2b4486914a9"
+    },
+    {
+      "path": "03-Digital/profile-800.png",
+      "bytes": 122443,
+      "sha256": "049529b8e579ba45682a269cad2565971954d6fff106f7954fe6fcb83cffdb12"
+    },
+    {
+      "path": "03-Digital/profile-98.png",
+      "bytes": 8003,
+      "sha256": "d847067652291e533d4a9516396a7126fd5d650d6967fac2cb2eb5c02ed701a5"
+    },
+    {
+      "path": "03-Digital/profile-approved-glow-1600.png",
+      "bytes": 1894931,
+      "sha256": "9147165e4861e6de17d309cc5221a090bbd9843c24b323d73cd195cdf494d06b"
+    },
+    {
+      "path": "03-Digital/video-watermark-white-150.png",
+      "bytes": 10055,
+      "sha256": "094c60f6baca6b6dedaf70b6e2b8af96a79d05b44a9406e703e4670ed6567643"
+    },
+    {
+      "path": "03-Digital/youtube-banner-2560x1440.png",
+      "bytes": 3170456,
+      "sha256": "f09408c25f6726ba5e04deeaf94b8a09717b224e76ac49f349a49bc51c5d3cd0"
+    },
+    {
+      "path": "04-Brand-Guide/Brainmaxx-Brand-Board.png",
+      "bytes": 230550,
+      "sha256": "8fdcfcca58121faa7f79498c18701cdb515bc856efcc9c49af3dab1be7991feb"
+    },
+    {
+      "path": "04-Brand-Guide/Brainmaxx-Brand-Guide.pdf",
+      "bytes": 3489819,
+      "sha256": "87fdb29bd6917e6b86805c1a11415241ca5a6dfa3255921621d9389d446944a9"
+    },
+    {
+      "path": "04-Brand-Guide/page-01.png",
+      "bytes": 93529,
+      "sha256": "d047d75d67e80cd69ffbd10bdc4e2d4276dc4a6897966f171d79714a51837ac7"
+    },
+    {
+      "path": "04-Brand-Guide/page-02.png",
+      "bytes": 129005,
+      "sha256": "bed3f64e52aeaede5037969544e39bf3beef05ac647e4f8064363d538efce28a"
+    },
+    {
+      "path": "04-Brand-Guide/page-03.png",
+      "bytes": 124856,
+      "sha256": "6fa164f7b09da0a07af0779d25ce3eb6a26ff6b2acec9c67b7fecf2ebd86cd0b"
+    },
+    {
+      "path": "04-Brand-Guide/page-04.png",
+      "bytes": 141297,
+      "sha256": "7a06606905177e8186e462dc98169699cdb6f349029648f7894775de53ea6b41"
+    },
+    {
+      "path": "04-Brand-Guide/page-05.png",
+      "bytes": 112552,
+      "sha256": "19deae3c9ecb478f2dbc6ee8a31df86a5e0baff7a3721813cc749d42ded381e4"
+    },
+    {
+      "path": "04-Brand-Guide/page-06.png",
+      "bytes": 144295,
+      "sha256": "9480bef1c6e4ed56f9e06544d417cdb20ede339a48b00464053d5fc866468e3e"
+    },
+    {
+      "path": "04-Brand-Guide/page-07.png",
+      "bytes": 866075,
+      "sha256": "2097fb3a9ff791bcc673c4f37b452d8a7dd6ac682d89c1fa7de3ec50aea93698"
+    },
+    {
+      "path": "04-Brand-Guide/page-08.png",
+      "bytes": 146366,
+      "sha256": "b32a6d7df13a53229e12ec9865f204c7fafa218e460d85901ff40c5810e8498b"
+    },
+    {
+      "path": "05-Color/Brainmaxx.ase",
+      "bytes": 162,
+      "sha256": "e3cdf5a1366e2b4a856d3a1ef84b7ef06c0b3edc33340c4ca22f18db243531b7"
+    },
+    {
+      "path": "05-Color/palette.css",
+      "bytes": 129,
+      "sha256": "0215b6ff97148b147e1eb1d982e28248670f84cc05864246bfa4c00ed740cc4f"
+    },
+    {
+      "path": "05-Color/palette.gpl",
+      "bytes": 108,
+      "sha256": "a48afc73c8cb4250d762b965599596385778bf5545ee387d3dab1c2b28df22cc"
+    },
+    {
+      "path": "05-Color/palette.json",
+      "bytes": 517,
+      "sha256": "8c1099517f436c31b6f688d3e1d5362d46ae49b6f9d799e0d53365c5c3192fb4"
+    },
+    {
+      "path": "06-Fonts/Outfit-Bold.ttf",
+      "bytes": 55392,
+      "sha256": "6654b93d21301ec61887d3cedd6c11d9df1b1dfb63f9cf45ac7995f6e2235ab1"
+    },
+    {
+      "path": "06-Fonts/Outfit-OFL.txt",
+      "bytes": 4389,
+      "sha256": "1945b62cd76da9a3051a1660dde72afaa64ffc2666d30e7a78356d651653ba2f"
+    },
+    {
+      "path": "06-Fonts/Outfit-Regular.ttf",
+      "bytes": 54912,
+      "sha256": "f24945365147c9e783e91d8649959b59be6b00c9ee4ecd2f6b33afbb2dd871fe"
+    },
+    {
+      "path": "07-Source/approved-reference.png",
+      "bytes": 1409372,
+      "sha256": "63abf363b7827fa5c7657cf452da2f1f0d7bf560b1355db4d7473882efab31ca"
+    },
+    {
+      "path": "07-Source/design-philosophy.md",
+      "bytes": 1560,
+      "sha256": "5c1534bfb9ac5bbbaf716c300892507e6e3ff0c26188608d0d4a916cd4925446"
+    },
+    {
+      "path": "07-Source/trace-data.json",
+      "bytes": 22538,
+      "sha256": "ea62926417c5735b972cd403f3a4307524dccf6d86b5c3e74c7380b1f2789800"
+    },
+    {
+      "path": "README-EN.md",
+      "bytes": 2381,
+      "sha256": "e55eab01766b1d47df5cfc173e926bb57a74e06c4a56d5c74370ae43f959047a"
+    },
+    {
+      "path": "راهنمای-شروع.md",
+      "bytes": 2159,
+      "sha256": "3ed51878ada4b876ad3829ce50407a5f587495a22044bb6360947d3bf821e458"
+    }
+  ]
+}

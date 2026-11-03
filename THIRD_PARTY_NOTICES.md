@@ -29,3 +29,5 @@ Provenance: the `yt-*` skills were verified identical to upstream commit `a2feb2
 The GSAP animation library itself is licensed separately by GreenSock and is installed from npm, not included here. Check https://gsap.com/licensing/ before using it in published work.
 
 `channel/templates-reference/` contains the channel templates shipped with the claude-youtube skill, under the same MIT license. `channel/voice.md` is the voice-profile template from youtube-agent-skill, also MIT.
+
+`channel/brand/Brainmaxx-Brand-Pack/06-Fonts/` contains Outfit Bold and Regular (https://github.com/Outfitio/Outfit-Fonts), (c) 2021 The Outfit Project Authors, SIL Open Font License 1.1. License text: `third_party_licenses/outfit-font-OFL-1.1.txt`. The font may be redistributed with the license, but not sold by itself. The rest of the pack (logo, wordmark, banner) is the owner's own brand, generated with AI tools; no trademark clearance has been done.
