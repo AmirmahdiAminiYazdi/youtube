@@ -22,7 +22,8 @@ Content rules: every video has its own visual metaphor (consistent style, varied
 
 ## Fill in once (the skills read this)
 
-- Channel name / handle: [TODO]
+- Channel name / handle: **Brainmaxx** / `@getbrainmaxx` (handle entered in YouTube Studio; confirm it was saved)
+- Brand: palette navy `#0B1B33`, teal `#19C3B1`, off-white `#F4F1EA`, orange `#FF7A3D` (sparks only). Logo (half organic brain + half circuit, four orange nodes at the fissure), profile picture and banner are in `channel/brand/`. Tagline: "Think better. Learn faster."
 - Video language(s): English
 - Target audience: [TODO]
 - Posting rhythm: one new video every working day, Monday to Friday, none on Saturday and Sunday (calendar in `channel/ideas/first-12-ideas.md`)
