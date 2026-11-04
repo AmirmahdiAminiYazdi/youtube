@@ -3,7 +3,7 @@
 Read this file first at the start of every session. The block between the AUTO markers is rewritten every day by `scripts/refresh_status.py` (scheduled task, early morning Europe/Berlin). Everything outside the markers is maintained by hand and by Claude during work sessions, and the daily job never touches it.
 
 <!-- AUTO:START -->
-_Auto-refreshed: 2026-11-04 12:55 (Europe/Berlin)._
+_Auto-refreshed: 2026-11-04 13:02 (Europe/Berlin)._
 
 ### Snapshot
 
@@ -11,7 +11,7 @@ _Auto-refreshed: 2026-11-04 12:55 (Europe/Berlin)._
 - Stage: pre-launch, nothing published yet
 - Next in the pipeline: #1 "3 Lines That Make AI Useful": next stage is Voiceover
 - Skills installed: 72 committed in `.claude/skills/`
-- Files: ideas 2, scripts 1, thumbnails 0, motion 114, voiceover 0, published 0, research 0
+- Files: ideas 2, scripts 1, thumbnails 0, motion 114, voiceover 0, published 1, research 0
 
 ### Pipeline (from `channel/ideas/first-12-ideas.md`)
 
@@ -32,6 +32,7 @@ _Auto-refreshed: 2026-11-04 12:55 (Europe/Berlin)._
 
 ### Last 10 commits
 
+- 2026-11-04  Add motion-graphics pass for the long video "The Impossible Escape"
 - 2026-11-03  Restore brand files as the full Brainmaxx Brand Pack v1.0, add Outfit license notice
 - 2026-11-03  Add Brainmaxx Brand Pack v1.0 (SVG, PNG, digital, fonts, color) and Outfit license
 - 2026-11-03  Add Brainmaxx brand guide PDF and overview, record font and usage rules
@@ -41,7 +42,6 @@ _Auto-refreshed: 2026-11-04 12:55 (Europe/Berlin)._
 - 2026-11-03  Verify yt-* skills against upstream, move voice profile into the repo
 - 2026-11-02  Set daily Mon-Fri posting rhythm, add calendar and script for video 1
 - 2026-11-02  Set up YouTube channel workspace with skills, plan and daily status
-- 2026-11-02  Initial commit
 <!-- AUTO:END -->
 
 ## Current focus (update at the end of every work session)
@@ -51,7 +51,7 @@ _Auto-refreshed: 2026-11-04 12:55 (Europe/Berlin)._
 - Rendering is confirmed: Remotion (1080x1920 H.264) and manim rendered real clips in the cloud container with system Chrome and ffmpeg. HyperFrames `doctor` passes. Still to do: the channel template in `channel/motion/_template` (1080x1920, vendored gsap.min.js and fonts, navy/teal/off-white palette, safe zones) and one test render with HyperFrames before video #1 goes to motion.
 - Toolbox from the 28-tool list is installed (see `TOOLS.md`). Run `bash scripts/setup.sh` in any fresh environment.
 - Brand assets are done (2026-11-03): the full Brand Pack is in `channel/brand/Brainmaxx-Brand-Pack/`. Next for the owner: upload them in YouTube Studio, then create the same handle on TikTok and Instagram. Use the same palette in `channel/motion/_template`.
-- Long video "The Impossible Escape" (2026-11-04): the owner's own 16:9 film (3:40). Motion-graphics pass delivered as a 3:49 MP4: 9 s 3D cold open, hook type, 9 chapter titles, build-log blueprint, 7 explanation cards, recap, sound written in code, light grade. Nothing in the film was cut. Source and rebuild steps: `channel/motion/special-the-impossible-escape/README.md`. Next: owner reviews the MP4, then the upload package (title, description, chapters shifted +9 s for the opener, thumbnail as JPG under 2 MB; the owner's PNG cover is 2.49 MB).
+- Long video "The Impossible Escape" (2026-11-04): the owner's own 16:9 film (3:40). Motion-graphics pass delivered as a 3:49 MP4: 9 s 3D cold open, hook type, 9 chapter titles, build-log blueprint, 7 explanation cards, recap, sound written in code, light grade. Nothing in the film was cut. Source and rebuild steps: `channel/motion/special-the-impossible-escape/README.md`. Upload package is ready in `channel/published/special-the-impossible-escape.md` (title "9 Parts That Turn a Crate Into a Plane", description with 12 chapters, tags, pinned comment, Studio settings) and the thumbnail was delivered as a 276 KB JPG. Next: the owner reviews the MP4 and uploads it by hand.
 
 ## Decisions made
 
