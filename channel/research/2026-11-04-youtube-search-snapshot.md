@@ -60,3 +60,15 @@ Scored with `.claude/skills/yt-script/hookscore.py`. It is a rough pattern heuri
 Six first-round attempts (for example "Rereading feels like studying. It isn't. Do this instead.") scored 34 to 52 and are dropped. Not yet chosen by the owner.
 
 Source check for "10 study methods": Dunlosky, Rawson, Marsh, Nathan and Willingham, Psychological Science in the Public Interest, January 2013, reviewed ten learning techniques. Practice testing and distributed practice were rated high utility, rereading low (APS press release, https://www.psychologicalscience.org/news/releases/which-study-strategies-make-the-grade.html). Read the paper itself before recording; this check used the press release.
+
+### Later rounds (same day)
+
+Rounds 3 and 4 moved the hook from 68 to 82-83 (STRONG). The heuristic is near its ceiling here; only retention after posting shows whether a hook works.
+
+| Score | Hook |
+|---|---|
+| 83 | Stop rereading before your test. Only 2 of 10 study methods rated high in a 2013 review. Which two? |
+| 82 | Before your test, stop rereading. Only 2 of 10 study methods rated high. Which two? (recommended, 14 words, easiest to say in one breath) |
+| 82 | Before your test, stop rereading. A 2013 review of 10 study methods rated it low. What rated high? |
+
+The full script that uses the recommended hook is `channel/scripts/09-stop-rereading.md`. The APS press release also confirms that summarization, highlighting and underlining, and rereading were rated low.
