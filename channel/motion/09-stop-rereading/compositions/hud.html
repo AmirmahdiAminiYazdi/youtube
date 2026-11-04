@@ -1,0 +1,122 @@
+<template>
+  <style>
+    @font-face { font-family: "BrandOutfit"; src: url("assets/fonts/Outfit-Bold.ttf"); font-weight: 700; }
+    @font-face { font-family: "BrandOutfit"; src: url("assets/fonts/Outfit-Regular.ttf"); font-weight: 400; }
+    #root { position: absolute; inset: 0; font-family: "BrandOutfit", sans-serif; color: #F4F1EA; pointer-events: none; }
+    .band { position: absolute; left: 0; top: 196px; width: 1080px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .big { font-weight: 700; font-size: 96px; line-height: 1; letter-spacing: 0.01em; text-shadow: 0 6px 30px rgba(3, 9, 20, 0.9); }
+    .mid { font-weight: 700; font-size: 66px; line-height: 1.05; text-shadow: 0 6px 30px rgba(3, 9, 20, 0.9); }
+    .kick { font-weight: 700; font-size: 34px; letter-spacing: 0.22em; margin-top: 16px; color: rgba(244, 241, 234, 0.82); text-shadow: 0 4px 20px rgba(3, 9, 20, 0.9); }
+    .src { font-weight: 400; font-size: 30px; margin-top: 14px; color: rgba(244, 241, 234, 0.7); }
+    .teal { color: #19C3B1; }
+    .w { display: inline-block; }
+    .slot { position: relative; display: inline-block; width: 0.62em; text-align: center; }
+    .slot > span { position: absolute; left: 0; top: 0; width: 100%; display: block; }
+    .slot > .ghost { position: static; opacity: 0.35; }
+    .pill { display: inline-block; font-weight: 700; font-size: 34px; letter-spacing: 0.18em; padding: 16px 34px 14px; border-radius: 999px; background: rgba(11, 27, 51, 0.78); border: 3px solid rgba(25, 195, 177, 0.75); }
+    .odo { height: 112px; overflow: hidden; }
+    .odo-col { display: flex; flex-direction: column; }
+    .odo-col span { display: block; height: 112px; font-weight: 700; font-size: 112px; line-height: 112px; }
+    .sub-stack { position: relative; height: 50px; width: 1080px; margin-top: 12px; }
+    .sub-stack div { position: absolute; left: 0; top: 0; width: 1080px; text-align: center; font-weight: 700; font-size: 34px; letter-spacing: 0.22em; }
+  </style>
+  <div id="root" data-composition-id="hud" data-width="1080" data-height="1920">
+    <div id="hud-hook" class="clip band" data-start="0" data-duration="6.75">
+      <div class="big"><span class="w" id="hk1">ONLY</span> <span class="w teal" id="hk2">2 OF 10</span></div>
+      <div class="kick" id="hk3">STUDY METHODS RATED HIGH</div>
+    </div>
+
+    <div id="hud-ten" class="clip band" data-start="6.9" data-duration="4.25">
+      <div class="mid" id="tn1"><span class="teal">10</span> STUDY METHODS</div>
+      <div class="src" id="tn2">Dunlosky et al., 2013 · research review</div>
+    </div>
+
+    <div id="hud-left" class="clip band" data-start="11.15" data-duration="3.75">
+      <div class="odo"><div class="odo-col" id="odo">
+        <span>10</span><span>9</span><span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span class="teal">2</span>
+      </div></div>
+      <div class="sub-stack">
+        <div id="sub-low" style="color:#9aa4b5">RATED LOW</div>
+        <div id="sub-mod" style="color:#9aa4b5">MODERATE</div>
+        <div id="sub-left" class="teal">ONLY 2 LEFT</div>
+      </div>
+    </div>
+
+    <div id="hud-test" class="clip band" data-start="18.1" data-duration="1.7">
+      <div class="pill" id="ts1">TEST DAY</div>
+    </div>
+
+    <div id="hud-high1" class="clip band" data-start="21.8" data-duration="2.85">
+      <div class="kick" id="h1k" style="margin-top:0">RATED HIGH</div>
+      <div class="big" style="margin-top:10px"><span class="slot"><span class="ghost" id="h1q">?</span><span class="teal" id="h1n">1</span></span> / 2</div>
+    </div>
+
+    <div id="hud-example" class="clip band" data-start="24.75" data-duration="5.9">
+      <div class="pill" id="ex1">EXAMPLE · WATER CYCLE</div>
+    </div>
+
+    <div id="hud-high2" class="clip band" data-start="31.1" data-duration="1.8">
+      <div class="kick" id="h2k" style="margin-top:0">RATED HIGH</div>
+      <div class="big" style="margin-top:10px"><span class="slot"><span class="ghost" id="h2q">?</span><span class="teal" id="h2n">2</span></span> / 2</div>
+    </div>
+
+    <div id="hud-space" class="clip band" data-start="32.95" data-duration="5.15">
+      <div class="mid" id="sp1">SAME TOPIC</div>
+      <div class="mid teal" id="sp2">DIFFERENT DAYS</div>
+      <div class="kick" id="sp3" style="margin-top:22px">MORE ON SPACING SOON</div>
+    </div>
+
+    <div id="hud-hook2" class="clip band" data-start="42.85" data-duration="0.15">
+      <div class="big"><span class="w">ONLY</span> <span class="w teal">2 OF 10</span></div>
+      <div class="kick">STUDY METHODS RATED HIGH</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const IN = { opacity: 1, y: 0, duration: 0.35, ease: "expo.out" };
+      // hook: on screen from frame 0 (thumbnail), pulse "2 OF 10" when it is spoken
+      tl.fromTo("#hk2", { scale: 1 }, { scale: 1.12, duration: 0.14, ease: "power2.out" }, 3.34);
+      tl.to("#hk2", { scale: 1, duration: 0.3, ease: "power2.inOut" }, 3.5);
+      tl.fromTo("#hk3", { color: "rgba(244,241,234,0.82)" }, { color: "#19C3B1", duration: 0.2 }, 4.84);
+      tl.fromTo("#hk2", { scale: 1 }, { scale: 1.1, duration: 0.12, ease: "power2.out" }, 5.96);
+      tl.to("#hk2", { scale: 1, duration: 0.3 }, 6.1);
+      tl.to(["#hk1", "#hk2", "#hk3"], { opacity: 0, y: -18, duration: 0.25, ease: "power2.in", stagger: 0.04 }, 6.45);
+      // 10 methods + source
+      tl.fromTo("#tn1", { opacity: 0, y: 26 }, IN, 6.95);
+      tl.fromTo("#tn2", { opacity: 0, y: 16 }, IN, 7.2);
+      tl.to(["#tn1", "#tn2"], { opacity: 0, y: -16, duration: 0.22, ease: "power2.in" }, 10.9);
+      // odometer: 10 -> 2 on each elimination
+      tl.fromTo("#hud-left .odo", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.25, ease: "expo.out" }, 11.15);
+      const steps = [11.22, 12.0, 12.64, 13.56, 13.75, 13.95, 14.0, 14.05];
+      steps.forEach((s, i) => tl.to("#odo", { y: -112 * (i + 1), duration: 0.22, ease: "back.out(2)" }, s + 0.1));
+      tl.fromTo("#sub-low", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 11.25);
+      tl.to("#sub-low", { opacity: 0, duration: 0.1 }, 13.9);
+      tl.fromTo("#sub-mod", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 13.95);
+      tl.to("#sub-mod", { opacity: 0, duration: 0.1 }, 14.3);
+      tl.fromTo("#sub-left", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 14.38);
+      // test day
+      tl.fromTo("#ts1", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 18.1);
+      tl.to("#ts1", { opacity: 0, duration: 0.2 }, 19.55);
+      // first high
+      tl.fromTo("#h1k", { opacity: 0, y: 14 }, IN, 21.85);
+      tl.fromTo("#h1n", { opacity: 0, scale: 1.7 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.4)" }, 23.45);
+      tl.fromTo("#h1q", { opacity: 0.35 }, { opacity: 0, duration: 0.1 }, 23.45);
+      tl.to("#hud-high1 .big, #h1k", { opacity: 0, duration: 0.2 }, 24.4);
+      // example tag
+      tl.fromTo("#ex1", { opacity: 0, y: 14 }, IN, 24.8);
+      tl.to("#ex1", { opacity: 0, duration: 0.2 }, 28.6);
+      // second high
+      tl.fromTo("#h2k", { opacity: 0, y: 14 }, IN, 31.15);
+      tl.fromTo("#h2n", { opacity: 0, scale: 1.7 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.4)" }, 32.1);
+      tl.fromTo("#h2q", { opacity: 0.35 }, { opacity: 0, duration: 0.1 }, 32.1);
+      tl.to("#hud-high2 .big, #h2k", { opacity: 0, duration: 0.2 }, 32.65);
+      // spacing
+      tl.fromTo("#sp1", { opacity: 0, y: 20 }, IN, 33.0);
+      tl.fromTo("#sp2", { opacity: 0, y: 20 }, IN, 34.32);
+      tl.fromTo("#sp3", { opacity: 0, y: 12 }, IN, 36.7);
+      tl.to(["#sp1", "#sp2", "#sp3"], { opacity: 0, duration: 0.2 }, 37.85);
+      window.__timelines["hud"] = tl;
+    })();
+  </script>
+</template>
