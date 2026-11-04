@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <!-- Overlay layer for "The Impossible Escape" (long version, 3:40).
+         Rendered with a transparent background and composited over the original film,
+         so every time below is the film's own time in seconds. Nothing in the film is cut. -->
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/vendor/DrawSVGPlugin.min.js"></script>
+    <script src="assets/vendor/CustomEase.min.js"></script>
+    <style>
+      :root {
+        --cream: #f0e7dc;
+        --copper: #e4b98d;
+        --ink: #070b0f;
+        --panel: rgba(9, 14, 22, 0.66);
+        --panel-line: rgba(240, 231, 220, 0.16);
+        --font: "Montserrat", sans-serif;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: transparent;
+      }
+      #root { position: relative; width: 100%; height: 100%; font-family: var(--font); }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="220"
+      data-width="1920"
+      data-height="1080"
+    >
+      <div id="hook" data-composition-id="hook" data-composition-src="compositions/hook.html"
+        data-start="0" data-duration="220" data-track-index="1" data-track-kind="graphics"
+        data-width="1920" data-height="1080" style="z-index: 1"></div>
+      <div id="chapters" data-composition-id="chapters" data-composition-src="compositions/chapters.html"
+        data-start="0" data-duration="220" data-track-index="2" data-track-kind="graphics"
+        data-width="1920" data-height="1080" style="z-index: 2"></div>
+      <div id="cards" data-composition-id="cards" data-composition-src="compositions/cards.html"
+        data-start="0" data-duration="220" data-track-index="3" data-track-kind="graphics"
+        data-width="1920" data-height="1080" style="z-index: 3"></div>
+      <div id="hud" data-composition-id="hud" data-composition-src="compositions/hud.html"
+        data-start="0" data-duration="220" data-track-index="4" data-track-kind="graphics"
+        data-width="1920" data-height="1080" style="z-index: 4"></div>
+      <div id="recap" data-composition-id="recap" data-composition-src="compositions/recap.html"
+        data-start="0" data-duration="220" data-track-index="5" data-track-kind="graphics"
+        data-width="1920" data-height="1080" style="z-index: 5"></div>
+    </div>
+    <script>
+      gsap.registerPlugin(DrawSVGPlugin, CustomEase);
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; font-family: "Montserrat", sans-serif; }
+    #rc { position: absolute; left: 80px; top: 140px; width: 780px; }
+    #rc-panel {
+      position: relative; padding: 22px 26px 20px; border-radius: 16px;
+      background: rgba(9, 14, 22, 0.74);
+      border: 1px solid rgba(240, 231, 220, 0.16);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.42);
+    }
+    #rc-kicker { font-size: 16px; font-weight: 700; letter-spacing: 0.42em; color: #e4b98d; }
+    #rc-title-mask { overflow: hidden; margin-top: 8px; padding-bottom: 4px; }
+    #rc-title { font-size: 40px; font-weight: 800; letter-spacing: 0.03em; color: #f0e7dc; line-height: 1.05; white-space: nowrap; }
+    #rc-svg { display: block; width: 728px; height: 347px; margin-top: 14px; overflow: visible; }
+    #rc-svg .ghost * { fill: none; stroke: rgba(240, 231, 220, 0.26); stroke-width: 0.7; stroke-dasharray: 2 2.4; }
+    #rc-svg .solid * { fill: rgba(240, 231, 220, 0.09); stroke: #f0e7dc; stroke-width: 1.1; stroke-linejoin: round; stroke-linecap: round; }
+    #rc-svg .lead { fill: none; stroke: #e4b98d; stroke-width: 0.8; }
+    #rc-svg .grid { stroke: rgba(240, 231, 220, 0.05); stroke-width: 0.5; }
+    #rc-svg .dot { fill: #e4b98d; }
+    #rc-svg text { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 10.2px; letter-spacing: 0.12em; fill: #f0e7dc; }
+    #rc-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; }
+    #rc-count { font-size: 32px; font-weight: 800; color: #f0e7dc; letter-spacing: 0.04em; }
+    #rc-count span { color: #e4b98d; }
+    #rc-line { font-size: 16px; font-weight: 700; letter-spacing: 0.14em; color: rgba(240, 231, 220, 0.82); }
+  </style>
+  <div id="root" data-composition-id="recap" data-width="1920" data-height="1080">
+    <div id="rc" class="clip" data-start="190.6" data-duration="11.4">
+      <div id="rc-panel">
+        <div id="rc-kicker">THE BUILD</div>
+        <div id="rc-title-mask"><div id="rc-title">FROM CRATE TO AIRPLANE</div></div>
+        <svg id="rc-svg" viewBox="-86 -14 428 204"></svg>
+        <div id="rc-foot">
+          <div id="rc-count">9 / 9 <span>PARTS</span></div>
+          <div id="rc-line">THE SAME IDEAS AS THE JETS OVERHEAD</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      // Same top-view geometry as hud.html (nose to the right).
+      const PARTS = [
+        ["crate", [
+          ["rect", { x: 112, y: 60, width: 64, height: 30, rx: 2 }],
+          ["line", { x1: 128, y1: 60, x2: 128, y2: 90 }], ["line", { x1: 144, y1: 60, x2: 144, y2: 90 }], ["line", { x1: 160, y1: 60, x2: 160, y2: 90 }],
+          ["rect", { x: 116, y: 53, width: 12, height: 6, rx: 1.5 }], ["rect", { x: 160, y: 53, width: 12, height: 6, rx: 1.5 }],
+          ["rect", { x: 116, y: 91, width: 12, height: 6, rx: 1.5 }], ["rect", { x: 160, y: 91, width: 12, height: 6, rx: 1.5 }],
+          ["rect", { x: 176, y: 63, width: 14, height: 24, rx: 2 }],
+          ["line", { x1: 196, y1: 40, x2: 196, y2: 110 }], ["circle", { cx: 196, cy: 75, r: 3.2 }]],
+          "ENGINE + CRATE", "M190,64 L238,46", [242, 49, "start"]],
+        ["wing", [["rect", { x: 124, y: 6, width: 34, height: 138, rx: 6 }]], "WING", "M150,7 L170,-4", [174, -2, "start"]],
+        ["tail", [["path", { d: "M112,67 L44,73" }], ["path", { d: "M112,83 L44,77" }], ["rect", { x: 26, y: 50, width: 18, height: 50, rx: 3 }]],
+          "HORIZONTAL\nSTABILIZER", "M30,52 L4,26", [0, 22, "end"]],
+        ["fin", [["rect", { x: 20, y: 73, width: 30, height: 4, rx: 2 }]], "FIN", "M48,78 L66,118", [70, 122, "start"]],
+        ["elev", [["rect", { x: 19, y: 52, width: 7, height: 46, rx: 1.5 }]], "ELEVATOR", "M20,92 L4,140", [0, 144, "end"]],
+        ["ail", [["rect", { x: 124, y: 9, width: 7, height: 30, rx: 1.5 }], ["rect", { x: 124, y: 111, width: 7, height: 30, rx: 1.5 }]],
+          "AILERONS", "M126,136 L102,170", [98, 173, "end"]],
+        ["flap", [["rect", { x: 124, y: 42, width: 7, height: 22, rx: 1.5 }], ["rect", { x: 124, y: 86, width: 7, height: 22, rx: 1.5 }]],
+          "FLAPS", "M125,50 L98,20", [94, 22, "end"]],
+        ["dih", [["path", { d: "M206,155 L234,162 L262,155" }], ["circle", { cx: 234, cy: 162, r: 2.6 }]],
+          "DIHEDRAL", "M262,156 L272,148", [276, 150, "start"]],
+        ["fuel", [["rect", { x: 138, y: 20, width: 11, height: 22, rx: 5 }], ["rect", { x: 138, y: 108, width: 11, height: 22, rx: 5 }]],
+          "FUEL TANKS", "M149,30 L226,14", [230, 17, "start"]],
+      ];
+      const NS = "http://www.w3.org/2000/svg";
+      const svg = document.getElementById("rc-svg");
+      function mk(tag, attrs, parent) {
+        const el = document.createElementNS(NS, tag);
+        Object.keys(attrs).forEach(function (k) { el.setAttribute(k, attrs[k]); });
+        parent.appendChild(el); return el;
+      }
+      // faint blueprint grid
+      for (let gx = -80; gx <= 340; gx += 12) mk("line", { x1: gx, y1: -14, x2: gx, y2: 190, class: "grid" }, svg);
+      for (let gy = -12; gy <= 190; gy += 12) mk("line", { x1: -86, y1: gy, x2: 342, y2: gy, class: "grid" }, svg);
+      PARTS.forEach(function (p) {
+        const g = mk("g", { id: "rc-p-" + p[0] }, svg);
+        const gh = mk("g", { class: "ghost" }, g), so = mk("g", { class: "solid" }, g);
+        p[1].forEach(function (s) { mk(s[0], s[1], gh); mk(s[0], s[1], so); });
+        const lab = mk("g", { id: "rc-l-" + p[0] }, svg);
+        mk("path", { class: "lead", d: p[3] }, lab);
+        const a = p[3].match(/M([\d.-]+),([\d.-]+)/);
+        mk("circle", { class: "dot", cx: a[1], cy: a[2], r: 1.5 }, lab);
+        const t = mk("text", { x: p[4][0], y: p[4][1], "text-anchor": p[4][2] }, lab);
+        p[2].split("\n").forEach(function (line, li) {
+          const ts = mk("tspan", { x: p[4][0], dy: li ? 11 : 0 }, t); ts.textContent = line;
+        });
+      });
+
+      const tl = gsap.timeline({ paused: true });
+      tl.set("#rc-svg .solid *", { drawSVG: "0%" }, 0);
+      tl.fromTo("#rc-panel",
+        { opacity: 0, x: -24, clipPath: "inset(0% 100% 0% 0% round 16px)" },
+        { opacity: 1, x: 0, clipPath: "inset(0% 0% 0% 0% round 16px)", duration: 0.95, ease: "expo.inOut" }, 190.65);
+      tl.fromTo("#rc-kicker", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }, 191.0);
+      tl.fromTo("#rc-title", { yPercent: 105 }, { yPercent: 0, duration: 0.9, ease: "expo.out" }, 191.1);
+      tl.fromTo("#rc-svg .grid", { opacity: 0 }, { opacity: 1, duration: 0.8 }, 191.0);
+      tl.fromTo("#rc-svg .ghost", { opacity: 0 }, { opacity: 1, duration: 0.6, stagger: 0.04 }, 191.3);
+      PARTS.forEach(function (p, i) {
+        const t = 191.7 + i * 0.36;
+        tl.fromTo("#rc-p-" + p[0] + " .solid *", { drawSVG: "0%" }, { drawSVG: "100%", duration: 0.7, ease: "power2.inOut", stagger: 0.03 }, t);
+        tl.to("#rc-p-" + p[0] + " .ghost", { opacity: 0, duration: 0.4 }, t + 0.4);
+        tl.fromTo("#rc-l-" + p[0] + " .lead", { drawSVG: "0%" }, { drawSVG: "100%", duration: 0.4, ease: "power2.out" }, t + 0.2);
+        tl.fromTo("#rc-l-" + p[0] + " .dot", { opacity: 0 }, { opacity: 1, duration: 0.2 }, t + 0.2);
+        tl.fromTo("#rc-l-" + p[0] + " text", { opacity: 0, x: p[4][2] === "end" ? 6 : -6 }, { opacity: 1, x: 0, duration: 0.5, ease: "expo.out" }, t + 0.45);
+      });
+      tl.fromTo("#rc-count", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 195.2);
+      tl.fromTo("#rc-line", { opacity: 0 }, { opacity: 1, duration: 0.8 }, 195.6);
+      tl.to("#rc-panel", { opacity: 0, x: -16, duration: 0.7, ease: "power2.in" }, 201.1);
+
+      window.__timelines["recap"] = tl;
+    })();
+  </script>
+</template>

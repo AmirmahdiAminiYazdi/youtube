@@ -12,3 +12,11 @@ tools/mcp/vendor/
 # Remotion agent skills (upstream has no license file): fetched by setup.sh
 .claude/skills/remotion-*/
 *.log
+
+# Third-party libraries vendored per motion project by its scripts/fetch-vendor.sh
+channel/motion/**/assets/vendor/
+# Render outputs
+channel/**/*.mov
+channel/**/renders/
+# HyperFrames local state and snapshots
+.hyperframes/

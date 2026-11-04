@@ -1,0 +1,74 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; font-family: "Montserrat", sans-serif; }
+    #hook-shade {
+      position: absolute; left: 0; top: 110px; width: 1100px; height: 860px;
+      background: radial-gradient(ellipse 70% 60% at 22% 50%, rgba(5, 8, 12, 0.62) 0%, rgba(5, 8, 12, 0.0) 70%);
+    }
+    .hook-block { position: absolute; left: 150px; top: 0; width: 1100px; height: 1080px; }
+    .hook-line { position: absolute; left: 0; overflow: hidden; padding: 6px 0 10px; }
+    .hook-word {
+      display: inline-block; color: #f0e7dc; font-weight: 800; font-size: 76px;
+      letter-spacing: 0.035em; line-height: 1; margin-right: 0.28em;
+      text-shadow: 0 2px 24px rgba(0, 0, 0, 0.55);
+    }
+    .hook-kicker {
+      position: absolute; left: 0; top: 378px; color: #e4b98d; font-weight: 700;
+      font-size: 22px; letter-spacing: 0.42em;
+    }
+    #hook-a-l1 { top: 428px; }
+    #hook-a-l2 { top: 524px; }
+    #hook-b-l1 { top: 400px; }
+    #hook-b-l2 { top: 512px; }
+    #hook-b .hook-word { font-size: 112px; letter-spacing: 0.02em; }
+    #hook-b .hook-word.copper { color: #e4b98d; }
+    #hook-b-rule {
+      position: absolute; left: 4px; top: 652px; width: 330px; height: 3px;
+      background: #e4b98d; transform-origin: left center;
+    }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1920" data-height="1080">
+    <div id="hook-shade" class="clip" data-start="0.6" data-duration="8.4"></div>
+
+    <div id="hook-a" class="clip hook-block" data-start="0.8" data-duration="4.2">
+      <div id="hook-a-kicker" class="hook-kicker">STRANDED</div>
+      <div id="hook-a-l1" class="hook-line">
+        <span class="hook-word">ONE</span><span class="hook-word">WOODEN</span><span class="hook-word">CRATE.</span>
+      </div>
+      <div id="hook-a-l2" class="hook-line">
+        <span class="hook-word">ONE</span><span class="hook-word">BOAT</span><span class="hook-word">ENGINE.</span>
+      </div>
+    </div>
+
+    <div id="hook-b" class="clip hook-block" data-start="5.0" data-duration="3.9">
+      <div id="hook-b-l1" class="hook-line"><span class="hook-word">CAN</span><span class="hook-word">IT</span></div>
+      <div id="hook-b-l2" class="hook-line"><span class="hook-word copper">FLY?</span></div>
+      <div id="hook-b-rule"></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const ease = "expo.out";
+
+      tl.fromTo("#hook-shade", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power2.out" }, 0.6);
+      tl.to("#hook-shade", { opacity: 0, duration: 0.6, ease: "power2.in" }, 8.4);
+
+      // Beat A: the two things you have
+      tl.fromTo("#hook-a-kicker", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.6, ease }, 0.85);
+      tl.fromTo("#hook-a-l1 .hook-word", { yPercent: 115 }, { yPercent: 0, duration: 0.75, ease, stagger: 0.09 }, 1.0);
+      tl.fromTo("#hook-a-l2 .hook-word", { yPercent: 115 }, { yPercent: 0, duration: 0.75, ease, stagger: 0.09 }, 2.15);
+      tl.to("#hook-a-l1 .hook-word, #hook-a-l2 .hook-word", { yPercent: -115, duration: 0.5, ease: "power3.in", stagger: 0.04 }, 4.35);
+      tl.to("#hook-a-kicker", { opacity: 0, duration: 0.35 }, 4.45);
+
+      // Beat B: the question
+      tl.fromTo("#hook-b-l1 .hook-word", { yPercent: 115 }, { yPercent: 0, duration: 0.8, ease, stagger: 0.1 }, 5.05);
+      tl.fromTo("#hook-b-l2 .hook-word", { yPercent: 115, scale: 1.08, transformOrigin: "0% 100%" }, { yPercent: 0, scale: 1, duration: 1.0, ease }, 5.45);
+      tl.fromTo("#hook-b-rule", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.9, ease: "expo.inOut" }, 5.9);
+      tl.to("#hook-b-l1 .hook-word, #hook-b-l2 .hook-word", { opacity: 0, y: -10, filter: "blur(8px)", duration: 0.55, ease: "power2.in", stagger: 0.05 }, 8.25);
+      tl.to("#hook-b-rule", { scaleX: 0, transformOrigin: "right center", duration: 0.5, ease: "power2.in" }, 8.2);
+
+      window.__timelines["hook"] = tl;
+    })();
+  </script>
+</template>

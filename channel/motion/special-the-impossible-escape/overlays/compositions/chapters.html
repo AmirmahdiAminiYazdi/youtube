@@ -1,0 +1,73 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; font-family: "Montserrat", sans-serif; }
+    .ch { position: absolute; left: 150px; top: 716px; width: 640px; height: 150px; }
+    .ch-glow {
+      position: absolute; left: -170px; top: -80px; width: 940px; height: 320px;
+      background: radial-gradient(closest-side, rgba(5, 8, 12, 0.55) 0%, rgba(5, 8, 12, 0.25) 55%, rgba(5, 8, 12, 0) 100%);
+    }
+    .ch-kicker {
+      position: absolute; left: 0; top: 0; font-size: 18px; font-weight: 700;
+      letter-spacing: 0.42em; color: #e4b98d; white-space: nowrap;
+    }
+    .ch-kicker .ch-of { color: rgba(240, 231, 220, 0.55); }
+    .ch-rule {
+      position: absolute; left: 0; top: 34px; width: 110px; height: 3px;
+      background: #e4b98d; transform-origin: left center;
+    }
+    .ch-mask { position: absolute; left: 0; top: 46px; overflow: hidden; padding: 4px 0 8px; }
+    .ch-title {
+      font-size: 58px; font-weight: 800; letter-spacing: 0.03em; color: #f0e7dc;
+      line-height: 1; white-space: nowrap; text-shadow: 0 2px 18px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+  <div id="root" data-composition-id="chapters" data-width="1920" data-height="1080">
+    <div id="ch1" class="clip ch" data-start="16.9" data-duration="4.4"><div class="ch-glow"></div>
+      <div class="ch-kicker">PART 01 <span class="ch-of">/ 09</span></div><div class="ch-rule"></div>
+      <div class="ch-mask"><div class="ch-title">THE ENGINE</div></div></div>
+    <div id="ch2" class="clip ch" data-start="42.2" data-duration="4.4"><div class="ch-glow"></div>
+      <div class="ch-kicker">PART 02 <span class="ch-of">/ 09</span></div><div class="ch-rule"></div>
+      <div class="ch-mask"><div class="ch-title">THE WING</div></div></div>
+    <div id="ch3" class="clip ch" data-start="71.1" data-duration="4.4"><div class="ch-glow"></div>
+      <div class="ch-kicker">PART 03 <span class="ch-of">/ 09</span></div><div class="ch-rule"></div>
+      <div class="ch-mask"><div class="ch-title">THE TAIL</div></div></div>
+    <div id="ch4" class="clip ch" data-start="85.2" data-duration="4.4"><div class="ch-glow"></div>
+      <div class="ch-kicker">PART 04 <span class="ch-of">/ 09</span></div><div class="ch-rule"></div>
+      <div class="ch-mask"><div class="ch-title">THE FIN</div></div></div>
+    <div id="ch5" class="clip ch" data-start="100.9" data-duration="4.4"><div class="ch-glow"></div>
+      <div class="ch-kicker">PART 05 <span class="ch-of">/ 09</span></div><div class="ch-rule"></div>
+      <div class="ch-mask"><div class="ch-title">THE ELEVATOR</div></div></div>
+    <div id="ch6" class="clip ch" data-start="116.2" data-duration="4.4"><div class="ch-glow"></div>
+      <div class="ch-kicker">PART 06 <span class="ch-of">/ 09</span></div><div class="ch-rule"></div>
+      <div class="ch-mask"><div class="ch-title">THE AILERONS</div></div></div>
+    <div id="ch7" class="clip ch" data-start="144.2" data-duration="4.4"><div class="ch-glow"></div>
+      <div class="ch-kicker">PART 07 <span class="ch-of">/ 09</span></div><div class="ch-rule"></div>
+      <div class="ch-mask"><div class="ch-title">THE FLAPS</div></div></div>
+    <div id="ch8" class="clip ch" data-start="159.2" data-duration="4.4"><div class="ch-glow"></div>
+      <div class="ch-kicker">PART 08 <span class="ch-of">/ 09</span></div><div class="ch-rule"></div>
+      <div class="ch-mask"><div class="ch-title">DIHEDRAL</div></div></div>
+    <div id="ch9" class="clip ch" data-start="172.2" data-duration="4.4"><div class="ch-glow"></div>
+      <div class="ch-kicker">PART 09 <span class="ch-of">/ 09</span></div><div class="ch-rule"></div>
+      <div class="ch-mask"><div class="ch-title">FUEL</div></div></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const starts = [16.9, 42.2, 71.1, 85.2, 100.9, 116.2, 144.2, 159.2, 172.2];
+      starts.forEach(function (s, i) {
+        const id = "#ch" + (i + 1);
+        const hold = 4.4;
+        tl.fromTo(id + " .ch-glow", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, s);
+        tl.fromTo(id + " .ch-kicker", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.7, ease: "expo.out" }, s + 0.05);
+        tl.fromTo(id + " .ch-rule", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.8, ease: "expo.inOut" }, s + 0.1);
+        tl.fromTo(id + " .ch-title", { yPercent: 110 }, { yPercent: 0, duration: 0.85, ease: "expo.out" }, s + 0.28);
+        // exit
+        tl.to(id + " .ch-title", { yPercent: -110, duration: 0.5, ease: "power3.in" }, s + hold - 0.75);
+        tl.to(id + " .ch-rule", { scaleX: 0, transformOrigin: "right center", duration: 0.45, ease: "power2.in" }, s + hold - 0.65);
+        tl.to(id + " .ch-kicker", { opacity: 0, x: 10, duration: 0.4, ease: "power2.in" }, s + hold - 0.6);
+        tl.to(id + " .ch-glow", { opacity: 0, duration: 0.5 }, s + hold - 0.55);
+      });
+      window.__timelines["chapters"] = tl;
+    })();
+  </script>
+</template>

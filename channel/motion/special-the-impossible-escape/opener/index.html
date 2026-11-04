@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <!-- 9-second 3D cold open for "The Impossible Escape". Played before the film.
+         Picture area 1920x860 with 110 px bars, the same frame as the film. -->
+    <script type="importmap">
+      { "imports": { "three": "./assets/vendor/three.module.js", "three/addons/": "./assets/vendor/jsm/" } }
+    </script>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script>
+      window.__hf = window.__hf || {};
+      window.__hf.buildReady = window.__hf.buildReady || {};
+      window.__hf.buildReady["sea"] = new Promise(function (res) { window.__seaReady = res; });
+    </script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #070b0f; }
+      #root { position: relative; width: 100%; height: 100%; font-family: "Montserrat", sans-serif; background: #070b0f; }
+      #sea-wrap { position: absolute; left: 0; top: 110px; width: 1920px; height: 860px; overflow: hidden; }
+      #sea { display: block; width: 1920px; height: 860px; }
+      .bar { position: absolute; left: 0; width: 1920px; height: 110px; background: #070b0f; }
+      #bar-top { top: 0; } #bar-bot { top: 970px; }
+      .line {
+        position: absolute; left: 0; top: 0; width: 1920px; height: 1080px;
+        display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 236px;
+      }
+      .mask { overflow: hidden; padding: 8px 0 14px; }
+      .word {
+        display: inline-block; font-weight: 800; font-size: 96px; letter-spacing: 0.04em; color: #f0e7dc;
+        line-height: 1; margin: 0 0.16em; text-shadow: 0 4px 40px rgba(0, 0, 0, 0.7), 0 1px 3px rgba(0, 0, 0, 0.35);
+      }
+      .copper { color: #e4b98d; }
+      .kick { font-weight: 700; font-size: 22px; letter-spacing: 0.5em; color: #e4b98d; margin-bottom: 10px; padding-left: 0.5em; }
+      #fade { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; background: #070b0f; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="9" data-width="1920" data-height="1080">
+      <div id="sea-wrap" class="clip" data-start="0" data-duration="9"><canvas id="sea" width="1920" height="860"></canvas></div>
+      <div id="bar-top" class="bar"></div>
+      <div id="bar-bot" class="bar"></div>
+
+      <div id="l1" class="clip line" data-start="0.8" data-duration="2.2">
+        <div class="mask"><span class="word">NO</span><span class="word">RESCUE.</span></div>
+      </div>
+      <div id="l2" class="clip line" data-start="3.1" data-duration="2.2">
+        <div class="mask"><span class="word">NO</span><span class="word">WAY</span><span class="word">OFF.</span></div>
+      </div>
+      <div id="l3" class="clip line" data-start="5.5" data-duration="3.1">
+        <div class="mask"><div class="kick">UNLESS</div></div>
+        <div class="mask"><span class="word">YOU</span><span class="word">BUILD</span><span class="word copper">ONE.</span></div>
+      </div>
+      <div id="fade" class="clip" data-start="0" data-duration="9" data-layout-allow-occlusion></div>
+    </div>
+
+    <script>
+      (function () {
+        const tl = gsap.timeline({ paused: true });
+        tl.fromTo("#fade", { opacity: 1 }, { opacity: 0, duration: 1.1, ease: "power2.out" }, 0);
+        function line(id, s, e) {
+          tl.fromTo(id + " .word", { yPercent: 115 }, { yPercent: 0, duration: 0.8, ease: "expo.out", stagger: 0.08 }, s);
+          tl.to(id + " .word", { opacity: 0, y: -12, filter: "blur(10px)", duration: 0.5, ease: "power2.in", stagger: 0.04 }, e - 0.55);
+        }
+        line("#l1", 0.85, 3.0);
+        line("#l2", 3.15, 5.3);
+        tl.fromTo("#l3 .kick", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }, 5.5);
+        line("#l3", 5.75, 8.6);
+        tl.to("#l3 .kick", { opacity: 0, duration: 0.4 }, 8.1);
+        tl.to("#fade", { opacity: 1, duration: 0.45, ease: "power2.in" }, 8.55);
+        window.__timelines["main"] = tl;
+      })();
+    </script>
+
+    <script type="module">
+      import * as THREE from "three";
+      import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
+      import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
+      import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
+      import { ShaderPass } from "three/addons/postprocessing/ShaderPass.js";
+      import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
+
+      const W = 1920, H = 860;
+      const canvas = document.getElementById("sea");
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true, powerPreference: "high-performance" });
+      renderer.setPixelRatio(1);
+      renderer.setSize(W, H, false);
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 0.78;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(40, W / H, 0.5, 9000);
+      const SUN = new THREE.Vector3(0.62, 0.045, -1).normalize();
+      const HAZE = new THREE.Color(0.62, 0.40, 0.29);
+
+      // seeded hash, never Math.random
+      function hash(n) { const s = Math.sin(n * 127.1 + 311.7) * 43758.5453; return s - Math.floor(s); }
+
+      // ---------- shared GLSL ----------
+      const NOISE = `
+        float h21(vec2 p){ p = fract(p*vec2(123.34, 456.21)); p += dot(p, p+45.32); return fract(p.x*p.y); }
+        float vnoise(vec2 p){ vec2 i=floor(p), f=fract(p); vec2 u=f*f*(3.0-2.0*f);
+          return mix(mix(h21(i),h21(i+vec2(1,0)),u.x), mix(h21(i+vec2(0,1)),h21(i+vec2(1,1)),u.x), u.y); }
+        float fbm(vec2 p){ float v=0.0, a=0.5; for(int i=0;i<5;i++){ v+=a*vnoise(p); p=p*2.03+vec2(17.1,9.2); a*=0.5; } return v; }
+      `;
+      const SKY = `
+        uniform vec3 sunDir; uniform float uTime;
+        vec3 srgb(vec3 c){ return pow(c, vec3(2.2)); }
+        vec3 skyBase(vec3 d){
+          float h = d.y;
+          vec3 horizon = srgb(vec3(0.93, 0.56, 0.32));
+          vec3 low     = srgb(vec3(0.50, 0.32, 0.27));
+          vec3 mid     = srgb(vec3(0.13, 0.13, 0.18));
+          vec3 zenith  = srgb(vec3(0.025, 0.035, 0.06));
+          vec3 c = mix(horizon, low, smoothstep(0.0, 0.07, h));
+          c = mix(c, mid, smoothstep(0.06, 0.22, h));
+          c = mix(c, zenith, smoothstep(0.2, 0.62, h));
+          float s = max(dot(d, sunDir), 0.0);
+          vec3 sunCol = srgb(vec3(1.0, 0.74, 0.48));
+          c += sunCol * (pow(s, 10.0) * 0.32 + pow(s, 120.0) * 1.1);
+          c += sunCol * smoothstep(0.99955, 0.99982, s) * 6.0;
+          return c;
+        }
+        vec3 skyFull(vec3 d){
+          vec3 c = skyBase(d);
+          float h = d.y;
+          if (h > 0.0) {
+            vec2 uv = d.xz / (h + 0.07) * 0.75 + vec2(uTime * 0.012, uTime * 0.004);
+            float n = fbm(uv * 1.15);
+            float cov = smoothstep(0.30, 0.70, n) * smoothstep(0.0, 0.04, h);
+            float s = max(dot(d, sunDir), 0.0);
+            vec3 dark = srgb(vec3(0.05, 0.05, 0.065));
+            vec3 lit  = srgb(vec3(1.0, 0.58, 0.32));
+            float warm = clamp(pow(s, 6.0) * 1.2 + (1.0 - smoothstep(0.0, 0.16, h)) * 0.38, 0.0, 1.0);
+            float edge = smoothstep(0.30, 0.47, n) - smoothstep(0.47, 0.72, n);
+            vec3 cc = mix(dark, lit, warm * (0.35 + 0.65 * edge));
+            c = mix(c, cc, cov * 0.96);
+          }
+          return c;
+        }
+      `;
+
+      // ---------- sky dome ----------
+      const skyMat = new THREE.ShaderMaterial({
+        side: THREE.BackSide, depthWrite: false,
+        uniforms: { sunDir: { value: SUN }, uTime: { value: 0 } },
+        vertexShader: `varying vec3 vDir; void main(){ vec4 wp = modelMatrix * vec4(position,1.0); vDir = wp.xyz - cameraPosition; gl_Position = projectionMatrix * viewMatrix * wp; }`,
+        fragmentShader: NOISE + SKY + `varying vec3 vDir; void main(){ vec3 d = normalize(vDir); gl_FragColor = vec4(skyFull(d), 1.0); }`,
+      });
+      const sky = new THREE.Mesh(new THREE.SphereGeometry(6000, 48, 24), skyMat);
+      scene.add(sky);
+
+      // ---------- ocean ----------
+      const oceanMat = new THREE.ShaderMaterial({
+        uniforms: { sunDir: { value: SUN }, uTime: { value: 0 }, haze: { value: new THREE.Vector3(HAZE.r, HAZE.g, HAZE.b) } },
+        vertexShader: `
+          uniform float uTime; varying vec3 vW; varying vec3 vN;
+          const int NW = 6;
+          void main(){
+            vec3 p = (modelMatrix * vec4(position,1.0)).xyz;
+            float dist = length(p.xz - cameraPosition.xz);
+            float fade = exp(-dist / 900.0);
+            vec2 dirs[6]; dirs[0]=vec2(1.0,0.2); dirs[1]=vec2(0.7,0.8); dirs[2]=vec2(-0.3,1.0); dirs[3]=vec2(0.9,-0.5); dirs[4]=vec2(0.2,0.95); dirs[5]=vec2(-0.8,0.4);
+            float amps[6]; amps[0]=0.55; amps[1]=0.42; amps[2]=0.30; amps[3]=0.22; amps[4]=0.15; amps[5]=0.10;
+            float lens[6]; lens[0]=46.0; lens[1]=29.0; lens[2]=17.0; lens[3]=11.0; lens[4]=7.0; lens[5]=4.6;
+            float h = 0.0; vec2 grad = vec2(0.0);
+            for (int i=0;i<NW;i++){
+              vec2 d = normalize(dirs[i]); float k = 6.2831/lens[i]; float w = sqrt(9.8*k);
+              float ph = dot(d, p.xz)*k + uTime*w + float(i)*1.7;
+              h += amps[i]*sin(ph); grad += amps[i]*k*cos(ph)*d;
+            }
+            h *= fade; grad *= fade;
+            p.y += h;
+            vN = normalize(vec3(-grad.x, 1.0, -grad.y));
+            vW = p;
+            gl_Position = projectionMatrix * viewMatrix * vec4(p,1.0);
+          }`,
+        fragmentShader: NOISE + SKY + `
+          uniform vec3 haze; varying vec3 vW; varying vec3 vN;
+          void main(){
+            vec3 v = normalize(cameraPosition - vW);
+            float dist = length(vW.xz - cameraPosition.xz);
+            vec2 q = vW.xz * 0.11 + vec2(uTime*0.35, -uTime*0.22);
+            float dn = (vnoise(q) + 0.5*vnoise(q*2.3+3.1)) - 0.75;
+            float dm = exp(-dist/600.0);
+            vec3 n = normalize(vN + vec3(dn*0.18*dm, 0.0, dn*0.14*dm));
+            vec3 r = reflect(-v, n); r.y = abs(r.y) + 0.004;
+            float fres = 0.02 + 0.98 * pow(1.0 - max(dot(n, v), 0.0), 5.0);
+            vec3 deep = srgb(vec3(0.012, 0.03, 0.045));
+            vec3 refl = skyBase(r) * 0.82;
+            vec3 col = mix(deep, refl, fres);
+            float s = max(dot(r, sunDir), 0.0);
+            vec3 sunCol = srgb(vec3(1.0, 0.72, 0.45));
+            col += sunCol * (pow(s, 600.0) * 6.0 + pow(s, 60.0) * 0.22);
+            float f = 1.0 - exp(-dist * 0.00030);
+            col = mix(col, srgb(haze) * 0.9, clamp(f, 0.0, 0.92));
+            gl_FragColor = vec4(col, 1.0);
+          }`,
+      });
+      const ocean = new THREE.Mesh(new THREE.PlaneGeometry(9000, 9000, 420, 420), oceanMat);
+      ocean.rotation.x = -Math.PI / 2;
+      scene.add(ocean);
+
+      // ---------- lights ----------
+      const sunLight = new THREE.DirectionalLight(0xffb27a, 2.4);
+      sunLight.position.copy(SUN).multiplyScalar(1000);
+      scene.add(sunLight);
+      scene.add(new THREE.HemisphereLight(0x55607a, 0x1a1410, 0.75));
+      scene.fog = new THREE.FogExp2(new THREE.Color().setRGB(0.30, 0.21, 0.17), 0.00034);
+
+      // ---------- island ----------
+      const island = new THREE.Group();
+      island.position.set(-150, 0, -880);
+      scene.add(island);
+      const sand = new THREE.MeshStandardMaterial({ color: 0x8c6a48, roughness: 0.96, metalness: 0.0 });
+      const rockM = new THREE.MeshStandardMaterial({ color: 0x3b434b, roughness: 0.9, flatShading: true });
+      const ig = new THREE.SphereGeometry(170, 64, 32);
+      const pos = ig.attributes.position;
+      for (let i = 0; i < pos.count; i++) {
+        const x = pos.getX(i), y = pos.getY(i), z = pos.getZ(i);
+        const a = Math.atan2(z, x);
+        const wob = 1 + 0.14 * Math.sin(a * 3 + 1.2) + 0.08 * Math.sin(a * 7 + 0.4) + 0.04 * Math.sin(a * 13);
+        pos.setXYZ(i, x * wob, y, z * wob);
+      }
+      ig.computeVertexNormals();
+      const land = new THREE.Mesh(ig, sand);
+      land.scale.set(1.7, 0.30, 1.0); land.position.y = -14;
+      island.add(land);
+      const hill = new THREE.Mesh(new THREE.SphereGeometry(90, 48, 24), sand);
+      hill.scale.set(1.6, 0.85, 1.0); hill.position.set(-90, -6, -50);
+      island.add(hill);
+      for (let i = 0; i < 9; i++) {
+        const r = new THREE.Mesh(new THREE.DodecahedronGeometry(1, 1), rockM);
+        const ang = -0.9 + i * 0.32 + hash(i) * 0.12;
+        const rad = 230 + hash(i + 10) * 40;
+        r.position.set(Math.cos(ang) * rad * 1.15, 2 + hash(i + 20) * 6, Math.sin(ang) * rad * 0.62 + 40);
+        const sc = 14 + hash(i + 30) * 16;
+        r.scale.set(sc * 1.6, sc * 0.75, sc);
+        r.rotation.set(hash(i + 40), hash(i + 50) * 3, 0);
+        island.add(r);
+      }
+      // hangar: half cylinder on the island top, open towards the camera
+      const hg = new THREE.CylinderGeometry(15, 15, 34, 40, 1, true, 0, Math.PI);
+      hg.rotateZ(Math.PI / 2); hg.rotateY(Math.PI / 2);
+      const hangar = new THREE.Mesh(hg, new THREE.MeshStandardMaterial({ color: 0x2a3034, roughness: 0.6, metalness: 0.35, side: THREE.DoubleSide }));
+      hangar.position.set(30, 36, 40);
+      island.add(hangar);
+      const back = new THREE.Mesh(new THREE.CircleGeometry(15, 32, 0, Math.PI), new THREE.MeshStandardMaterial({ color: 0x1b2024, roughness: 0.8, side: THREE.DoubleSide }));
+      back.position.set(30, 36, 23); island.add(back);
+      const glow = new THREE.Mesh(new THREE.PlaneGeometry(14, 5), new THREE.MeshBasicMaterial({ color: new THREE.Color(3.2, 1.9, 0.9) }));
+      glow.position.set(30, 43, 24); island.add(glow);
+      const lamp = new THREE.PointLight(0xffb36b, 900, 120, 2);
+      lamp.position.set(30, 46, 50); island.add(lamp);
+      const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.35, 34, 8), new THREE.MeshStandardMaterial({ color: 0x777777 }));
+      pole.position.set(78, 50, 56); island.add(pole);
+      const flag = new THREE.Mesh(new THREE.PlaneGeometry(9, 3.4, 8, 1), new THREE.MeshStandardMaterial({ color: 0x8a2f24, side: THREE.DoubleSide }));
+      flag.position.set(82.6, 65, 56); island.add(flag);
+      const flagBase = flag.geometry.attributes.position.array.slice();
+
+      // ---------- seagulls ----------
+      const gullMat = new THREE.MeshBasicMaterial({ color: 0x141414, side: THREE.DoubleSide, fog: false });
+      const gulls = [];
+      for (let i = 0; i < 4; i++) {
+        const g = new THREE.Group();
+        const wing = new THREE.BufferGeometry();
+        wing.setAttribute("position", new THREE.Float32BufferAttribute([0, 0, 0, 3.2, 0, -0.6, 0, 0, -1.1], 3));
+        const L = new THREE.Mesh(wing, gullMat), R = new THREE.Mesh(wing, gullMat);
+        R.scale.x = -1; g.add(L); g.add(R);
+        g.userData = { L, R, i };
+        scene.add(g); gulls.push(g);
+      }
+
+      // ---------- post ----------
+      const composer = new EffectComposer(renderer);
+      composer.setPixelRatio(1); composer.setSize(W, H);
+      composer.addPass(new RenderPass(scene, camera));
+      const bloom = new UnrealBloomPass(new THREE.Vector2(W / 2, H / 2), 0.38, 0.5, 0.9);
+      composer.addPass(bloom);
+      const grade = new ShaderPass({
+        uniforms: { tDiffuse: { value: null }, uTime: { value: 0 } },
+        vertexShader: `varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }`,
+        fragmentShader: `
+          uniform sampler2D tDiffuse; uniform float uTime; varying vec2 vUv;
+          float h(vec2 p){ return fract(sin(dot(p, vec2(12.9898,78.233))) * 43758.5453); }
+          void main(){
+            vec4 c = texture2D(tDiffuse, vUv);
+            vec2 q = vUv - 0.5; q.x *= 2.2;
+            float vig = smoothstep(1.15, 0.35, length(q));
+            c.rgb *= mix(0.42, 1.0, vig);
+            float g = h(vUv * vec2(1920.0, 860.0) + floor(uTime * 30.0) * 7.13) - 0.5;
+            c.rgb += g * 0.018;
+            gl_FragColor = c;
+          }`,
+      });
+      composer.addPass(grade);
+      composer.addPass(new OutputPass());
+
+      // ---------- camera path ----------
+      const ease = (x) => 0.5 - 0.5 * Math.cos(Math.PI * x);
+      const P0 = new THREE.Vector3(-60, 6.5, 520), P1 = new THREE.Vector3(-90, 30, -360);
+      const T0 = new THREE.Vector3(-40, 26, -880), T1 = new THREE.Vector3(-110, 30, -880);
+      const tmp = new THREE.Vector3();
+
+      function renderAt(t) {
+        const u = Math.min(Math.max(t / 9, 0), 1);
+        const e = 0.25 * u + 0.75 * ease(u);
+        camera.position.lerpVectors(P0, P1, e);
+        camera.position.y += Math.sin(t * 1.25) * 0.35 + Math.pow(u, 2.2) * 6;
+        tmp.lerpVectors(T0, T1, e);
+        camera.lookAt(tmp);
+        camera.rotateZ(Math.sin(t * 0.7) * 0.006);
+        skyMat.uniforms.uTime.value = t; oceanMat.uniforms.uTime.value = t; grade.uniforms.uTime.value = t;
+        sky.position.copy(camera.position);
+        const fp = flag.geometry.attributes.position;
+        for (let i = 0; i < fp.count; i++) {
+          const bx = flagBase[i * 3], by = flagBase[i * 3 + 1];
+          fp.setXYZ(i, bx, by, Math.sin(bx * 0.7 - t * 7) * 0.5 * ((bx + 4.5) / 9));
+        }
+        fp.needsUpdate = true;
+        gulls.forEach(function (g) {
+          const i = g.userData.i;
+          const a = t * 0.11 + i * 0.6;
+          g.position.set(-160 + i * 70 + t * 18, 70 + i * 9 + Math.sin(t * 0.9 + i) * 4, -380 - i * 60 + Math.sin(a) * 30);
+          g.rotation.y = -0.35 + Math.sin(a) * 0.2;
+          const flap = Math.sin(t * (6.5 + i * 0.6) + i * 2.1) * 0.55;
+          g.userData.L.rotation.z = flap; g.userData.R.rotation.z = -flap;
+          g.scale.setScalar(2.2);
+        });
+        composer.render();
+      }
+
+      window.addEventListener("hf-seek", (ev) => renderAt(ev.detail.time));
+      renderAt(0);
+      window.__seaReady && window.__seaReady();
+    </script>
+  </body>
+</html>

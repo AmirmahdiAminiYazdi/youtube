@@ -1,0 +1,327 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; font-family: "Montserrat", sans-serif; }
+    .card { position: absolute; left: 1308px; top: 138px; width: 548px; }
+    .card-panel {
+      position: relative; padding: 18px 22px 18px; border-radius: 16px;
+      background: rgba(9, 14, 22, 0.70);
+      border: 1px solid rgba(240, 231, 220, 0.16);
+      box-shadow: 0 14px 44px rgba(0, 0, 0, 0.38);
+    }
+    .card-kicker { font-size: 15px; font-weight: 700; letter-spacing: 0.36em; color: #e4b98d; }
+    .card-title { margin-top: 6px; font-size: 30px; font-weight: 800; letter-spacing: 0.04em; color: #f0e7dc; }
+    .card-svg { display: block; width: 504px; height: 229px; margin-top: 10px; overflow: visible; }
+    .card-foot {
+      display: flex; align-items: center; gap: 12px; margin-top: 10px;
+      font-size: 17px; font-weight: 700; letter-spacing: 0.08em; color: rgba(240, 231, 220, 0.9); white-space: nowrap;
+    }
+    .card-foot svg { width: 28px; height: 13px; flex: none; }
+    .card-foot path { fill: none; stroke: #e4b98d; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .card-svg .ln { fill: none; stroke: #f0e7dc; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .card-svg .sh { fill: rgba(240, 231, 220, 0.10); stroke: #f0e7dc; stroke-width: 1.6; stroke-linejoin: round; }
+    .card-svg .cu { fill: none; stroke: #e4b98d; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+    .card-svg .cuf { fill: rgba(228, 185, 141, 0.35); stroke: #e4b98d; stroke-width: 2; stroke-linejoin: round; }
+    .card-svg .ref { fill: none; stroke: rgba(240, 231, 220, 0.28); stroke-width: 1; stroke-dasharray: 4 5; }
+    .card-svg .flow { fill: none; stroke: rgba(240, 231, 220, 0.85); stroke-width: 1.2; stroke-dasharray: 3 17; stroke-linecap: round; }
+    .card-svg .stream { fill: none; stroke: rgba(240, 231, 220, 0.42); stroke-width: 1.2; }
+    .card-svg text { font-family: "Montserrat", sans-serif; font-weight: 800; letter-spacing: 0.16em; }
+    .card-svg .tc { fill: #e4b98d; font-size: 15px; }
+    .card-svg .tw { fill: rgba(240, 231, 220, 0.8); font-size: 13px; font-weight: 700; }
+  </style>
+  <div id="root" data-composition-id="cards" data-width="1920" data-height="1080">
+
+    <!-- C1 wing cross-section: 44.2 to 52.4 -->
+    <div id="c1" class="clip card" data-start="44.2" data-duration="8.2"><div class="card-panel">
+      <div class="card-kicker">THE WING</div><div class="card-title">WHY IT LIFTS</div>
+      <svg class="card-svg" viewBox="0 0 440 200">
+        <path class="stream c1-s" d="M14,58 C90,58 150,46 220,48 C300,50 360,74 432,104"/>
+        <path class="stream c1-s" d="M14,80 C80,80 120,66 200,62 C280,60 340,86 432,126"/>
+        <path class="stream c1-s" d="M14,142 C110,142 200,140 290,136 C350,134 392,144 432,156"/>
+        <path class="stream c1-s" d="M14,166 C140,166 250,164 330,160 C380,158 410,166 432,176"/>
+        <path class="flow c1-f" d="M14,58 C90,58 150,46 220,48 C300,50 360,74 432,104"/>
+        <path class="flow c1-f" d="M14,80 C80,80 120,66 200,62 C280,60 340,86 432,126"/>
+        <path class="flow c1-f" d="M14,142 C110,142 200,140 290,136 C350,134 392,144 432,156"/>
+        <path class="flow c1-f" d="M14,166 C140,166 250,164 330,160 C380,158 410,166 432,176"/>
+        <path id="c1-foil" class="sh" d="M90,118 C90,104 104,92 130,86 C180,74 250,78 300,90 C330,97 352,106 370,114 C340,117 300,119 250,121 C190,124 130,126 104,125 C94,124 90,122 90,118 Z"/>
+        <text class="tw" id="c1-t-top" x="150" y="72">CURVED</text>
+        <text class="tw" id="c1-t-bot" x="160" y="140">FLATTER</text>
+        <g id="c1-down"><path class="cu" d="M376,122 C392,132 402,146 406,166"/><path class="cu" d="M398,158 L406,168 L412,156"/>
+          <text class="tc" x="336" y="192">AIR DOWN</text></g>
+        <g id="c1-lift"><path class="cu" d="M228,104 L228,20"/><path class="cu" d="M218,32 L228,18 L238,32"/>
+          <text class="tc" x="242" y="30">LIFT</text></g>
+      </svg>
+      <div class="card-foot">AIR TURNED DOWN<svg viewBox="0 0 22 10"><path d="M1 5 H19 M15 1 L20 5 L15 9"/></svg>WING PUSHED UP</div>
+    </div></div>
+
+    <!-- C2 tail, pitch stability: 71.6 to 78.0 -->
+    <div id="c2" class="clip card" data-start="71.6" data-duration="6.4"><div class="card-panel">
+      <div class="card-kicker">THE TAIL</div><div class="card-title">A STEADY NOSE</div>
+      <svg class="card-svg" viewBox="0 0 440 200">
+        <path class="ref" d="M30,104 L420,104"/>
+        <g id="c2-plane">
+          <path class="ln c2-d" d="M200,106 L96,108"/><path class="ln c2-d" d="M200,116 L96,110"/>
+          <rect class="sh c2-d" x="200" y="96" width="74" height="26" rx="2"/>
+          <rect class="sh c2-d" x="274" y="99" width="14" height="20" rx="2"/>
+          <path class="ln c2-d" d="M294,82 L294,136"/>
+          <rect class="sh c2-d" x="206" y="86" width="62" height="6" rx="3"/>
+          <circle class="sh c2-d" cx="214" cy="128" r="7"/><circle class="sh c2-d" cx="262" cy="128" r="7"/>
+          <rect id="c2-tail" class="cuf" x="66" y="105.5" width="34" height="5" rx="2.5"/>
+        </g>
+        <g id="c2-arc"><path class="cu" d="M236,54 A50,50 0 0 1 280,78"/><path class="cu" d="M272,70 L281,80 L284,67"/>
+          <text class="tc" x="290" y="62">PITCH</text></g>
+        <text class="tw" id="c2-t" x="40" y="96">LEVEL</text>
+      </svg>
+      <div class="card-foot">TAIL WING<svg viewBox="0 0 22 10"><path d="M1 5 H19 M15 1 L20 5 L15 9"/></svg>NOSE STAYS STEADY</div>
+    </div></div>
+
+    <!-- C3 fin, yaw stability: 85.6 to 92.6 -->
+    <div id="c3" class="clip card" data-start="85.6" data-duration="7.0"><div class="card-panel">
+      <div class="card-kicker">THE FIN</div><div class="card-title">NO MORE SWINGING</div>
+      <svg class="card-svg" viewBox="0 0 440 200">
+        <g id="c3-plane"><g transform="translate(70,12)">
+          <path class="ln c3-d" d="M112,67 L44,73"/><path class="ln c3-d" d="M112,83 L44,77"/>
+          <rect class="sh c3-d" x="26" y="50" width="18" height="50" rx="3"/>
+          <rect class="sh c3-d" x="124" y="6" width="34" height="138" rx="6"/>
+          <rect class="sh c3-d" x="112" y="60" width="64" height="30" rx="2"/>
+          <rect class="sh c3-d" x="176" y="63" width="14" height="24" rx="2"/>
+          <path class="ln c3-d" d="M196,40 L196,110"/>
+          <rect id="c3-fin" class="cuf" x="16" y="72" width="34" height="6" rx="3"/>
+          <text class="tc" id="c3-fin-t" x="-2" y="100">FIN</text>
+        </g></g>
+        <g id="c3-yaw"><path class="cu" d="M196,4 A70,70 0 0 1 252,10"/><path class="cu" d="M243,3 L253,10 L243,17"/>
+          <text class="tc" x="262" y="16">YAW</text></g>
+        <g id="c3-arrow">
+          <path class="ln" d="M282,150 L422,150"/><path class="ln" d="M412,143 L424,150 L412,157"/>
+          <path class="cuf" d="M282,150 L300,138 L312,138 L298,150 Z"/><path class="cuf" d="M282,150 L300,162 L312,162 L298,150 Z"/>
+          <text class="tc" x="276" y="182">FEATHERS</text>
+        </g>
+      </svg>
+      <div class="card-foot">FIN AT THE BACK<svg viewBox="0 0 22 10"><path d="M1 5 H19 M15 1 L20 5 L15 9"/></svg>LIKE ARROW FEATHERS</div>
+    </div></div>
+
+    <!-- C4 elevator, pitch control: 101.4 to 107.6 -->
+    <div id="c4" class="clip card" data-start="101.4" data-duration="6.2"><div class="card-panel">
+      <div class="card-kicker">THE ELEVATOR</div><div class="card-title">PITCH CONTROL</div>
+      <svg class="card-svg" viewBox="0 0 440 200">
+        <path class="ref" d="M30,82 L420,82"/>
+        <g transform="translate(0,-22)"><g id="c4-plane">
+          <path class="ln c4-d" d="M200,106 L102,108"/><path class="ln c4-d" d="M200,116 L102,110"/>
+          <rect class="sh c4-d" x="200" y="96" width="74" height="26" rx="2"/>
+          <rect class="sh c4-d" x="274" y="99" width="14" height="20" rx="2"/>
+          <path class="ln c4-d" d="M294,82 L294,136"/>
+          <rect class="sh c4-d" x="206" y="86" width="62" height="6" rx="3"/>
+          <circle class="sh c4-d" cx="214" cy="128" r="7"/><circle class="sh c4-d" cx="262" cy="128" r="7"/>
+          <rect class="sh c4-d" x="74" y="105.5" width="30" height="5" rx="2.5"/>
+          <g id="c4-elev"><rect class="cuf" x="50" y="105.8" width="24" height="4.4" rx="2.2"/></g>
+          <g id="c4-down"><path class="cu" d="M70,118 L70,142"/><path class="cu" d="M62,132 L70,144 L78,132"/></g>
+        </g></g>
+        <text class="tc" id="c4-t-down" x="22" y="190">TAIL DOWN</text>
+        <text class="tc" id="c4-t-elev" x="16" y="58">ELEVATOR UP</text>
+        <g id="c4-nose"><path class="cu" d="M336,70 L336,26"/><path class="cu" d="M328,36 L336,24 L344,36"/>
+          <text class="tc" x="350" y="36">NOSE UP</text></g>
+      </svg>
+      <div class="card-foot">PULL BACK<svg viewBox="0 0 22 10"><path d="M1 5 H19 M15 1 L20 5 L15 9"/></svg>ELEVATOR UP<svg viewBox="0 0 22 10"><path d="M1 5 H19 M15 1 L20 5 L15 9"/></svg>NOSE RISES</div>
+    </div></div>
+
+    <!-- C5 ailerons, roll: 117.0 to 124.6 -->
+    <div id="c5" class="clip card" data-start="117.0" data-duration="7.6"><div class="card-panel">
+      <div class="card-kicker">THE AILERONS</div><div class="card-title">HOW IT TURNS</div>
+      <svg class="card-svg" viewBox="0 0 440 200">
+        <path class="ref" d="M30,112 L410,112"/>
+        <g id="c5-plane">
+          <rect class="sh c5-d" x="110" y="109" width="220" height="6" rx="2"/>
+          <path class="ln c5-d" d="M220,104 L220,78"/>
+          <rect class="sh c5-d" x="204" y="104" width="32" height="26" rx="2"/>
+          <circle class="sh c5-d" cx="208" cy="135" r="5"/><circle class="sh c5-d" cx="232" cy="135" r="5"/>
+          <g id="c5-al"><rect class="cuf" x="62" y="109" width="48" height="6" rx="3"/></g>
+          <g id="c5-ar"><rect class="cuf" x="330" y="109" width="48" height="6" rx="3"/></g>
+          <g id="c5-up"><path class="cu" d="M100,100 L100,50"/><path class="cu" d="M92,60 L100,48 L108,60"/></g>
+          <g id="c5-dn"><path class="ln" d="M340,124 L340,150"/><path class="ln" d="M333,142 L340,152 L347,142"/></g>
+        </g>
+        <text class="tc" id="c5-t-up" x="128" y="40">MORE LIFT</text>
+        <text class="tw" id="c5-t-dn" x="300" y="186">LESS LIFT</text>
+        <g id="c5-roll"><path class="cu" d="M300,44 A60,60 0 0 1 376,36"/><path class="cu" d="M366,29 L377,36 L367,44"/>
+          <text class="tc" x="318" y="24">ROLL</text></g>
+      </svg>
+      <div class="card-foot">ONE UP, ONE DOWN<svg viewBox="0 0 22 10"><path d="M1 5 H19 M15 1 L20 5 L15 9"/></svg>THE PLANE BANKS</div>
+    </div></div>
+
+    <!-- C6 flaps: 144.6 to 151.0 -->
+    <div id="c6" class="clip card" data-start="144.6" data-duration="6.4"><div class="card-panel">
+      <div class="card-kicker">THE FLAPS</div><div class="card-title">SLOWER, SAFER LANDINGS</div>
+      <svg class="card-svg" viewBox="0 0 440 200">
+        <path id="c6-foil" class="sh" d="M70,120 C70,106 84,94 110,88 C160,76 230,80 280,92 C292,95 302,98 312,101 L312,122 C270,124 220,124 170,126 C120,128 96,127 84,126 C74,125 70,123 70,120 Z"/>
+        <g id="c6-flap"><path class="cuf" d="M314,101 C336,107 356,113 376,120 C356,121 334,122 314,122 Z"/></g>
+        <g id="c6-lift"><path class="cu" d="M196,100 L196,20"/><path class="cu" d="M186,32 L196,18 L206,32"/>
+          <text class="tc" x="210" y="30">LIFT</text></g>
+        <text class="tw" x="24" y="172">SPEED</text>
+        <rect x="96" y="164" width="150" height="6" rx="3" fill="rgba(240,231,220,0.16)"/>
+        <rect id="c6-speed" x="96" y="164" width="150" height="6" rx="3" fill="#f0e7dc"/>
+        <text class="tc" id="c6-t" x="300" y="172">FLAPS OUT</text>
+      </svg>
+      <div class="card-foot">FLAPS OUT<svg viewBox="0 0 22 10"><path d="M1 5 H19 M15 1 L20 5 L15 9"/></svg>MORE LIFT AT LOW SPEED</div>
+    </div></div>
+
+    <!-- C7 dihedral: 159.6 to 169.6 -->
+    <div id="c7" class="clip card" data-start="159.6" data-duration="10.0"><div class="card-panel">
+      <div class="card-kicker">DIHEDRAL</div><div class="card-title">SELF-LEVELING WINGS</div>
+      <svg class="card-svg" viewBox="0 0 440 200">
+        <path class="ref" d="M40,124 L400,124"/>
+        <g id="c7-plane">
+          <path id="c7-wl" class="cu" d="M210,122 L70,100"/><path id="c7-wr" class="cu" d="M230,122 L370,100"/>
+          <path class="ln c7-d" d="M220,96 L220,152"/>
+          <circle class="sh c7-d" cx="220" cy="124" r="11"/>
+          <circle class="sh c7-d" cx="205" cy="146" r="5"/><circle class="sh c7-d" cx="235" cy="146" r="5"/>
+        </g>
+        <g id="c7-angle"><path class="cu" d="M340,124 A120,120 0 0 0 338.4,105.1"/>
+          <text class="tc" x="300" y="146">DIHEDRAL</text></g>
+        <g id="c7-gust"><path class="ln" d="M24,52 C54,52 70,60 84,74"/><path class="ln" d="M24,66 C48,66 62,72 72,82"/>
+          <text class="tw" x="22" y="40">GUST</text></g>
+        <text class="tc" id="c7-t" x="140" y="190">ROLLS BACK LEVEL</text>
+      </svg>
+      <div class="card-foot">TILTED UP IN A V<svg viewBox="0 0 22 10"><path d="M1 5 H19 M15 1 L20 5 L15 9"/></svg>ROLLS BACK LEVEL</div>
+    </div></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const E = "expo.out";
+
+      function panelIn(id, s) {
+        tl.fromTo(id + " .card-panel",
+          { opacity: 0, x: 26, clipPath: "inset(0% 0% 0% 100% round 16px)" },
+          { opacity: 1, x: 0, clipPath: "inset(0% 0% 0% 0% round 16px)", duration: 0.85, ease: "expo.inOut" }, s);
+        tl.fromTo(id + " .card-kicker", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.6, ease: E }, s + 0.35);
+        tl.fromTo(id + " .card-title", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: E }, s + 0.45);
+        tl.fromTo(id + " .card-foot", { opacity: 0 }, { opacity: 1, duration: 0.6 }, s + 0.9);
+      }
+      function panelOut(id, e) {
+        tl.to(id + " .card-panel", { opacity: 0, x: 18, duration: 0.55, ease: "power2.in" }, e - 0.6);
+      }
+      function show(sel, t, d) {
+        tl.fromTo(sel, { opacity: 0 }, { opacity: 1, duration: d || 0.5, ease: "power2.out" }, t);
+      }
+      function drawIn(sel, t, d, st) {
+        tl.fromTo(sel, { drawSVG: "0%" }, { drawSVG: "100%", duration: d || 0.9, ease: "power2.inOut", stagger: st || 0 }, t);
+      }
+      function grow(sel, t, from) {
+        tl.fromTo(sel, { scaleY: from || 0, opacity: 0, transformOrigin: "50% 100%" },
+          { scaleY: 1, opacity: 1, duration: 0.8, ease: "back.out(1.6)" }, t);
+      }
+
+      // C1 wing
+      panelIn("#c1", 44.2);
+      drawIn("#c1-foil", 44.55, 1.0);
+      drawIn(".c1-s", 44.8, 1.2, 0.1);
+      show(".c1-f", 45.6, 0.8);
+      tl.fromTo(".c1-f", { strokeDashoffset: 0 }, { strokeDashoffset: -340, duration: 7.4, ease: "none" }, 44.8);
+      show("#c1-t-top", 45.4); show("#c1-t-bot", 45.8);
+      tl.to("#c1-t-top, #c1-t-bot", { opacity: 0, duration: 0.4 }, 47.2);
+      show("#c1-down", 47.4, 0.4); drawIn("#c1-down path", 47.4, 0.8, 0.15);
+      grow("#c1-lift", 49.5);
+      panelOut("#c1", 52.4);
+
+      // C2 tail
+      panelIn("#c2", 71.6);
+      drawIn(".c2-d", 71.9, 0.8, 0.03);
+      tl.set("#c2-tail", { opacity: 0 }, 71.6);
+      tl.set("#c2-plane", { svgOrigin: "236 104", rotation: 0 }, 71.6);
+      // without a tail the nose bobs
+      [[-9, 72.6], [8, 72.95], [-9, 73.3], [8, 73.65]].forEach(function (r) {
+        tl.to("#c2-plane", { rotation: r[0], duration: 0.35, ease: "sine.inOut" }, r[1]);
+      });
+      show("#c2-tail", 73.7, 0.3); drawIn("#c2-tail", 73.7, 0.6);
+      [[-4, 74.0], [2.2, 74.45], [-0.8, 74.9], [0, 75.35]].forEach(function (r) {
+        tl.to("#c2-plane", { rotation: r[0], duration: 0.45, ease: "sine.inOut" }, r[1]);
+      });
+      show("#c2-arc", 72.5, 0.4); drawIn("#c2-arc path", 72.5, 0.7, 0.1);
+      tl.to("#c2-arc", { opacity: 0.35, duration: 0.6 }, 75.6);
+      show("#c2-t", 75.6, 0.5);
+      panelOut("#c2", 78.0);
+
+      // C3 fin
+      panelIn("#c3", 85.6);
+      drawIn(".c3-d", 85.9, 0.8, 0.04);
+      tl.set("#c3-fin, #c3-fin-t", { opacity: 0 }, 85.6);
+      tl.set("#c3-arrow", { opacity: 0 }, 85.6);
+      tl.set("#c3-plane", { svgOrigin: "176 87", rotation: 0, scale: 1, x: 0 }, 85.6);
+      show("#c3-yaw", 86.1, 0.4); drawIn("#c3-yaw path", 86.1, 0.7, 0.1);
+      [[11, 86.2], [-10, 86.55], [11, 86.9]].forEach(function (r) {
+        tl.to("#c3-plane", { rotation: r[0], duration: 0.35, ease: "sine.inOut" }, r[1]);
+      });
+      show("#c3-fin", 87.3, 0.3); drawIn("#c3-fin", 87.3, 0.6); show("#c3-fin-t", 87.5, 0.4);
+      [[-5, 87.3], [2.5, 87.75], [-1, 88.2], [0, 88.65]].forEach(function (r) {
+        tl.to("#c3-plane", { rotation: r[0], duration: 0.45, ease: "sine.inOut" }, r[1]);
+      });
+      tl.to("#c3-yaw", { opacity: 0, duration: 0.4 }, 88.8);
+      tl.to("#c3-plane", { scale: 0.7, x: -62, duration: 0.8, ease: "expo.inOut" }, 89.0);
+      tl.fromTo("#c3-arrow", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.8, ease: E }, 89.25);
+      panelOut("#c3", 92.6);
+
+      // C4 elevator
+      panelIn("#c4", 101.4);
+      drawIn(".c4-d", 101.7, 0.8, 0.03);
+      tl.set("#c4-plane", { svgOrigin: "236 82", rotation: 0 }, 101.4);
+      tl.set("#c4-elev", { svgOrigin: "74 86", rotation: 0 }, 101.4);
+      tl.set("#c4-down, #c4-nose, #c4-t-elev, #c4-t-down", { opacity: 0 }, 101.4);
+      show("#c4-elev", 102.3, 0.4);
+      tl.fromTo("#c4-elev", { opacity: 0.4 }, { opacity: 1, duration: 0.3, yoyo: true, repeat: 3 }, 102.4);
+      tl.to("#c4-elev", { rotation: 26, duration: 0.6, ease: "power3.out" }, 104.0);
+      show("#c4-t-elev", 104.1, 0.4);
+      show("#c4-down", 104.35, 0.4); drawIn("#c4-down path", 104.35, 0.6, 0.1); show("#c4-t-down", 104.6, 0.4);
+      tl.to("#c4-plane", { rotation: -11, duration: 1.1, ease: "power2.inOut" }, 104.6);
+      tl.to("#c4-t-elev", { opacity: 0, duration: 0.4 }, 105.4);
+      show("#c4-nose", 105.1, 0.4); drawIn("#c4-nose path", 105.1, 0.6, 0.1);
+      panelOut("#c4", 107.6);
+
+      // C5 ailerons
+      panelIn("#c5", 117.0);
+      drawIn(".c5-d", 117.3, 0.8, 0.04);
+      tl.set("#c5-plane", { svgOrigin: "220 112", rotation: 0 }, 117.0);
+      tl.set("#c5-al", { svgOrigin: "110 112", rotation: 0 }, 117.0);
+      tl.set("#c5-ar", { svgOrigin: "330 112", rotation: 0 }, 117.0);
+      tl.set("#c5-up, #c5-dn, #c5-roll, #c5-t-up, #c5-t-dn", { opacity: 0 }, 117.0);
+      show("#c5-al, #c5-ar", 117.8, 0.5);
+      tl.to("#c5-al", { rotation: -24, duration: 0.6, ease: "power3.out" }, 119.2);
+      tl.to("#c5-ar", { rotation: -24, duration: 0.6, ease: "power3.out" }, 119.35);
+      grow("#c5-up", 119.6); show("#c5-t-up", 119.9, 0.4);
+      show("#c5-dn", 119.8, 0.5); show("#c5-t-dn", 120.0, 0.4);
+      tl.to("#c5-plane", { rotation: 12, duration: 1.3, ease: "power2.inOut" }, 120.8);
+      show("#c5-roll", 120.9, 0.4); drawIn("#c5-roll path", 120.9, 0.7, 0.1);
+      panelOut("#c5", 124.6);
+
+      // C6 flaps
+      panelIn("#c6", 144.6);
+      drawIn("#c6-foil", 144.9, 1.0);
+      tl.set("#c6-flap", { svgOrigin: "314 104", rotation: 0 }, 144.6);
+      show("#c6-flap", 145.4, 0.4);
+      tl.set("#c6-lift", { opacity: 0 }, 144.6);
+      tl.fromTo("#c6-lift", { scaleY: 0, opacity: 0, transformOrigin: "50% 100%" }, { scaleY: 0.55, opacity: 1, duration: 0.7, ease: E }, 145.7);
+      tl.set("#c6-t", { opacity: 0 }, 144.6);
+      tl.to("#c6-flap", { rotation: 26, duration: 0.8, ease: "power3.inOut" }, 147.0);
+      tl.to("#c6-lift", { scaleY: 1, duration: 0.9, ease: "back.out(1.4)" }, 147.5);
+      tl.fromTo("#c6-speed", { attr: { width: 150 } }, { attr: { width: 78 }, duration: 1.4, ease: "power2.inOut" }, 147.6);
+      show("#c6-t", 147.2, 0.4);
+      panelOut("#c6", 151.0);
+
+      // C7 dihedral
+      panelIn("#c7", 159.6);
+      drawIn(".c7-d", 159.9, 0.8, 0.04);
+      tl.set("#c7-plane", { svgOrigin: "220 124", rotation: 0 }, 159.6);
+      tl.set("#c7-angle, #c7-gust, #c7-t", { opacity: 0 }, 159.6);
+      drawIn("#c7-wl, #c7-wr", 160.2, 0.9);
+      show("#c7-angle", 161.0, 0.4); drawIn("#c7-angle path", 161.0, 0.7);
+      show("#c7-gust", 162.7, 0.3); drawIn("#c7-gust path", 162.7, 0.6, 0.1);
+      tl.to("#c7-angle", { opacity: 0, duration: 0.3 }, 162.8);
+      tl.to("#c7-plane", { rotation: -16, duration: 0.7, ease: "power2.out" }, 162.9);
+      tl.to("#c7-gust", { opacity: 0, duration: 0.5 }, 163.7);
+      tl.to("#c7-plane", { rotation: 0, duration: 2.4, ease: "power2.inOut" }, 163.9);
+      show("#c7-t", 164.6, 0.5);
+      tl.to("#c7-plane", { rotation: 10, duration: 0.6, ease: "power2.out" }, 166.6);
+      tl.to("#c7-plane", { rotation: 0, duration: 1.9, ease: "power2.inOut" }, 167.25);
+      panelOut("#c7", 169.6);
+
+      window.__timelines["cards"] = tl;
+    })();
+  </script>
+</template>
