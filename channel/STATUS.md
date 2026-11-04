@@ -3,7 +3,7 @@
 Read this file first at the start of every session. The block between the AUTO markers is rewritten every day by `scripts/refresh_status.py` (scheduled task, early morning Europe/Berlin). Everything outside the markers is maintained by hand and by Claude during work sessions, and the daily job never touches it.
 
 <!-- AUTO:START -->
-_Auto-refreshed: 2026-11-04 13:55 (Europe/Berlin)._
+_Auto-refreshed: 2026-11-04 14:01 (Europe/Berlin)._
 
 ### Snapshot
 
@@ -32,6 +32,7 @@ _Auto-refreshed: 2026-11-04 13:55 (Europe/Berlin)._
 
 ### Last 10 commits
 
+- 2026-11-04  Mark The Impossible Escape as published, note End screen requirement
 - 2026-11-04  Add upload package for "The Impossible Escape" (long version)
 - 2026-11-04  Add motion-graphics pass for the long video "The Impossible Escape"
 - 2026-11-03  Restore brand files as the full Brainmaxx Brand Pack v1.0, add Outfit license notice
@@ -41,7 +42,6 @@ _Auto-refreshed: 2026-11-04 13:55 (Europe/Berlin)._
 - 2026-11-03  Add pinned motion toolbox, setup script, MCP configs and docs
 - 2026-11-03  Add 49 vetted skills: threejs, motion pack, ElevenLabs, HyperFrames, design
 - 2026-11-03  Verify yt-* skills against upstream, move voice profile into the repo
-- 2026-11-02  Set daily Mon-Fri posting rhythm, add calendar and script for video 1
 <!-- AUTO:END -->
 
 ## Current focus (update at the end of every work session)
@@ -75,6 +75,7 @@ _Auto-refreshed: 2026-11-04 13:55 (Europe/Berlin)._
 
 - ElevenLabs files cannot be downloaded into the cloud container (the proxy blocks elevenlabsusercontent.com). One 3 s sea ambience was generated on 2026-11-04 and stays in the owner's ElevenLabs flow; the long video's sound was written in code instead. For future voiceovers, download on the owner's computer or put `ELEVENLABS_API_KEY` in `.env` and test whether the API host is reachable.
 - End screen for "The Impossible Escape": Studio refuses to save a Subscribe element alone ("at least one element must be a video or playlist"). Add it later from Studio, Content, the video, Editor, End screen, once there is a second video.
+- Custom thumbnails for the channel are blocked until the owner verifies the YouTube account with a phone number (needs a new SIM). "The Impossible Escape" went live without its cover (`the-impossible-escape-thumbnail.jpg`); upload it as soon as the channel is verified, since it can be swapped at any time. Views in the first days may be lower until then.
 - "The Impossible Escape": the explanation cards simplify the physics (lift, stability, controls). Read them once before publishing.
 
 - Confirm that the handle `@getbrainmaxx` was actually saved in YouTube Studio, and that the same handle is free on TikTok and Instagram.
