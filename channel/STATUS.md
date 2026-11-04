@@ -3,14 +3,14 @@
 Read this file first at the start of every session. The block between the AUTO markers is rewritten every day by `scripts/refresh_status.py` (scheduled task, early morning Europe/Berlin). Everything outside the markers is maintained by hand and by Claude during work sessions, and the daily job never touches it.
 
 <!-- AUTO:START -->
-_Auto-refreshed: 2026-11-03 17:30 (Europe/Berlin)._
+_Auto-refreshed: 2026-11-04 06:11 (Europe/Berlin)._
 
 ### Snapshot
 
-- Today: Tue 2026-11-03 (work day); next work day: Wed 2026-11-04
+- Today: Wed 2026-11-04 (work day); next work day: Thu 2026-11-05
 - Stage: pre-launch, nothing published yet
 - Next in the pipeline: #1 "3 Lines That Make AI Useful": next stage is Voiceover
-- Skills installed: 72 committed in `.claude/skills/` (+13 fetched by `scripts/setup.sh`, present in this environment)
+- Skills installed: 72 committed in `.claude/skills/`
 - Files: ideas 2, scripts 1, thumbnails 0, motion 0, voiceover 0, published 0, research 0
 
 ### Pipeline (from `channel/ideas/first-12-ideas.md`)
@@ -32,6 +32,7 @@ _Auto-refreshed: 2026-11-03 17:30 (Europe/Berlin)._
 
 ### Last 10 commits
 
+- 2026-11-03  Restore brand files as the full Brainmaxx Brand Pack v1.0, add Outfit license notice
 - 2026-11-03  Add Brainmaxx Brand Pack v1.0 (SVG, PNG, digital, fonts, color) and Outfit license
 - 2026-11-03  Add Brainmaxx brand guide PDF and overview, record font and usage rules
 - 2026-11-03  Add Brainmaxx brand assets (logo, profile, banner) and record channel name and palette
