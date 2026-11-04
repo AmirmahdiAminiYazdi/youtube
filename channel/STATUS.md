@@ -3,7 +3,7 @@
 Read this file first at the start of every session. The block between the AUTO markers is rewritten every day by `scripts/refresh_status.py` (scheduled task, early morning Europe/Berlin). Everything outside the markers is maintained by hand and by Claude during work sessions, and the daily job never touches it.
 
 <!-- AUTO:START -->
-_Auto-refreshed: 2026-11-04 14:01 (Europe/Berlin)._
+_Auto-refreshed: 2026-11-04 18:25 (Europe/Berlin)._
 
 ### Snapshot
 
@@ -11,7 +11,7 @@ _Auto-refreshed: 2026-11-04 14:01 (Europe/Berlin)._
 - Stage: pre-launch, nothing published yet
 - Next in the pipeline: #1 "3 Lines That Make AI Useful": next stage is Voiceover
 - Skills installed: 72 committed in `.claude/skills/`
-- Files: ideas 2, scripts 1, thumbnails 0, motion 114, voiceover 0, published 1, research 0
+- Files: ideas 2, scripts 2, thumbnails 0, motion 18, voiceover 2, published 1, research 2
 
 ### Pipeline (from `channel/ideas/first-12-ideas.md`)
 
@@ -25,23 +25,23 @@ _Auto-refreshed: 2026-11-04 14:01 (Europe/Berlin)._
 | 6 | Mind Hacks | Why You're Always Late | - | - | - | - | - |
 | 7 | Mind Hacks | The Spotlight Effect | - | - | - | - | - |
 | 8 | Mind Hacks | Your Brain Is a Lawyer | - | - | - | - | - |
-| 9 | Learn Faster | Stop Rereading | - | - | - | - | - |
+| 9 | Learn Faster | Stop Rereading | yes | yes | - | - | - |
 | 10 | Learn Faster | When to Review | - | - | - | - | - |
 | 11 | Learn Faster | The 10-Year-Old Test | - | - | - | - | - |
 | 12 | Learn Faster | Learning Styles Are a Myth | - | - | - | - | - |
 
 ### Last 10 commits
 
+- 2026-11-04  Add voiceover and word timings for #9 "Stop Rereading"
+- 2026-11-04  Add script draft for #9 "Stop Rereading" with scored hooks
+- 2026-11-04  Add YouTube search snapshot and scored hook options for idea 9
+- 2026-11-04  Note pending phone verification and missing thumbnail for The Impossible Escape
 - 2026-11-04  Mark The Impossible Escape as published, note End screen requirement
 - 2026-11-04  Add upload package for "The Impossible Escape" (long version)
 - 2026-11-04  Add motion-graphics pass for the long video "The Impossible Escape"
 - 2026-11-03  Restore brand files as the full Brainmaxx Brand Pack v1.0, add Outfit license notice
 - 2026-11-03  Add Brainmaxx Brand Pack v1.0 (SVG, PNG, digital, fonts, color) and Outfit license
 - 2026-11-03  Add Brainmaxx brand guide PDF and overview, record font and usage rules
-- 2026-11-03  Add Brainmaxx brand assets (logo, profile, banner) and record channel name and palette
-- 2026-11-03  Add pinned motion toolbox, setup script, MCP configs and docs
-- 2026-11-03  Add 49 vetted skills: threejs, motion pack, ElevenLabs, HyperFrames, design
-- 2026-11-03  Verify yt-* skills against upstream, move voice profile into the repo
 <!-- AUTO:END -->
 
 ## Current focus (update at the end of every work session)
@@ -53,6 +53,7 @@ _Auto-refreshed: 2026-11-04 14:01 (Europe/Berlin)._
 - Research (2026-11-04): a first YouTube search snapshot for the three series is in `channel/research/2026-11-04-youtube-search-snapshot.md`. Learn Faster and Mind Hacks showed the clearest demand in it; AI-for-beginners Shorts were weak in that sample (small sample, relevance-ordered, not a velocity ranking). Suggestion for the next Short: #9 "Stop Rereading" (calendar Thu 2026-11-05). Its script is drafted in `channel/scripts/09-stop-rereading.md` (hook scored 83, about 45 s) and the owner generated the voiceover with ElevenLabs on 2026-11-04 (`channel/voiceover/09-stop-rereading.mp3`, 42.0 s, word timings in `09-stop-rereading.words.json`). Visual plan agreed: mostly 3D (card wall, hook), voice plus short code-made sound effects only, word-by-word teal captions, water-cycle recall example. Motion build is next; #3 stays in the plan.
 - Brand assets are done (2026-11-03): the full Brand Pack is in `channel/brand/Brainmaxx-Brand-Pack/`. Next for the owner: upload them in YouTube Studio, then create the same handle on TikTok and Instagram. Use the same palette in `channel/motion/_template`.
 - Long video "The Impossible Escape" (2026-11-04): the owner's own 16:9 film (3:40). Motion-graphics pass delivered as a 3:49 MP4: 9 s 3D cold open, hook type, 9 chapter titles, build-log blueprint, 7 explanation cards, recap, sound written in code, light grade. Nothing in the film was cut. Source and rebuild steps: `channel/motion/special-the-impossible-escape/README.md`. Upload package is ready in `channel/published/special-the-impossible-escape.md` (title "9 Parts That Turn a Crate Into a Plane", description with 12 chapters, tags, pinned comment, Studio settings) and the thumbnail was delivered as a 276 KB JPG. Published by the owner on 2026-11-04 (title, description with chapters, tags, thumbnail set; checks passed with no copyright issues). Still to do after publishing: pin the comment, reply to comments in the first hours, add the End screen (Subscribe + a video element) once the channel has a second video, post the 95 s vertical version as a Short linked to this video, and after 48 h read the retention graph with `yt-retention`.
+- Adaptive-headlights Short (2026-11-04): the owner brought a finished 36.5 s vertical draft, `brainmaxx-adaptive-headlights` (rendered with hyperframes 0.8.212, outside our template). Review is in `channel/research/2026-11-04-adaptive-headlights-review.fa.md`. Not ready to upload: a wrong scene flashes in the first 0.47 s, the narration ends with "Like and subscribe" (voice.md forbids it), the last 1 s is silent with a thumbnail-style card, fonts and colours are not Outfit / brand palette, captions sit below y 1420. Technical specs and loudness are fine. New gate: `python3 scripts/check_short.py video.mp4` after every render (run on this draft it reports 1 FAIL, 2 WARN). Package draft (title, description, tags) is in the review file, not published.
 
 ## Decisions made
 
@@ -74,6 +75,9 @@ _Auto-refreshed: 2026-11-04 14:01 (Europe/Berlin)._
 
 ## Open questions
 
+- Which video is "the second video" for YouTube: the adaptive-headlights Short after fixes, or #9 "Stop Rereading" (voiceover done, motion build next, calendar Thu 2026-11-05)? The End screen of "The Impossible Escape" waits for it.
+- Headlights is outside the three series. Either add a fourth series ("Everyday Things Explained", appears at the end of the draft; then record it in first-12-ideas.md and give it an idea number) or reframe the idea for Mind Hacks / Learn Faster. File naming `NN-slug` needs a number first.
+- The headlights draft uses photoreal-looking stills (headlight macro, mirror, mountain road). Confirm their source; channel rule is no photoreal AI footage presented as real. If they stay, check the Studio setting for synthetic or altered content.
 - ElevenLabs files cannot be downloaded into the cloud container (the proxy blocks elevenlabsusercontent.com). One 3 s sea ambience was generated on 2026-11-04 and stays in the owner's ElevenLabs flow; the long video's sound was written in code instead. For future voiceovers, download on the owner's computer or put `ELEVENLABS_API_KEY` in `.env` and test whether the API host is reachable.
 - End screen for "The Impossible Escape": Studio refuses to save a Subscribe element alone ("at least one element must be a video or playlist"). Add it later from Studio, Content, the video, Editor, End screen, once there is a second video.
 - Custom thumbnails for the channel are blocked until the owner verifies the YouTube account with a phone number (needs a new SIM). "The Impossible Escape" went live without its cover (`the-impossible-escape-thumbnail.jpg`); upload it as soon as the channel is verified, since it can be swapped at any time. Views in the first days may be lower until then.
