@@ -3,7 +3,7 @@
 Read this file first at the start of every session. The block between the AUTO markers is rewritten every day by `scripts/refresh_status.py` (scheduled task, early morning Europe/Berlin). Everything outside the markers is maintained by hand and by Claude during work sessions, and the daily job never touches it.
 
 <!-- AUTO:START -->
-_Auto-refreshed: 2026-11-04 13:02 (Europe/Berlin)._
+_Auto-refreshed: 2026-11-04 13:55 (Europe/Berlin)._
 
 ### Snapshot
 
@@ -32,6 +32,7 @@ _Auto-refreshed: 2026-11-04 13:02 (Europe/Berlin)._
 
 ### Last 10 commits
 
+- 2026-11-04  Add upload package for "The Impossible Escape" (long version)
 - 2026-11-04  Add motion-graphics pass for the long video "The Impossible Escape"
 - 2026-11-03  Restore brand files as the full Brainmaxx Brand Pack v1.0, add Outfit license notice
 - 2026-11-03  Add Brainmaxx Brand Pack v1.0 (SVG, PNG, digital, fonts, color) and Outfit license
@@ -41,7 +42,6 @@ _Auto-refreshed: 2026-11-04 13:02 (Europe/Berlin)._
 - 2026-11-03  Add 49 vetted skills: threejs, motion pack, ElevenLabs, HyperFrames, design
 - 2026-11-03  Verify yt-* skills against upstream, move voice profile into the repo
 - 2026-11-02  Set daily Mon-Fri posting rhythm, add calendar and script for video 1
-- 2026-11-02  Set up YouTube channel workspace with skills, plan and daily status
 <!-- AUTO:END -->
 
 ## Current focus (update at the end of every work session)
@@ -51,7 +51,7 @@ _Auto-refreshed: 2026-11-04 13:02 (Europe/Berlin)._
 - Rendering is confirmed: Remotion (1080x1920 H.264) and manim rendered real clips in the cloud container with system Chrome and ffmpeg. HyperFrames `doctor` passes. Still to do: the channel template in `channel/motion/_template` (1080x1920, vendored gsap.min.js and fonts, navy/teal/off-white palette, safe zones) and one test render with HyperFrames before video #1 goes to motion.
 - Toolbox from the 28-tool list is installed (see `TOOLS.md`). Run `bash scripts/setup.sh` in any fresh environment.
 - Brand assets are done (2026-11-03): the full Brand Pack is in `channel/brand/Brainmaxx-Brand-Pack/`. Next for the owner: upload them in YouTube Studio, then create the same handle on TikTok and Instagram. Use the same palette in `channel/motion/_template`.
-- Long video "The Impossible Escape" (2026-11-04): the owner's own 16:9 film (3:40). Motion-graphics pass delivered as a 3:49 MP4: 9 s 3D cold open, hook type, 9 chapter titles, build-log blueprint, 7 explanation cards, recap, sound written in code, light grade. Nothing in the film was cut. Source and rebuild steps: `channel/motion/special-the-impossible-escape/README.md`. Upload package is ready in `channel/published/special-the-impossible-escape.md` (title "9 Parts That Turn a Crate Into a Plane", description with 12 chapters, tags, pinned comment, Studio settings) and the thumbnail was delivered as a 276 KB JPG. Next: the owner reviews the MP4 and uploads it by hand.
+- Long video "The Impossible Escape" (2026-11-04): the owner's own 16:9 film (3:40). Motion-graphics pass delivered as a 3:49 MP4: 9 s 3D cold open, hook type, 9 chapter titles, build-log blueprint, 7 explanation cards, recap, sound written in code, light grade. Nothing in the film was cut. Source and rebuild steps: `channel/motion/special-the-impossible-escape/README.md`. Upload package is ready in `channel/published/special-the-impossible-escape.md` (title "9 Parts That Turn a Crate Into a Plane", description with 12 chapters, tags, pinned comment, Studio settings) and the thumbnail was delivered as a 276 KB JPG. Published by the owner on 2026-11-04 (title, description with chapters, tags, thumbnail set; checks passed with no copyright issues). Still to do after publishing: pin the comment, reply to comments in the first hours, add the End screen (Subscribe + a video element) once the channel has a second video, post the 95 s vertical version as a Short linked to this video, and after 48 h read the retention graph with `yt-retention`.
 
 ## Decisions made
 
@@ -74,6 +74,7 @@ _Auto-refreshed: 2026-11-04 13:02 (Europe/Berlin)._
 ## Open questions
 
 - ElevenLabs files cannot be downloaded into the cloud container (the proxy blocks elevenlabsusercontent.com). One 3 s sea ambience was generated on 2026-11-04 and stays in the owner's ElevenLabs flow; the long video's sound was written in code instead. For future voiceovers, download on the owner's computer or put `ELEVENLABS_API_KEY` in `.env` and test whether the API host is reachable.
+- End screen for "The Impossible Escape": Studio refuses to save a Subscribe element alone ("at least one element must be a video or playlist"). Add it later from Studio, Content, the video, Editor, End screen, once there is a second video.
 - "The Impossible Escape": the explanation cards simplify the physics (lift, stability, controls). Read them once before publishing.
 
 - Confirm that the handle `@getbrainmaxx` was actually saved in YouTube Studio, and that the same handle is free on TikTok and Instagram.

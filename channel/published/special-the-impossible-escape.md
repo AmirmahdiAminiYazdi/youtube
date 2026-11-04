@@ -1,4 +1,4 @@
-status: ready to upload (not published yet)
+status: published (2026-11-04, uploaded by the owner in YouTube Studio; End screen not added yet because Studio requires a video or playlist element and the channel has no other video)
 
 # The Impossible Escape: YouTube upload package (long version)
 
