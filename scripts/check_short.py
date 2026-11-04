@@ -91,7 +91,11 @@ def main(path):
         r = run(["ffmpeg", "-hide_banner", "-nostats", "-i", str(p), "-af",
                  "silencedetect=noise=-45dB:d=0.3", "-f", "null", "-"])
         starts = [float(x) for x in re.findall(r"silence_start: ([\d.]+)", r.stderr)]
-        tail = [s for s in starts if duration - s >= 0.5]
+        ends = [float(x) for x in re.findall(r"silence_end: ([\d.]+)", r.stderr)]
+        # only a silence that is still running at the end of the file is a silent tail;
+        # a pause that ends before the last 0.1 s is just a pause between lines
+        tail = [s for k, s in enumerate(starts)
+                if duration - s >= 0.5 and (k >= len(ends) or ends[k] >= duration - 0.1)]
         if tail:
             report("WARN", "silent tail", f"silence from {tail[-1]:.1f} s to the end ({duration - tail[-1]:.1f} s): breaks the loop, cut it or fill it")
         else:

@@ -174,12 +174,16 @@ for k in range(3):
 place(tick(2000, 0.05), 41.38, -18); place(chime([1046.5, 1567.98, 2093.0], 0.9, 4.5), 41.44, -22)   # subscribe
 place(pop(1100), 42.05, -20)                                   # like
 place(tick(2400, 0.04), 42.5, -24)                             # comment
+for k in range(3):
+    place(tick(2600, 0.03, 120), 42.56 + k * 0.08, -30)        # typing dots
+place(whoosh(0.75, 300, 9000, 0.92), 42.25, -15)              # rises into the loop cut back to frame 0
+place(riser(0.7, 260, 1.4), 42.3, -24)
 
 # ---------------- master ----------------
 mix = hp(mix.T, 30).T
 peak = np.max(np.abs(mix))
 mix *= db(-3.0) / peak
-fade = np.ones(N); fn = int(0.05 * SR); fade[-fn:] = np.linspace(1, 0, fn)
+fade = np.ones(N); fn = int(0.012 * SR); fade[-fn:] = np.linspace(1, 0, fn)
 mix *= fade[:, None]
 wavfile.write(sys.argv[1] if len(sys.argv) > 1 else "sfx.wav", SR, (mix * 32767).astype(np.int16))
 print("sfx written", round(TOTAL, 2), "s")

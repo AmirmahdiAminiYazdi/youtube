@@ -6,8 +6,8 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 OUT=renders/09-stop-rereading.mp4
 ffmpeg -v error -y -i renders/raw.mp4 -i assets/audio/vo.mp3 -i assets/audio/sfx.wav \
-  -filter_complex "[1:a]aresample=48000,aformat=channel_layouts=stereo,apad=whole_dur=43[v];[2:a]volume=-6dB[s];[v][s]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-14:TP=-1.0:LRA=11,atrim=0:43[a]" \
-  -map 0:v -map "[a]" -c:v libx264 -preset slow -crf 17 -pix_fmt yuv420p -color_range tv \
+  -filter_complex "[1:a]aresample=48000,aformat=channel_layouts=stereo,apad=whole_dur=43[v];[2:a]volume=-6dB[s];[v][s]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-14:TP=-1.6:LRA=11,atrim=0:43[a]" \
+  -map 0:v -map "[a]" -c:v libx264 -preset medium -crf 19 -maxrate 18M -bufsize 36M -pix_fmt yuv420p -color_range tv \
   -color_primaries bt709 -color_trc bt709 -colorspace bt709 -r 30 \
   -c:a aac -b:a 256k -ar 48000 -movflags +faststart -t 43 "$OUT"
 ffprobe -v error -show_entries stream=codec_name,width,height,pix_fmt,r_frame_rate,color_space,sample_rate,channels -show_entries format=duration,size -of compact "$OUT"
