@@ -3,15 +3,15 @@
 Read this file first at the start of every session. The block between the AUTO markers is rewritten every day by `scripts/refresh_status.py` (scheduled task, early morning Europe/Berlin). Everything outside the markers is maintained by hand and by Claude during work sessions, and the daily job never touches it.
 
 <!-- AUTO:START -->
-_Auto-refreshed: 2026-11-04 18:31 (Europe/Berlin)._
+_Auto-refreshed: 2026-11-05 06:11 (Europe/Berlin)._
 
 ### Snapshot
 
-- Today: Wed 2026-11-04 (work day); next work day: Thu 2026-11-05
+- Today: Thu 2026-11-05 (work day); next work day: Fri 2026-11-06
 - Stage: pre-launch, nothing published yet
 - Next in the pipeline: #1 "3 Lines That Make AI Useful": next stage is Voiceover
 - Skills installed: 72 committed in `.claude/skills/`
-- Files: ideas 2, scripts 2, thumbnails 0, motion 18, voiceover 2, published 2, research 2
+- Files: ideas 2, scripts 2, thumbnails 0, motion 37, voiceover 2, published 2, research 2
 
 ### Pipeline (from `channel/ideas/first-12-ideas.md`)
 
@@ -25,13 +25,16 @@ _Auto-refreshed: 2026-11-04 18:31 (Europe/Berlin)._
 | 6 | Mind Hacks | Why You're Always Late | - | - | - | - | - |
 | 7 | Mind Hacks | The Spotlight Effect | - | - | - | - | - |
 | 8 | Mind Hacks | Your Brain Is a Lawyer | - | - | - | - | - |
-| 9 | Learn Faster | Stop Rereading | yes | yes | - | - | - |
+| 9 | Learn Faster | Stop Rereading | yes | yes | yes | - | - |
 | 10 | Learn Faster | When to Review | - | - | - | - | - |
 | 11 | Learn Faster | The 10-Year-Old Test | - | - | - | - | - |
 | 12 | Learn Faster | Learning Styles Are a Myth | - | - | - | - | - |
 
 ### Last 10 commits
 
+- 2026-11-04  Finish #9 master, fix silent-tail false positive in check_short.py
+- 2026-11-04  Add 3D motion project for #9 "Stop Rereading"
+- 2026-11-04  Add upload package for the adaptive-headlights Short, update status
 - 2026-11-04  Review adaptive-headlights Short draft, add check_short.py gate
 - 2026-11-04  Add voiceover and word timings for #9 "Stop Rereading"
 - 2026-11-04  Add script draft for #9 "Stop Rereading" with scored hooks
@@ -39,9 +42,6 @@ _Auto-refreshed: 2026-11-04 18:31 (Europe/Berlin)._
 - 2026-11-04  Note pending phone verification and missing thumbnail for The Impossible Escape
 - 2026-11-04  Mark The Impossible Escape as published, note End screen requirement
 - 2026-11-04  Add upload package for "The Impossible Escape" (long version)
-- 2026-11-04  Add motion-graphics pass for the long video "The Impossible Escape"
-- 2026-11-03  Restore brand files as the full Brainmaxx Brand Pack v1.0, add Outfit license notice
-- 2026-11-03  Add Brainmaxx Brand Pack v1.0 (SVG, PNG, digital, fonts, color) and Outfit license
 <!-- AUTO:END -->
 
 ## Current focus (update at the end of every work session)
