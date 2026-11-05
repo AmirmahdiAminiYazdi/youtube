@@ -8,34 +8,41 @@ status: ready (not published)
 
 بسته با `yt-package` و `yt-seo` ساخته شد و `title.py` عنوان‌ها را سنجید. متن‌های انگلیسی داخل کادرها را عیناً کپی کن.
 
-## ۱. عنوان
+## ۱. یافته‌های جست‌وجو (2026-11-05، YouTube خودکارتکمیل و نتایج Shorts)
 
-عنوان و متن روی خود ویدیو یک جفت‌اند. بالای فریم اول از قبل «ONLY 2 OF 10 STUDY METHODS RATED HIGH» نوشته شده (عدد و ادعا)، پس عنوان را همان جمله نمی‌گذارم و کلید جست‌وجو («rereading») را می‌آورم تا دو سطح یک حرف را تکرار نکنند.
+از Claude in Chrome روی خود YouTube نگاه کردم. نمونه‌ی کوچک است و فقط یک روز، پس راهنماست، نه آمار.
+
+- **خودکارتکمیل:** برای «stop rereading» فقط «stop reading …» پیشنهاد می‌دهد، یعنی این عبارت حجم جست‌وجوی کمی دارد. عبارت‌هایی که واقعاً پیشنهاد می‌شوند: «how to study for exams»، «active recall study method»، «active recall technique»، «active recall and spaced repetition».
+- **رقبا:** در نتایج Shorts برای «rereading» ده‌ها ویدیو هست که بینندگانشان از ۱۰ تا حدود ۱٬۲۰۰ است. عنوان‌هایی مثل «Stop Rereading Your Notes: Do This Instead (Retrieval Practice)» (۴۸ بازدید)، «If You Study by Rereading, Try This Instead (Testing Effect)» (۱٬۰۴۲) و «Rereading your notes is a trap. Quiz yourself instead.» (۳۴۶). یعنی بازار شلوغ است ولی بازدیدها کوچک‌اند. عنوان «Stop Rereading Your Notes» تقریباً عین چند ویدیوی موجود است، پس عوضش کردم.
+- **واژه‌هایی که رقبا استفاده می‌کنند:** «retrieval practice»، «testing effect»، «active recall»، هشتگ‌های #studytips #studymethods #psychology #studytok.
+- **چیزی که ما داریم و آن‌ها ندارند:** عدد و منبع در همان فریم اول («2 of 10 … 2013») و بصری سه‌بعدی. این را عنوان و توضیحات جفت می‌کنند.
+
+## ۲. عنوان
+
+طبق `youtube/metadata` و `seo-playbook`: Shorts چهار تا شش کلمه، ۲۰ تا ۴۰ نویسه، کلیدواژه اول. سه نوع نوشتم و با `title.py` سنجیدم؛ هر سه ۹۴ از ۱۰۰ گرفتند و تنها هشدارشان «عدد ندارد» است، چون عدد در بالای تصویر ویدیو می‌آید.
+
+| نوع | عنوان | نویسه |
+|---|---|---|
+| ترکیبی (پیشنهادی) | `Stop Rereading: Try Active Recall` | ۳۳ |
+| جست‌وجو | `Active Recall vs Rereading` | ۲۶ |
+| کنجکاوی | `Only 2 of 10 Study Methods Rated High` | ۳۷ |
+
+پیشنهاد: ترکیبی. «rereading» برای ویدیوهای مشابه و «active recall» برای عبارت‌های واقعاً پیشنهادشده است. یک احتیاط: راوی «practice testing» می‌گوید، نه «active recall». هر دو یک روش‌اند و توضیحات این را می‌گوید، ولی اگر می‌خواهی عنوان دقیقاً با صدا یکی باشد: `Stop Rereading, Try Practice Testing` (۳۶ نویسه).
 
 ```
-Stop Rereading Your Notes
+Stop Rereading: Try Active Recall
 ```
 
-۲۵ نویسه، چهار کلمه، زیر ۴۰ نویسه‌ی فید موبایل. امتیاز `title.py` برابر ۷۶ از ۱۰۰؛ تنها هشدار «عدد ندارد» است، چون عدد در بالای تصویر ویدیو می‌آید. هشدار «تکرار» مربوط به تامبنیل فرضی «STOP REREADING» است و اگر کاور را از فریم اول بگیری فقط در نمای تامبنیل دیده می‌شود، نه در فید Shorts.
+سه جست‌وجویی که باید ببرد: «active recall study method»، «how to study for exams»، «is rereading effective». (اولی خودکارتکمیل است؛ دومی هم؛ سومی از نتایج رقبا آمده.)
 
-جایگزین اگر عدد را در عنوان می‌خواهی (امتیاز ۱۰۰، ولی با متن بالای ویدیو یکی است):
+## ۳. توضیحات
 
-```
-Only 2 of 10 Study Methods Rated High
-```
-
-جایگزین‌های دیگر (امتیاز ۷۶، بدون عدد): `Rereading Is a Weak Way to Study`، `Do This Instead of Rereading`.
-
-سه جست‌وجویی که باید ببرد: «how to study for a test»، «is rereading notes effective»، «best study methods». «study» و «rereading» در عنوان، «test» و «study methods» در دو خط اول توضیحات هستند. این‌ها حدس من‌اند، نه داده‌ی جست‌وجوی واقعی (به داده‌ی YouTube دسترسی نداریم).
-
-## ۲. توضیحات
-
-فقط حدود ۱۲۵ نویسه‌ی اول در پیش‌نمایش دیده می‌شود؛ خط اول ۱۱۲ نویسه است و وعده و کلیدواژه‌ها را دارد.
+خط اول ۱۱۲ نویسه است و «study methods»، «rereading» را دارد؛ «active recall» در خط دوم بلوک می‌آید. کلیدواژه ۲ تا ۴ بار، طبق سقف playbook.
 
 ```
 Only 2 of 10 study methods rated high in a 2013 review. Rereading wasn't one of them. Here's what to do instead.
 
-Practice testing: close your notes, write down everything you remember about one topic, then open them and check what you missed.
+Practice testing (also called active recall or retrieval practice): close your notes, write down everything you remember about one topic, then open them and check what you missed.
 
 Spacing (called distributed practice in the review): study the same topic on different days instead of all at once. It gets its own video soon.
 
@@ -47,20 +54,22 @@ Source: Dunlosky, Rawson, Marsh, Nathan & Willingham (2013), Psychological Scien
 
 Brainmaxx: Think better. Learn faster.
 
-#StudyTips #ActiveRecall #LearnFaster #Brainmaxx
+#StudyTips #ActiveRecall #StudyMethods #LearnFaster
 ```
 
-هر ادعا در توضیحات از خلاصه‌ی APS تأیید شده است (دو روش «بالا»، سه روش «پایین»). من خود مقاله را نخوانده‌ام؛ تأیید فقط با صفحه‌ی APS انجام شد. اگر می‌خواهی مطمئن‌تر باشی، قبل از انتشار مقاله را بخوان یا خط «Source» را همین‌طور نگه دار، چون فقط همان چیزی را می‌گوید که APS گفته. جمله‌ی «words look familiar» که در روایت ویدیو هست، در توضیحات عمداً نیست، چون در خلاصه‌ی APS نبود.
+هشتگ‌ها ۵۱ نویسه‌اند (سقف Shorts در playbook ۶۰). سه‌تای اول بالای عنوان دیده می‌شوند. ادعاها از خلاصه‌ی APS تأیید شده‌اند؛ مقاله‌ی اصلی را نخوانده‌ام.
 
-## ۳. تگ‌ها (۱۴ تگ)
+### زیرنویس (SRT)
 
-تگ‌ها سیگنال ضعیفی‌اند و فقط برای املای متفاوت و عبارت‌هایی هستند که مردم واقعاً تایپ می‌کنند.
+طبق playbook، SRT دستی برای ایندکس بهتر از زیرنویس خودکار است. `09-stop-rereading.en.srt` را از زمان‌بندی کلمات خود راوی ساختم (۲۲ خط). در Studio: Subtitles → Add language → English → Upload file → «With timing».
+
+### تگ‌ها (۱۴ تا، ۲۸۳ نویسه از ۵۰۰)
+
+تگ‌ها در playbook «تقریباً بی‌اثر»اند؛ فقط اسم‌های جست‌وجوشونده و املاهای مختلف.
 
 ```
-study tips, how to study for a test, how to study effectively, best study methods, study techniques, stop rereading, rereading notes, is rereading effective, active recall, practice testing, spaced repetition, learn faster, learning techniques, Brainmaxx
+active recall study method, active recall technique, active recall and spaced repetition, how to study for exams, stop rereading, rereading notes, is rereading effective, practice testing, retrieval practice, spaced repetition, best study methods, study tips, learn faster, Brainmaxx
 ```
-
-«active recall» و «spaced repetition» اسم‌هایی‌اند که مردم می‌جویند؛ ویدیو خودش از «practice testing» و «spacing» استفاده می‌کند. توضیحات اسم‌های مقاله را نگه می‌دارد.
 
 ## ۴. کامنت سنجاق‌شده
 
@@ -107,7 +116,7 @@ It's planned. I'll post it on the channel soon.
 
 ```
 TikTok:
-Only 2 of 10 study methods rated high in a 2013 review. Rereading wasn't one of them. Which two were? Save this for your next test. #studytips #activerecall #learnfaster
+Only 2 of 10 study methods rated high in a 2013 review. Rereading wasn't one of them. Which two were? Save this for your next test. #studytips #activerecall #studymethods
 ```
 
 ```
