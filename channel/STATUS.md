@@ -3,7 +3,7 @@
 Read this file first at the start of every session. The block between the AUTO markers is rewritten every day by `scripts/refresh_status.py` (scheduled task, early morning Europe/Berlin). Everything outside the markers is maintained by hand and by Claude during work sessions, and the daily job never touches it.
 
 <!-- AUTO:START -->
-_Auto-refreshed: 2026-11-05 06:11 (Europe/Berlin)._
+_Auto-refreshed: 2026-11-05 11:27 (Europe/Berlin)._
 
 ### Snapshot
 
@@ -11,7 +11,7 @@ _Auto-refreshed: 2026-11-05 06:11 (Europe/Berlin)._
 - Stage: pre-launch, nothing published yet
 - Next in the pipeline: #1 "3 Lines That Make AI Useful": next stage is Voiceover
 - Skills installed: 72 committed in `.claude/skills/`
-- Files: ideas 2, scripts 2, thumbnails 0, motion 37, voiceover 2, published 2, research 2
+- Files: ideas 2, scripts 2, thumbnails 0, motion 37, voiceover 2, published 3, research 2
 
 ### Pipeline (from `channel/ideas/first-12-ideas.md`)
 
@@ -32,6 +32,7 @@ _Auto-refreshed: 2026-11-05 06:11 (Europe/Berlin)._
 
 ### Last 10 commits
 
+- 2026-11-05  Fix yt-seo query test and verify claims in headlights package
 - 2026-11-04  Finish #9 master, fix silent-tail false positive in check_short.py
 - 2026-11-04  Add 3D motion project for #9 "Stop Rereading"
 - 2026-11-04  Add upload package for the adaptive-headlights Short, update status
@@ -41,7 +42,6 @@ _Auto-refreshed: 2026-11-05 06:11 (Europe/Berlin)._
 - 2026-11-04  Add YouTube search snapshot and scored hook options for idea 9
 - 2026-11-04  Note pending phone verification and missing thumbnail for The Impossible Escape
 - 2026-11-04  Mark The Impossible Escape as published, note End screen requirement
-- 2026-11-04  Add upload package for "The Impossible Escape" (long version)
 <!-- AUTO:END -->
 
 ## Current focus (update at the end of every work session)
@@ -53,7 +53,7 @@ _Auto-refreshed: 2026-11-05 06:11 (Europe/Berlin)._
 - Research (2026-11-04): a first YouTube search snapshot for the three series is in `channel/research/2026-11-04-youtube-search-snapshot.md`. Learn Faster and Mind Hacks showed the clearest demand in it; AI-for-beginners Shorts were weak in that sample (small sample, relevance-ordered, not a velocity ranking). Suggestion for the next Short: #9 "Stop Rereading" (calendar Thu 2026-11-05). Its script is drafted in `channel/scripts/09-stop-rereading.md` (hook scored 83, about 45 s) and the owner generated the voiceover with ElevenLabs on 2026-11-04 (`channel/voiceover/09-stop-rereading.mp3`, 42.0 s, word timings in `09-stop-rereading.words.json`). Visual plan agreed: mostly 3D (card wall, hook), voice plus short code-made sound effects only, word-by-word teal captions, water-cycle recall example. Motion done (2026-11-04): 3D HyperFrames project in `channel/motion/09-stop-rereading/` (rebuild steps in its README); master `renders/09-stop-rereading.mp4` (43 s, -14.7 LUFS, passes `scripts/check_short.py`) delivered to the owner, not committed. Next: owner review, then title/description with `yt-package` and `yt-seo`, upload by the owner. #3 stays in the plan.
 - Brand assets are done (2026-11-03): the full Brand Pack is in `channel/brand/Brainmaxx-Brand-Pack/`. Next for the owner: upload them in YouTube Studio, then create the same handle on TikTok and Instagram. Use the same palette in `channel/motion/_template`.
 - Long video "The Impossible Escape" (2026-11-04): the owner's own 16:9 film (3:40). Motion-graphics pass delivered as a 3:49 MP4: 9 s 3D cold open, hook type, 9 chapter titles, build-log blueprint, 7 explanation cards, recap, sound written in code, light grade. Nothing in the film was cut. Source and rebuild steps: `channel/motion/special-the-impossible-escape/README.md`. Upload package is ready in `channel/published/special-the-impossible-escape.md` (title "9 Parts That Turn a Crate Into a Plane", description with 12 chapters, tags, pinned comment, Studio settings) and the thumbnail was delivered as a 276 KB JPG. Published by the owner on 2026-11-04 (title, description with chapters, tags, thumbnail set; checks passed with no copyright issues). Still to do after publishing: pin the comment, reply to comments in the first hours, add the End screen (Subscribe + a video element) once the channel has a second video, post the 95 s vertical version as a Short linked to this video, and after 48 h read the retention graph with `yt-retention`.
-- Adaptive-headlights Short (2026-11-04): the owner made a finished 36.5 s vertical video, `brainmaxx-adaptive-headlights`, in ChatGPT (file says hyperframes 0.8.212; outside our template) and decided to upload it as is, as the second video. Review: `channel/research/2026-11-04-adaptive-headlights-review.fa.md` (known issues left in: a wrong scene flashes in the first 0.47 s, narration ends with "Like and subscribe" against voice.md, silent last 1 s with a thumbnail-style card, fonts and colours are not Outfit / brand palette, captions sit below y 1420). Upload package is ready in `channel/published/special-adaptive-headlights.md` (title "How Adaptive Headlights Work", description, 12 tags, pinned comment, Studio settings, TikTok and Reels captions); not published yet, the owner publishes. New gate for later Shorts: `python3 scripts/check_short.py video.mp4` after every render. After publishing: pin the comment, add this video or a playlist to the End screen of "The Impossible Escape", read Viewed vs Swiped Away after 48 h.
+- Adaptive-headlights Short (2026-11-04): the owner made a finished 36.5 s vertical video, `brainmaxx-adaptive-headlights`, in ChatGPT (file says hyperframes 0.8.212; outside our template) and decided to upload it as is, as the second video. Review: `channel/research/2026-11-04-adaptive-headlights-review.fa.md` (known issues left in: a wrong scene flashes in the first 0.47 s, narration ends with "Like and subscribe" against voice.md, silent last 1 s with a thumbnail-style card, fonts and colours are not Outfit / brand palette, captions sit below y 1420). Upload package is ready in `channel/published/special-adaptive-headlights.md` (title "How Adaptive Headlights Work", description, 12 tags, pinned comment, Studio settings, TikTok and Reels captions); not published yet, the owner publishes. New gate for later Shorts: `python3 scripts/check_short.py video.mp4` after every render. After publishing: pin the comment, add this video or a playlist to the End screen of "The Impossible Escape", read Viewed vs Swiped Away after 48 h. Re-checked 2026-11-05 with the full yt skills (metadata and shorts sub-skills, seo-playbook, algorithm-guide, monetization-guide): hashtags cut to 4 (50 chars, the old 5 were 62 against the playbook's 60 for Shorts), description lines 1-2 rewritten so the yt-seo query test passes, three title types written (search recommended), claims verified with two sources, audio measured (no music bed). Optional extras: a fixed video that holds the settled hook frame for the first 0.6 s (no flash frame, `check_short.py` 0 FAIL; sent in chat, not committed) and an exact English SRT built by OCR of the burned-in captions (`channel/published/special-adaptive-headlights.en.srt`). The first review overstated two things and was corrected: caption gaps at sentence ends are normal, and the narration is 110 words in about 35.4 s (about 186 wpm), with short pauses.
 
 ## Decisions made
 

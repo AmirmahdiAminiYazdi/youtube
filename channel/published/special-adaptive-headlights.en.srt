@@ -1,0 +1,52 @@
+1
+00:00:00,000 --> 00:00:03,200
+How can your high beams stay on
+without blinding the driver ahead?
+
+2
+00:00:03,800 --> 00:00:06,100
+With ordinary high beams,
+lighting up the road
+
+3
+00:00:06,200 --> 00:00:09,300
+can also mean shining straight
+into another driver's mirrors.
+
+4
+00:00:09,600 --> 00:00:13,100
+Some adaptive headlights solve this
+by splitting the beam into sections.
+
+5
+00:00:13,800 --> 00:00:15,300
+A camera spots the car ahead.
+
+6
+00:00:15,800 --> 00:00:19,700
+Then, a controller dims the sections
+aimed toward it, while the rest stay bright.
+
+7
+00:00:20,000 --> 00:00:22,500
+As the car moves,
+that gap moves with it,
+
+8
+00:00:22,600 --> 00:00:26,300
+so the road around it stays lit,
+with less glare aimed at the other driver.
+
+9
+00:00:26,600 --> 00:00:28,100
+It looks like a moving shadow.
+
+10
+00:00:28,200 --> 00:00:31,500
+But the trick is choosing
+where the light doesn't go.
+
+11
+00:00:31,800 --> 00:00:35,500
+Like and subscribe to discover
+how everyday things really work.
