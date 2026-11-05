@@ -16,20 +16,20 @@ How Adaptive Headlights Work
 
 ۲۸ نویسه، چهار کلمه، کلیدواژه در ابتدا، امتیاز `title.py` برابر ۸۰ از ۱۰۰. دو هشدار ابزار: «عدد یا نام ندارد» (عدد نمی‌گذاریم چون نباید چیزی ساخته شود) و «متن تامبنیل پنج کلمه است» (مربوط به کارت پایانی ویدیوست و در فید Shorts اثری ندارد، چون Shorts خودکار پخش می‌شود). عنوان کارت پایانی را تکرار نمی‌کند.
 
-جایگزین‌ها (امتیاز ۹۰، همه‌ی عبارت‌ها زیر ۴۰ نویسه):
+جایگزین‌ها (امتیاز `title.py`: اولی ۹۰، دومی ۹۴؛ هر دو زیر ۴۰ نویسه):
 
 ```
 High Beams That Don't Blind Drivers
 Matrix LED High Beams Explained
 ```
 
-## ۲. توضیحات (۴۲۰ نویسه؛ خط اول ۹۴ نویسه)
+## ۲. توضیحات (۴۴۶ نویسه؛ خط اول ۱۰۷ نویسه)
 
 نکته‌ی Shorts: فقط حدود ۱۲۵ نویسه‌ی اول در پیش‌نمایش دیده می‌شود، پس کلیدواژه و وعده در خط اول است.
 
 ```
-Adaptive headlights split the beam into sections and dim only the part aimed at the car ahead.
-A camera spots the car, a controller turns down the sections pointing at it, and the rest of the road stays lit.
+Adaptive headlights keep high beams on without blinding the driver ahead, by dimming only part of the beam.
+Matrix LED systems split the beam into sections. A camera spots the car and a controller turns down the sections aimed at it.
 
 The animation uses a simplified LED matrix, not a specific car model. Some scenes use AI-generated imagery.
 
@@ -48,7 +48,11 @@ Brainmaxx: Think better. Learn faster.
 adaptive headlights, how adaptive headlights work, adaptive high beams, matrix LED headlights, LED matrix headlight, headlight glare, high beam glare, how headlights work, car technology explained, how it works, everyday things explained, Brainmaxx
 ```
 
-سه جست‌وجویی که باید ببرد: «how do adaptive headlights work»، «matrix LED headlights explained»، «headlights that don't blind drivers». هر سه کلمه‌ها را در عنوان یا دو خط اول توضیحات دارند.
+سه جست‌وجویی که باید ببرد: «how do adaptive headlights work»، «matrix LED headlights»، «high beams without blinding drivers». آزمون جست‌وجوی `yt-seo` (همه‌ی کلمه‌های هر عبارت باید در عنوان یا دو خط اول توضیحات باشد) روی همین متن اجرا شد و هر سه را پاس کرد. نسخه‌ی اول متن من دو عبارت را پاس نمی‌کرد («matrix LED» و «blind» در عنوان و دو خط اول نبودند)؛ خط اول و دوم همین‌جا اصلاح شد.
+
+## ۳ب. بررسی ادعاها
+
+ادعاهای ویدیو و توضیحات با دو منبع چک شد: واژه‌نامه‌ی Matrix LED در evkx.net و مقاله‌ی Farmers Journal درباره‌ی Opel Astra (IntelliLux LED Matrix Light). هر دو می‌گویند: دوربین جلو خودروهای دیگر را می‌بیند، کنترلر فقط بخش‌های LED را که آن خودرو را روشن می‌کنند کم می‌کند یا خاموش می‌کند و بقیه‌ی نور بلند روشن می‌ماند، چه خودرو روبه‌رو باشد چه جلویی. evkx یادآوری می‌کند «Matrix LED» نام سخت‌افزار بخش‌بخش است و «adaptive driving beam» نام کارکرد؛ هر لامپ ماتریسی در هر پیکربندی خودروی رفتار ADB ندارد. برای همین جمله‌ی توضیحات «Some adaptive headlights solve this» در ویدیو درست است و من در توضیحات «Matrix LED systems» نوشتم نه «all headlights». پاسخ آماده‌ی «Which cars have this» (نام‌های متفاوت و وابسته به مدل) و «What about oncoming cars» هم با همین منابع جور است. عددی از این منابع (مثل فاصله‌ی دید) به متن نیامده، چون در ویدیو نیست.
 
 ## ۴. کامنت سنجاق‌شده
 
