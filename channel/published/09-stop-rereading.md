@@ -50,14 +50,18 @@ Those were the two methods rated high. Rereading, highlighting and summarizing r
 
 The water cycle example is an illustration of the method, not a study result. Results vary from person to person.
 
-Source: Dunlosky, Rawson, Marsh, Nathan & Willingham (2013), Psychological Science in the Public Interest. Summary by the Association for Psychological Science: https://www.psychologicalscience.org/news/releases/which-study-strategies-make-the-grade.html
+Narration is an AI-generated voice. The animation was made by Brainmaxx.
+
+Source: Dunlosky, Rawson, Marsh, Nathan & Willingham (2013), "Improving Students' Learning With Effective Learning Techniques: Promising Directions From Cognitive and Educational Psychology", Psychological Science in the Public Interest. Summary by the Association for Psychological Science: https://www.psychologicalscience.org/publications/journals/pspi/learning-techniques.html
 
 Brainmaxx: Think better. Learn faster.
 
 #StudyTips #ActiveRecall #StudyMethods #LearnFaster
 ```
 
-هشتگ‌ها ۵۱ نویسه‌اند (سقف Shorts در playbook ۶۰). سه‌تای اول بالای عنوان دیده می‌شوند. ادعاها از خلاصه‌ی APS تأیید شده‌اند؛ مقاله‌ی اصلی را نخوانده‌ام.
+هشتگ‌ها ۵۱ نویسه‌اند (سقف Shorts در playbook ۶۰). سه‌تای اول بالای عنوان دیده می‌شوند.
+
+**تأیید ادعاها (2026-11-06):** عنوان کامل مقاله، نویسندگان، مجله و سال از صفحه‌ی APS تأیید شد. چکیده و رده‌بندی ده روش از فهرست انتشارات دانشگاه Duke (چکیده‌ی مقاله) و خلاصه‌ی Scott Barry Kaufman دوباره دیده شد: «practice testing» و «distributed practice» = high؛ «elaborative interrogation»، «self-explanation»، «interleaved practice» = moderate؛ «summarization»، «highlighting»، «keyword mnemonic»، «imagery for text»، «rereading» = low. هر جمله‌ی توضیحات با همین می‌خواند. متن کامل مقاله (روی sagepub) از سرور من قابل دسترسی نیست، پس آن را نخوانده‌ام. جمله‌ی راوی «words look familiar» در این منابع نبود؛ توضیح ساده‌ای است نه عدد، و در توضیحات نیامده.
 
 ### زیرنویس (SRT)
 
@@ -73,10 +77,10 @@ active recall study method, active recall technique, active recall and spaced re
 
 ## ۴. کامنت سنجاق‌شده
 
-بعد از انتشار از حساب خودت بنویس و سنجاق کن. یک سؤال ساده است، چون کامنت وزن بیشتری از لایک دارد (`shorts-playbook.md`). عدد و قول اضافه ندارد.
+بعد از انتشار از حساب خودت بنویس و سنجاق کن. یک سؤال با دو جواب ساده است و جواب‌دادنش یک ثانیه طول می‌کشد؛ کامنت وزن بیشتری از لایک دارد (`shorts-playbook.md`). عدد و قول اضافه ندارد.
 
 ```
-Which one will you try first tonight: practice testing or spacing? And what did you do before your last test?
+Which one will you try first tonight: practice testing or spacing?
 ```
 
 پاسخ‌های آماده (فقط اگر کسی واقعاً همین را پرسید):
@@ -98,7 +102,7 @@ It's planned. I'll post it on the channel soon.
 
 ۱. **Audience:** «No, it's not made for kids».
 
-۲. **Altered or synthetic content:** «No». ویدیو انیمیشن سه‌بعدی آشکار است (کارت‌ها، صفحه‌ی یادداشت سبک‌شده، افکت)، نه فیلم واقع‌نما، و همه‌ی صدا و تصویر را خودمان ساختیم. قاعده‌ی کانال هم همین است: انیمیشن برچسب لازم ندارد. (برخلاف ویدیوی ردیاب چراغ که عکس‌های فوتورئال داشت.) صدای راوی با ElevenLabs ساخته شده؛ این صدا یک صدای مصنوعی عمومی است و شبیه شخص واقعی نیست. اگر متن فعلی Studio سؤال جداگانه‌ای درباره‌ی صدای مصنوعی داشت، آن را بخوان و صادقانه جواب بده.
+۲. **Altered or synthetic content: «Yes» (اصلاح‌شده؛ قبلاً «No» نوشته بودم).** منبع: پست رسمی YouTube («How we're helping creators disclose altered or synthetic content»). قاعده: محتوای واقع‌نما که بیننده «به‌راحتی آن را با شخص، مکان، صحنه یا رویداد واقعی اشتباه بگیرد». یکی از مثال‌های خود YouTube برای افشا: «generating a person's voice to narrate a video». معاف‌ها: محتوای آشکارا غیرواقعی یا انیمیشن، فیلترهای رنگ، افکت‌ها، و استفاده‌ی بهره‌وری مثل نوشتن اسکریپت یا زیرنویس خودکار. تصویر ما انیمیشن آشکار است و معاف؛ ولی راوی یک صدای واقع‌نمای مصنوعی است (ElevenLabs؛ اسم فایل صدا «pvc» دارد که در ElevenLabs معمولاً یعنی Professional Voice Clone). پس محتاطانه «Yes» بزن. هزینه‌ی «Yes» فقط یک برچسب «Altered or synthetic content» در بخش توضیحات است و جمله‌ی «Narration is an AI-generated voice.» در توضیحات با آن می‌خواند. متن دقیق سؤال فعلی Studio را ندیده‌ام (صفحه‌ی راهنما از سرور من باز نشد)؛ اگر Studio گزینه‌ی جداگانه‌ای برای صدای مصنوعی داشت، همان را انتخاب کن.
 
 ۳. **Paid promotion:** نه. **Language:** English. **Category:** Education. **Comments:** روشن.
 
@@ -117,7 +121,7 @@ Description: Short, research-based study and thinking techniques from Brainmaxx.
 
 ## ۶. کپشن برای TikTok و Instagram Reels
 
-همان فایل بدون واترمارک، چند ساعت بعد از YouTube. در ویدیو کارت پایانی دکمه‌ی «Subscribe» دارد که مخصوص YouTube است؛ روی TikTok و Reels کار نمی‌کند ولی مانعی برای پست نیست. تنها درخواست روایت «Save this» است.
+همان فایل بدون واترمارک، چند ساعت بعد از YouTube. در ویدیو کارت پایانی دکمه‌ی «Subscribe» دارد که مخصوص YouTube است؛ روی TikTok و Reels کار نمی‌کند ولی مانعی برای پست نیست. تنها درخواست روایت «Save this» است. TikTok و Instagram هم برچسب محتوای تولیدشده با هوش مصنوعی دارند؛ هنگام آپلود اگر گزینه‌اش آمد و صدا را می‌پوشاند، همان را روشن کن (قانون دقیقشان را بررسی نکرده‌ام).
 
 ```
 TikTok:
