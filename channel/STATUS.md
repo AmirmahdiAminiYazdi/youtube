@@ -3,15 +3,15 @@
 Read this file first at the start of every session. The block between the AUTO markers is rewritten every day by `scripts/refresh_status.py` (scheduled task, early morning Europe/Berlin). Everything outside the markers is maintained by hand and by Claude during work sessions, and the daily job never touches it.
 
 <!-- AUTO:START -->
-_Auto-refreshed: 2026-11-06 17:35 (Europe/Berlin)._
+_Auto-refreshed: 2026-11-07 06:12 (Europe/Berlin)._
 
 ### Snapshot
 
-- Today: Fri 2026-11-06 (work day); next work day: Mon 2026-11-09
+- Today: Sat 2026-11-07 (weekend, no work); next work day: Mon 2026-11-09
 - Stage: pre-launch, nothing published yet
 - Next in the pipeline: #1 "3 Lines That Make AI Useful": next stage is Voiceover
 - Skills installed: 72 committed in `.claude/skills/`
-- Files: ideas 2, scripts 2, thumbnails 0, motion 341, voiceover 2, published 5, research 2
+- Files: ideas 2, scripts 2, thumbnails 0, motion 37, voiceover 2, published 5, research 2
 
 ### Pipeline (from `channel/ideas/first-12-ideas.md`)
 
@@ -32,6 +32,7 @@ _Auto-refreshed: 2026-11-06 17:35 (Europe/Berlin)._
 
 ### Last 10 commits
 
+- 2026-11-06  Raise #9 package: verify paper claims, disclose AI voice, simplify pinned comment
 - 2026-11-06  Update #9 package: current date and playlist text
 - 2026-11-05  Revise #9 upload package with live YouTube search data, add English SRT
 - 2026-11-05  Add upload package for #9 Stop Rereading, update status
@@ -41,7 +42,6 @@ _Auto-refreshed: 2026-11-06 17:35 (Europe/Berlin)._
 - 2026-11-04  Add 3D motion project for #9 "Stop Rereading"
 - 2026-11-04  Add upload package for the adaptive-headlights Short, update status
 - 2026-11-04  Review adaptive-headlights Short draft, add check_short.py gate
-- 2026-11-04  Add voiceover and word timings for #9 "Stop Rereading"
 <!-- AUTO:END -->
 
 ## Current focus (update at the end of every work session)
