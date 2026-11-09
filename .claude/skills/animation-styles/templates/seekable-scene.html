@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Seekable scene template</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  Skeleton for every animation-styles build.
+  - Everything is a pure function of time: window.seek(seconds) redraws that exact moment.
+  - rng(seed) replaces Math.random so renders are identical every time.
+  - held(t, fps, hold) quantizes time for "on twos / on threes" styles.
+  - No network: add local copies of fonts / libraries next to this file.
+  Replace SHOTS and draw() with the style sheet's look.
+-->
+<style>
+  :root { --w: 1080px; --h: 1920px; --bg: #0B0E1A; --ink: #F4F1EA; --accent: #344FA2; }
+  html, body { margin: 0; background: #000; }
+  #stage { width: var(--w); height: var(--h); position: relative; overflow: hidden; background: var(--bg); transform-origin: top left; }
+  canvas { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; }
+</style>
+</head>
+<body>
+<div id="stage"><canvas id="c" width="1080" height="1920"></canvas></div>
+<script>
+(function () {
+  var W = 1080, H = 1920, FPS = 30, DURATION = 6;
+  var ctx = document.getElementById('c').getContext('2d');
+
+  // ---- helpers -----------------------------------------------------------
+  function rng(seed) {                       // mulberry32: same seed, same numbers
+    var a = seed >>> 0;
+    return function () {
+      a = (a + 0x6D2B79F5) >>> 0;
+      var t = a;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function clamp(x, a, b) { return Math.min(b, Math.max(a, x)); }
+  function prog(t, start, dur) { return clamp((t - start) / dur, 0, 1); }   // 0..1 inside a window
+  function easeOutCubic(p) { return 1 - Math.pow(1 - p, 3); }
+  function easeInOut(p) { return p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2; }
+  function held(t, fps, hold) {              // snap time to every `hold` frames
+    var step = hold / fps;
+    return Math.floor(t / step + 1e-9) * step;
+  }
+
+  // ---- shots: edit these -------------------------------------------------
+  var SHOTS = [
+    { start: 0, dur: 3, name: 'hook' },
+    { start: 3, dur: 3, name: 'payoff' }
+  ];
+
+  function draw(t) {
+    // Example (replace): a square that slides in on twos, then the payoff color flips.
+    var tt = held(t, FPS, 2);                // stepped look; delete this line for smooth styles
+    ctx.fillStyle = '#0B0E1A'; ctx.fillRect(0, 0, W, H);
+    var p = easeOutCubic(prog(tt, 0.2, 1.2));
+    var x = -300 + p * (W / 2 + 300) - 150;
+    ctx.fillStyle = tt >= 3 ? '#F4F1EA' : '#344FA2';
+    ctx.fillRect(Math.round(x), Math.round(H / 2 - 150), 300, 300);
+
+    // seeded dust: identical every render
+    var r = rng(7);
+    ctx.fillStyle = 'rgba(244,241,234,.35)';
+    for (var i = 0; i < 40; i++) {
+      var px = r() * W, py = (r() * H + tt * 40 * (0.5 + r())) % H;
+      ctx.fillRect(Math.round(px), Math.round(py), 3, 3);
+    }
+  }
+
+  // ---- render contract ---------------------------------------------------
+  window.__duration = DURATION;
+  window.__fps = FPS;
+  window.seek = function (seconds) {
+    draw(clamp(seconds, 0, DURATION));
+    return true;
+  };
+  window.seek(0);
+  window.__ready = true;                     // a renderer waits for this when the URL has ?render
+})();
+</script>
+</body>
+</html>

@@ -67,6 +67,7 @@ Sources are fetched at pinned commits into `tools/ui-parts/vendor/` (git-ignored
 | gsap-skills | Committed earlier (8 skills) |
 | threejs-skills | Committed: 13 skills |
 | motion-graphics-skills | Committed: 15 skills (brand-intake, motion-effects, reel-export, ...). Run `brand-intake` once before using the others |
+| animation-styles | Committed: 1 original skill (10 style sheets + `templates/seekable-scene.html`). The template was tested in headless Chromium (seek is deterministic, stepped time holds); the style sheets were not yet rendered into videos. Optional third-party repos are listed in `references/sources.md`, not copied |
 | remotion/skills | Fetched by `setup.sh` (13 skills), not committed: upstream has no license file |
 | mcp-for-blender | Config + safety notes in `tools/mcp/`. Not tested against Blender |
 | after-effects-mcp | Config + safety notes in `tools/mcp/`. Server builds and answers the MCP handshake. Not tested against After Effects |
@@ -76,6 +77,7 @@ Sources are fetched at pinned commits into `tools/ui-parts/vendor/` (git-ignored
 - **Daily Shorts (default):** HyperFrames (HTML + GSAP to MP4), ElevenLabs voice, ffmpeg. Deterministic renders, works in the cloud and locally.
 - **React-based scenes or data-driven batches:** Remotion.
 - **Math or step-by-step diagrams (Learn Faster):** manim.
+- **Named animation look (pixel, chalkboard, comic, PS2, toy bricks, ...):** the `animation-styles` skill, then the engine its style sheet names.
 - **3D opener:** three.js with the `title-sequence-3d` skill.
 - **Captions from a voiceover:** `faster-whisper` or HyperFrames `transcribe`, then burned-in captions.
 - **Vertical export check:** the `reel-export` skill (safe zones, H.264, yuv420p, ffprobe).

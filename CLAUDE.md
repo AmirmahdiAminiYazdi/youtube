@@ -54,6 +54,7 @@ Voice profile: it lives in this repo at `channel/voice.md`. The yt-* skills say 
 | `gsap-*` | Animation code for HTML-based motion graphics |
 | `hyperframes`, `hyperframes-cli`, `hyperframes-registry`, `media-use` | HTML to MP4 renders (the default video pipeline), ready-made blocks, TTS/transcribe/music helpers |
 | `brand-intake`, `motion-effects`, `motion-brief-writer`, `reel-export`, `vox-explainer`, `animated-chart`, ... (15 motion-pack skills) | Motion briefs and effects; run `brand-intake` once first; `reel-export` before every upload |
+| `animation-styles` | 10 named looks (pixel art, chalkboard, glow sketch, PS2 low-poly, comic, flat vector, minimal line, CGI motion, toy bricks, explainer 3D): one skill, one style sheet per look in `references/`; run `brand-intake` first, `reel-export` last |
 | `threejs-*` (13), `title-sequence-3d` | 3D scenes and openers |
 | `text-to-speech`, `speech-to-text`, `music`, `sound-effects`, `voice-isolator`, ... (12 ElevenLabs skills) | Voiceover, captions, music, SFX (needs `ELEVENLABS_API_KEY`) |
 | `canvas-design`, `algorithmic-art`, `slack-gif-creator`, `theme-factory`, `21st-ui` | Static art, generative art, GIFs, themes, UI via 21st.dev |
