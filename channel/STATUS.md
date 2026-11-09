@@ -72,6 +72,7 @@ _Auto-refreshed: 2026-11-09 06:11 (Europe/Berlin)._
 
 - 2026-11-04: besides the daily Shorts, the owner also posts long 16:9 videos. For "The Impossible Escape" the owner chose to keep the whole film, including its "DM to create yours" end card; edits are additive only.
 - 2026-11-04: on the owner's request, #9 ends with a visual end card (Brainmaxx mark, Subscribe, Like, Comment, Save) during the spoken "Save this" line; no extra spoken ask. This overrides the one-ask rule in `channel/voice.md` for the end card only.
+- 2026-11-09: added the `animation-styles` skill (10 named looks, PR #1): pixel art, chalkboard, glow sketch, PS2 low-poly, comic, flat vector, minimal line, CGI motion, toy bricks, explainer 3D. Use it when a video should follow one of these looks; run `brand-intake` first and `reel-export` last. Only the seekable template was tested; no style has been rendered into a video yet, so test one on the next motion job.
 - Motion on finished footage: render the overlays transparent with HyperFrames (`--format png-sequence`) and composite with ffmpeg, grading the footage only. In the cloud container set `HYPERFRAMES_BROWSER_PATH=/usr/bin/google-chrome` and run one render at a time.
 
 ## Open questions
