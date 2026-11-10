@@ -3,15 +3,15 @@
 Read this file first at the start of every session. The block between the AUTO markers is rewritten every day by `scripts/refresh_status.py` (scheduled task, early morning Europe/Berlin). Everything outside the markers is maintained by hand and by Claude during work sessions, and the daily job never touches it.
 
 <!-- AUTO:START -->
-_Auto-refreshed: 2026-11-10 12:22 (Europe/Berlin)._
+_Auto-refreshed: 2026-11-10 12:34 (Europe/Berlin)._
 
 ### Snapshot
 
 - Today: Tue 2026-11-10 (work day); next work day: Wed 2026-11-11
 - Stage: pre-launch, nothing published yet
 - Next in the pipeline: #1 "3 Lines That Make AI Useful": next stage is Voiceover
-- Skills installed: 72 committed in `.claude/skills/` (+1 fetched by `scripts/setup.sh`, present in this environment)
-- Files: ideas 2, scripts 2, thumbnails 0, motion 37, voiceover 2, published 5, research 2
+- Skills installed: 73 committed in `.claude/skills/`
+- Files: ideas 2, scripts 4, thumbnails 0, motion 37, voiceover 2, published 5, research 4
 
 ### Pipeline (from `channel/ideas/first-12-ideas.md`)
 
@@ -32,7 +32,9 @@ _Auto-refreshed: 2026-11-10 12:22 (Europe/Berlin)._
 
 ### Last 10 commits
 
-- (no commits)
+- 2026-11-10  Add bicycle-brake Short: fact sheet, beats.json, script with Eleven v4 text
+- 2026-11-10  Add step-by-step Short idea research (YouTube search snapshot, 8 topics)
+- 2026-11-10  Add step-by-step-short skill: airplane-style 3D build Short from one topic
 <!-- AUTO:END -->
 
 ## Current focus (update at the end of every work session)
@@ -46,6 +48,7 @@ _Auto-refreshed: 2026-11-10 12:22 (Europe/Berlin)._
 - Brand assets are done (2026-11-03): the full Brand Pack is in `channel/brand/Brainmaxx-Brand-Pack/`. Next for the owner: upload them in YouTube Studio, then create the same handle on TikTok and Instagram. Use the same palette in `channel/motion/_template`.
 - Long video "The Impossible Escape" (2026-11-04): the owner's own 16:9 film (3:40). Motion-graphics pass delivered as a 3:49 MP4: 9 s 3D cold open, hook type, 9 chapter titles, build-log blueprint, 7 explanation cards, recap, sound written in code, light grade. Nothing in the film was cut. Source and rebuild steps: `channel/motion/special-the-impossible-escape/README.md`. Upload package is ready in `channel/published/special-the-impossible-escape.md` (title "9 Parts That Turn a Crate Into a Plane", description with 12 chapters, tags, pinned comment, Studio settings) and the thumbnail was delivered as a 276 KB JPG. Published by the owner on 2026-11-04 (title, description with chapters, tags, thumbnail set; checks passed with no copyright issues). Still to do after publishing: pin the comment, reply to comments in the first hours, add the End screen (Subscribe + a video element) once the channel has a second video, post the 95 s vertical version as a Short linked to this video, and after 48 h read the retention graph with `yt-retention`.
 - Adaptive-headlights Short (2026-11-04): the owner made a finished 36.5 s vertical video, `brainmaxx-adaptive-headlights`, in ChatGPT (file says hyperframes 0.8.212; outside our template) and decided to upload it as is, as the second video. Review: `channel/research/2026-11-04-adaptive-headlights-review.fa.md` (known issues left in: a wrong scene flashes in the first 0.47 s, narration ends with "Like and subscribe" against voice.md, silent last 1 s with a thumbnail-style card, fonts and colours are not Outfit / brand palette, captions sit below y 1420). Upload package is ready in `channel/published/special-adaptive-headlights.md` (title "How Adaptive Headlights Work", description, 12 tags, pinned comment, Studio settings, TikTok and Reels captions); not published yet, the owner publishes. New gate for later Shorts: `python3 scripts/check_short.py video.mp4` after every render. After publishing: pin the comment, add this video or a playlist to the End screen of "The Impossible Escape", read Viewed vs Swiped Away after 48 h. Re-checked 2026-11-05 with the full yt skills (metadata and shorts sub-skills, seo-playbook, algorithm-guide, monetization-guide): hashtags cut to 4 (50 chars, the old 5 were 62 against the playbook's 60 for Shorts), description lines 1-2 rewritten so the yt-seo query test passes, three title types written (search recommended), claims verified with two sources, audio measured (no music bed). Optional extras: a fixed video that holds the settled hook frame for the first 0.6 s (no flash frame, `check_short.py` 0 FAIL; sent in chat, not committed) and an exact English SRT built by OCR of the burned-in captions (`channel/published/special-adaptive-headlights.en.srt`). The first review overstated two things and was corrected: caption gaps at sentence ends are normal, and the narration is 110 words in about 35.4 s (about 186 wpm), with short pauses.
+- Bicycle-brake Short (2026-11-10, `special-bicycle-brakes`): first topic for `step-by-step-short`. Script drafted (136 words, about 52 s, `script_budget.py` 0 FAIL / 1 WARN hookscore 43), facts checked with two sources each (`channel/research/special-bicycle-brakes.facts.md`), Eleven v4 tagged text in `channel/scripts/special-bicycle-brakes.md`. WAITING for Gate A (owner approves script and 3D look), then the owner sends `channel/voiceover/special-bicycle-brakes.mp3` + `.words.json`; after that scaffold, real BUILDERS for bike parts, render, `check_short.py`, Gate B, upload package.
 
 ## Decisions made
 
@@ -66,6 +69,7 @@ _Auto-refreshed: 2026-11-10 12:22 (Europe/Berlin)._
 - 2026-11-04: on the owner's request, #9 ends with a visual end card (Brainmaxx mark, Subscribe, Like, Comment, Save) during the spoken "Save this" line; no extra spoken ask. This overrides the one-ask rule in `channel/voice.md` for the end card only.
 - 2026-11-10: the airplane-style build format becomes the skill `step-by-step-short` (approval gate after the script, voiceover handed over by the owner, 45-60 s). First 5-8 Shorts are a test of the format.
 - Motion on finished footage: render the overlays transparent with HyperFrames (`--format png-sequence`) and composite with ffmpeg, grading the footage only. In the cloud container set `HYPERFRAMES_BROWSER_PATH=/usr/bin/google-chrome` and run one render at a time.
+- 2026-11-10: first topic for `step-by-step-short` is the bicycle brake (slug `special-bicycle-brakes` until the series question is decided). Voiceover with ElevenLabs Eleven v4 and light audio tags (voice-quality only, no sound-effect tags, since SFX are made in code).
 
 ## Open questions
 
