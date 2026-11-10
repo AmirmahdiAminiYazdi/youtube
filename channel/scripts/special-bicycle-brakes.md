@@ -4,7 +4,18 @@
 
 status: draft، منتظر تأیید تو (Gate A). فایل ماشینی: `channel/scripts/special-bicycle-brakes.beats.json`. برگه‌ی حقایق: `channel/research/special-bicycle-brakes.facts.md`.
 
-سنجش: `script_budget.py` ← ۰ خطا، ۱۳۶ کلمه، حدود ۵۲ ثانیه، ۵ قدم، زنجیره‌ی مشکل ← قطعه کامل. هوک: «You're at the top of a steep hill. Your bike has no brakes. Congratulations!» (۱۴ کلمه؛ hookscore فقط ۴۳ می‌دهد چون هوک سناریویی را کم‌امتیاز می‌دهد، با خواندن قضاوت کن).
+سنجش (نسخه‌ی هوک عددی): `script_budget.py` ← ۰ خطا، ۱۵۱ کلمه، حدود ۵۷ ثانیه، ۵ قدم، زنجیره‌ی مشکل ← قطعه کامل. هوک: «Eighty kilos. Thirty-two kilometers per hour. Just an eight percent hill. And your bike has no brakes. Congratulations!» (۱۹ کلمه؛ hookscore فقط ۳۷ می‌دهد چون هوک سناریویی را کم‌امتیاز می‌دهد، با خواندن قضاوت کن).
+
+## هوک عددی و غافلگیری (۲۰۲۶-۱۱-۱۰)
+
+عددها از سناریوی خودِ مقاله‌ی علمی MDPI گرفته شده‌اند (۸۰ کیلو، شیب ۸٪، ۸٫۹۴ متر بر ثانیه = ۳۲٫۲ کیلومتر بر ساعت ← ۵۵۹ وات) و با محاسبه‌ی خودمان هم درآمد: P = m·g·v·sin θ = ۵۵۹٫۵ وات. این **حداکثر** است، چون مقاومت هوا و غلتش را نادیده می‌گیرد. در توضیحات بنویس: «Example rider and slope; real braking power is lower because of air drag and rolling resistance.»
+
+تکنیک غافلگیری: (۱) سه عدد پشت‌سرهم قبل از جمله‌ی اصلی، با «just an eight percent hill» که شیب ملایم را خطرناک نشان می‌دهد؛ (۲) در قدم اول عدد ۵۶۰ وات می‌آید تا بیننده بفهمد مشکل «انرژی» است نه «ایستادن»؛ (۳) در پایان تلنگر: ترمز سرعت را نابود نمی‌کند، آن را به گرما تبدیل می‌کند («It turns that hill into heat»).
+
+هوک‌های جایگزین (امتیاز hookscore فقط heuristic است):
+
+- B (۴۴): «A hill that's just eight percent steep gives you 560 watts to burn off. Your bike has no brakes. Congratulations!»
+- C (۵۲، کنجکاوی): «Your brakes don't stop you. They turn a hill into 560 watts of heat. Let's build them from nothing.»
 
 ## زنجیره
 
@@ -20,9 +31,9 @@ status: draft، منتظر تأیید تو (Gate A). فایل ماشینی: `cha
 ## روایت پاک (برای ثبت و زیرنویس؛ دقیقاً همین متن را هم‌تراز می‌کنیم)
 
 ```
-You're at the top of a steep hill. Your bike has no brakes. Congratulations!
+Eighty kilos. Thirty-two kilometers per hour. Just an eight percent hill. And your bike has no brakes. Congratulations!
 
-Dragging your shoes is not working. So you press a rubber pad on the wheel rim. That's a rim brake.
+Holding that speed means shedding about 560 watts. Your shoes can't. So you press a rubber pad on the rim. That's a rim brake.
 
 But you can't reach the wheel while riding. So a cable runs to a lever on your handlebar. Now squeezing stops you.
 
@@ -32,7 +43,7 @@ But cables stretch and drag. So you swap the cable for fluid in a sealed hose, l
 
 On a long descent, heat weakens the brakes. So you fit a bigger rotor, which sheds heat better.
 
-You built a modern disc brake. Your shoes can retire.
+You built a modern disc brake. It turns that hill into heat. Your shoes can retire.
 
 Save this for your next big hill.
 ```
@@ -42,9 +53,9 @@ Save this for your next big hill.
 طبق مستندات ElevenLabs برای v4: تگ‌ها در کروشه و قبل از جمله‌ای که اثر می‌گذارند؛ SSML و اسلایدرهای Style و Speed در v4 نیست؛ مکث با ویرگول، سه‌نقطه و ساختار متن؛ حروف بزرگ تأکید را بیشتر می‌کند (نیاز نیست). تگ‌ها را کم نگه داشتم و فقط حالت صدا هستند، بدون تگ صدای اضافه (مثل [applause]) چون جلوه‌ها را خودمان در کد می‌سازیم. گوش بده که تگ‌ها خوانده نشوند.
 
 ```
-[casual, playful narration] You're at the top of a steep hill. [brief pause] Your bike has no brakes. [dry amusement] Congratulations!
+[casual, playful narration] Eighty kilos. Thirty-two kilometers per hour. Just an eight percent hill. [brief pause] And your bike has... no brakes. [dry amusement] Congratulations!
 
-[measured] Dragging your shoes is not working. So you press a rubber pad on the wheel rim. That's a rim brake.
+[measured] Holding that speed means shedding about 560 watts. Your shoes can't. So you press a rubber pad on the rim. That's a rim brake.
 
 But you can't reach the wheel while riding. So a cable runs to a lever on your handlebar. Now squeezing stops you.
 
@@ -54,7 +65,7 @@ But cables stretch and drag. So you swap the cable for fluid in a sealed hose, l
 
 [calm] On a long descent, heat weakens the brakes. So you fit a bigger rotor, which sheds heat better.
 
-[brief pause, dry amusement] You built a modern disc brake. Your shoes can retire.
+[brief pause, dry amusement] You built a modern disc brake. It turns that hill into heat. Your shoes can retire.
 
 [warm] Save this for your next big hill.
 ```
