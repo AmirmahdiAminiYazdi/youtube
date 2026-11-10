@@ -1,0 +1,123 @@
+1
+00:00:00,000 --> 00:00:00,660
+80 kilos.
+
+2
+00:00:01,400 --> 00:00:03,120
+32 kilometers per hour.
+
+3
+00:00:03,520 --> 00:00:05,020
+Just an 8% hill.
+
+4
+00:00:05,540 --> 00:00:07,340
+And your bike has no brakes!
+
+5
+00:00:07,860 --> 00:00:08,300
+Congratulations!
+
+6
+00:00:09,460 --> 00:00:10,820
+Holding that speed means
+
+7
+00:00:10,820 --> 00:00:13,180
+shedding about 560 watts.
+
+8
+00:00:13,880 --> 00:00:15,060
+Your shoes can't.
+
+9
+00:00:15,380 --> 00:00:17,640
+So you press a rubber pad on the rim.
+
+10
+00:00:18,040 --> 00:00:19,240
+That's a rim brake.
+
+11
+00:00:19,660 --> 00:00:20,860
+But you can't reach the
+
+12
+00:00:20,860 --> 00:00:21,840
+wheel while riding.
+
+13
+00:00:22,180 --> 00:00:23,960
+So a cable runs to a
+
+14
+00:00:23,960 --> 00:00:25,100
+lever on your handlebar.
+
+15
+00:00:25,500 --> 00:00:27,000
+Now squeezing stops you.
+
+16
+00:00:27,480 --> 00:00:30,520
+Then it rains and wet rims brake badly.
+
+17
+00:00:30,880 --> 00:00:32,500
+So you squeeze a disc on
+
+18
+00:00:32,500 --> 00:00:34,080
+the hub away from the rim.
+
+19
+00:00:34,420 --> 00:00:35,680
+That's a disc brake.
+
+20
+00:00:36,080 --> 00:00:38,100
+But cables stretch and drag.
+
+21
+00:00:38,500 --> 00:00:40,480
+So you swap the cable for fluid
+
+22
+00:00:40,480 --> 00:00:42,660
+in a sealed hose, like a syringe.
+
+23
+00:00:43,100 --> 00:00:44,020
+That's hydraulic.
+
+24
+00:00:44,700 --> 00:00:45,640
+On a long descent,
+
+25
+00:00:46,000 --> 00:00:47,440
+heat weakens the brakes.
+
+26
+00:00:47,760 --> 00:00:49,420
+So you fit a bigger rotor
+
+27
+00:00:49,420 --> 00:00:50,940
+which sheds heat better.
+
+28
+00:00:51,340 --> 00:00:53,160
+You built a modern disc brake.
+
+29
+00:00:53,580 --> 00:00:55,200
+It turns that hill into heat.
+
+30
+00:00:55,720 --> 00:00:56,920
+Your shoes can retire.
+
+31
+00:00:57,440 --> 00:00:59,220
+Save this for your next big hill.
