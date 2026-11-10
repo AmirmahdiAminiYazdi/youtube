@@ -45,6 +45,7 @@ Voice profile: it lives in this repo at `channel/voice.md`. The yt-* skills say 
 
 | Skill | Use it for |
 |---|---|
+| `step-by-step-short` (`/step-by-step-short <topic>`) | Whole "Built Step by Step" Short from one topic (airplane-style 3D build): fact sheet, scored script, owner gate, voiceover hand-off, HyperFrames render, QA gate, upload package |
 | `youtube` (`/youtube audit, seo, script, hook, thumbnail, strategy, calendar, shorts, analyze, repurpose, monetize, competitor, metadata, ideate`) | Strategy, SEO, scripts, monetization, competitors |
 | `yt-plan`, `yt-script`, `yt-package`, `yt-seo`, `yt-chapters` | Idea to script to title/thumbnail/description/chapters |
 | `yt-retention`, `yt-edit`, `yt-viral`, `yt-audit`, `yt-comment`, `yt-shorts` | Retention curves, dead-air cuts, viral swipe file, audits, comment replies, Shorts |

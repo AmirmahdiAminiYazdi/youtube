@@ -1,0 +1,38 @@
+{
+  "_note": "Tightened 55 s re-telling of the airplane Short's beat order (island, crate, engine, then one part per problem). Wording is illustrative, not a transcript of the published video. Replace every `pos`/`size`/`kind` with real shapes when you build the 3D parts.",
+  "slug": "00-example-airplane",
+  "series": "Everyday Things Explained",
+  "topic": "How an airplane works, built one part at a time from a crate",
+  "hook": {
+    "say": "You're stranded on an island. You bolt a boat engine onto a wooden crate. Congratulations! You just built the world's worst airplane.",
+    "title_top": "ONE CRATE.",
+    "title_bottom": "ONE ENGINE."
+  },
+  "base": { "part": "CRATE", "label": "WOODEN CRATE", "kind": "box", "tone": "steel", "pos": [0, 0, 0], "size": [2.2, 0.9, 0.9], "rot": [0, 0, 0] },
+  "beats": [
+    { "say": "It rolls, but it can't lift. So you strap a surfboard on each side. Those are wings.",
+      "anchor": "wings", "part": "WING", "label": "WING", "kind": "plate", "tone": "teal", "pos": [0, 0.15, 0], "size": [0.9, 0.08, 4.2], "rot": [0, 0, 0],
+      "problem_text": "PROBLEM: NO LIFT", "creates": "it nose-dives and tumbles", "solves": "no lift" },
+    { "say": "Now it flies, but the nose keeps dipping. A small horizontal wing on the tail holds it level.",
+      "anchor": "tail", "part": "HORIZONTAL STABILIZER", "label": "HORIZONTAL STABILIZER", "kind": "plate", "tone": "white", "pos": [-1.5, 0.3, 0], "size": [0.5, 0.06, 1.5], "rot": [0, 0, 0],
+      "problem_text": "PROBLEM: NOSE DIPS", "creates": "it swings left and right", "solves": "nose dips" },
+    { "say": "Then it swings left and right. So you add an upright fin, like the feathers on an arrow.",
+      "anchor": "fin", "part": "VERTICAL STABILIZER", "label": "VERTICAL STABILIZER", "kind": "fin", "tone": "white", "pos": [-1.6, 0.8, 0], "size": [0.06, 1.0, 0.7], "rot": [0, 0, 0],
+      "analogy": "like the feathers on an arrow",
+      "problem_text": "PROBLEM: SWINGS SIDEWAYS", "creates": "it can't steer", "solves": "swings sideways" },
+    { "say": "Stable, but you can't steer. Flaps on the tail wing tilt the nose, and flaps on the wings roll it.",
+      "anchor": "steer", "part": "ELEVATOR + AILERONS", "label": "ELEVATOR + AILERONS", "kind": "plate", "tone": "teal", "pos": [-1.95, 0.3, 0], "size": [0.2, 0.05, 1.5], "rot": [0, 0, 0],
+      "problem_text": "PROBLEM: NO CONTROL", "creates": "it lands too fast", "solves": "can't steer" },
+    { "say": "You land way too fast. Wing flaps that fold down add lift and drag, so you can slow down.",
+      "anchor": "flaps", "part": "FLAPS", "label": "FLAPS", "kind": "plate", "tone": "orange", "pos": [0.5, 0.1, 0], "size": [0.3, 0.05, 2.0], "rot": [0.3, 0, 0],
+      "problem_text": "PROBLEM: LANDS TOO FAST", "creates": "it runs out of fuel", "solves": "lands too fast" },
+    { "say": "One last problem: fuel. Tanks inside the wings keep it flying a long way.",
+      "anchor": "tanks", "part": "WING FUEL TANK", "label": "WING FUEL TANK", "kind": "cyl", "tone": "navy", "pos": [0, 0.15, 1.2], "size": [0.35, 1.2, 0.35], "rot": [1.5708, 0, 0],
+      "problem_text": "PROBLEM: NO FUEL", "creates": "", "solves": "fuel" }
+  ],
+  "payoff": { "say": "You built an airplane. The seagull is not impressed.", "title": "YOU BUILT AN AIRPLANE.", "subtitle": "ONE PROBLEM AT A TIME" },
+  "ask": { "say": "Save this for the next time someone asks how planes fly." },
+  "original_element": "The build itself: every part is added on screen to fix the exact problem the previous part caused.",
+  "sources": [],
+  "emphasis": ["wings", "fin", "flaps", "airplane", "congratulations"]
+}

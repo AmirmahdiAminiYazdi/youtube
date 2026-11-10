@@ -3,14 +3,14 @@
 Read this file first at the start of every session. The block between the AUTO markers is rewritten every day by `scripts/refresh_status.py` (scheduled task, early morning Europe/Berlin). Everything outside the markers is maintained by hand and by Claude during work sessions, and the daily job never touches it.
 
 <!-- AUTO:START -->
-_Auto-refreshed: 2026-11-10 06:12 (Europe/Berlin)._
+_Auto-refreshed: 2026-11-10 12:22 (Europe/Berlin)._
 
 ### Snapshot
 
 - Today: Tue 2026-11-10 (work day); next work day: Wed 2026-11-11
 - Stage: pre-launch, nothing published yet
 - Next in the pipeline: #1 "3 Lines That Make AI Useful": next stage is Voiceover
-- Skills installed: 72 committed in `.claude/skills/`
+- Skills installed: 72 committed in `.claude/skills/` (+1 fetched by `scripts/setup.sh`, present in this environment)
 - Files: ideas 2, scripts 2, thumbnails 0, motion 37, voiceover 2, published 5, research 2
 
 ### Pipeline (from `channel/ideas/first-12-ideas.md`)
@@ -32,16 +32,7 @@ _Auto-refreshed: 2026-11-10 06:12 (Europe/Berlin)._
 
 ### Last 10 commits
 
-- 2026-11-06  Raise #9 package: verify paper claims, disclose AI voice, simplify pinned comment
-- 2026-11-06  Update #9 package: current date and playlist text
-- 2026-11-05  Revise #9 upload package with live YouTube search data, add English SRT
-- 2026-11-05  Add upload package for #9 Stop Rereading, update status
-- 2026-11-05  Re-check headlights package with the full yt skills, add SRT
-- 2026-11-05  Fix yt-seo query test and verify claims in headlights package
-- 2026-11-04  Finish #9 master, fix silent-tail false positive in check_short.py
-- 2026-11-04  Add 3D motion project for #9 "Stop Rereading"
-- 2026-11-04  Add upload package for the adaptive-headlights Short, update status
-- 2026-11-04  Review adaptive-headlights Short draft, add check_short.py gate
+- (no commits)
 <!-- AUTO:END -->
 
 ## Current focus (update at the end of every work session)
@@ -51,6 +42,7 @@ _Auto-refreshed: 2026-11-10 06:12 (Europe/Berlin)._
 - Rendering is confirmed: Remotion (1080x1920 H.264) and manim rendered real clips in the cloud container with system Chrome and ffmpeg. HyperFrames `doctor` passes. Still to do: the channel template in `channel/motion/_template` (1080x1920, vendored gsap.min.js and fonts, navy/teal/off-white palette, safe zones) and one test render with HyperFrames before video #1 goes to motion.
 - Toolbox from the 28-tool list is installed (see `TOOLS.md`). Run `bash scripts/setup.sh` in any fresh environment.
 - Research (2026-11-04): a first YouTube search snapshot for the three series is in `channel/research/2026-11-04-youtube-search-snapshot.md`. Learn Faster and Mind Hacks showed the clearest demand in it; AI-for-beginners Shorts were weak in that sample (small sample, relevance-ordered, not a velocity ranking). Suggestion for the next Short: #9 "Stop Rereading" (calendar Thu 2026-11-05). Its script is drafted in `channel/scripts/09-stop-rereading.md` (hook scored 83, about 45 s) and the owner generated the voiceover with ElevenLabs on 2026-11-04 (`channel/voiceover/09-stop-rereading.mp3`, 42.0 s, word timings in `09-stop-rereading.words.json`). Visual plan agreed: mostly 3D (card wall, hook), voice plus short code-made sound effects only, word-by-word teal captions, water-cycle recall example. Motion done (2026-11-04): 3D HyperFrames project in `channel/motion/09-stop-rereading/` (rebuild steps in its README); master `renders/09-stop-rereading.mp4` (43 s, -14.7 LUFS, passes `scripts/check_short.py`) delivered to the owner, not committed. Upload package ready (2026-11-05, `channel/published/09-stop-rereading.md`: title "Stop Rereading: Try Active Recall" (rewritten after a live YouTube search check: the exact "Stop Rereading Your Notes" already exists on several Shorts; "stop rereading" has no autocomplete, "active recall study method" and "how to study for exams" do), description with the APS source line and 4 hashtags (51 chars), manual English SRT `channel/published/09-stop-rereading.en.srt`, 14 tags, pinned comment, Studio settings with "altered content: Yes" (corrected 2026-11-06: YouTube's own example for disclosure is a generated voice narrating a video; the narration is an ElevenLabs voice, so the description says "Narration is an AI-generated voice."), cover frame at 0:00, TikTok and Reels captions, post-publish test criteria). The owner uploads it as a test; if Viewed vs Swiped Away and replays look good after 48-96 h the 3D format continues, otherwise the hook and first seconds change first. #3 stays in the plan.
+- Skill `step-by-step-short` (2026-11-10, `.claude/skills/step-by-step-short/`): turns one topic into a 45-60 s "Built Step by Step" 3D Short, the format of the owner's airplane Short (best average view duration of the first four Shorts, 70.5 %; n = 1, views flat at about 1.3-1.5k, so it is a test, not a proven formula). Stages with gates: fit test, fact sheet, script (`scripts/script_budget.py`), owner approval, voiceover hand-off, scaffold + real 3D parts, `build_timeline.py` alignment, render, `check_short.py`, upload package. Tested here: budget gate on the example, scaffold, timeline alignment with a simulated take, captions, sfx, and HyperFrames snapshots of the template. NOT tested: a full render, a real ElevenLabs take, `npx hyperframes check` to the end (more than 8 min here). Test the format on 5-8 topics and compare Viewed vs Swiped Away, average % viewed, replays before calling it the channel style.
 - Brand assets are done (2026-11-03): the full Brand Pack is in `channel/brand/Brainmaxx-Brand-Pack/`. Next for the owner: upload them in YouTube Studio, then create the same handle on TikTok and Instagram. Use the same palette in `channel/motion/_template`.
 - Long video "The Impossible Escape" (2026-11-04): the owner's own 16:9 film (3:40). Motion-graphics pass delivered as a 3:49 MP4: 9 s 3D cold open, hook type, 9 chapter titles, build-log blueprint, 7 explanation cards, recap, sound written in code, light grade. Nothing in the film was cut. Source and rebuild steps: `channel/motion/special-the-impossible-escape/README.md`. Upload package is ready in `channel/published/special-the-impossible-escape.md` (title "9 Parts That Turn a Crate Into a Plane", description with 12 chapters, tags, pinned comment, Studio settings) and the thumbnail was delivered as a 276 KB JPG. Published by the owner on 2026-11-04 (title, description with chapters, tags, thumbnail set; checks passed with no copyright issues). Still to do after publishing: pin the comment, reply to comments in the first hours, add the End screen (Subscribe + a video element) once the channel has a second video, post the 95 s vertical version as a Short linked to this video, and after 48 h read the retention graph with `yt-retention`.
 - Adaptive-headlights Short (2026-11-04): the owner made a finished 36.5 s vertical video, `brainmaxx-adaptive-headlights`, in ChatGPT (file says hyperframes 0.8.212; outside our template) and decided to upload it as is, as the second video. Review: `channel/research/2026-11-04-adaptive-headlights-review.fa.md` (known issues left in: a wrong scene flashes in the first 0.47 s, narration ends with "Like and subscribe" against voice.md, silent last 1 s with a thumbnail-style card, fonts and colours are not Outfit / brand palette, captions sit below y 1420). Upload package is ready in `channel/published/special-adaptive-headlights.md` (title "How Adaptive Headlights Work", description, 12 tags, pinned comment, Studio settings, TikTok and Reels captions); not published yet, the owner publishes. New gate for later Shorts: `python3 scripts/check_short.py video.mp4` after every render. After publishing: pin the comment, add this video or a playlist to the End screen of "The Impossible Escape", read Viewed vs Swiped Away after 48 h. Re-checked 2026-11-05 with the full yt skills (metadata and shorts sub-skills, seo-playbook, algorithm-guide, monetization-guide): hashtags cut to 4 (50 chars, the old 5 were 62 against the playbook's 60 for Shorts), description lines 1-2 rewritten so the yt-seo query test passes, three title types written (search recommended), claims verified with two sources, audio measured (no music bed). Optional extras: a fixed video that holds the settled hook frame for the first 0.6 s (no flash frame, `check_short.py` 0 FAIL; sent in chat, not committed) and an exact English SRT built by OCR of the burned-in captions (`channel/published/special-adaptive-headlights.en.srt`). The first review overstated two things and was corrected: caption gaps at sentence ends are normal, and the narration is 110 words in about 35.4 s (about 186 wpm), with short pauses.
@@ -72,10 +64,13 @@ _Auto-refreshed: 2026-11-10 06:12 (Europe/Berlin)._
 
 - 2026-11-04: besides the daily Shorts, the owner also posts long 16:9 videos. For "The Impossible Escape" the owner chose to keep the whole film, including its "DM to create yours" end card; edits are additive only.
 - 2026-11-04: on the owner's request, #9 ends with a visual end card (Brainmaxx mark, Subscribe, Like, Comment, Save) during the spoken "Save this" line; no extra spoken ask. This overrides the one-ask rule in `channel/voice.md` for the end card only.
+- 2026-11-10: the airplane-style build format becomes the skill `step-by-step-short` (approval gate after the script, voiceover handed over by the owner, 45-60 s). First 5-8 Shorts are a test of the format.
 - Motion on finished footage: render the overlays transparent with HyperFrames (`--format png-sequence`) and composite with ffmpeg, grading the footage only. In the cloud container set `HYPERFRAMES_BROWSER_PATH=/usr/bin/google-chrome` and run one render at a time.
 
 ## Open questions
 
+- Where is the source project of the owner's airplane Short? It is not in this repo (only the long film's overlay pass is). The skill's formula was rebuilt from its beats and analytics; if the source exists, compare it with `step-by-step-short/references/formula.md`.
+- First topic for `step-by-step-short`, and whether "Everyday Things Explained" becomes an official fourth series (needed for the idea number).
 - #9 "Stop Rereading" (voiceover done, motion build next, calendar Thu 2026-11-05) is now the third video, since the headlights Short goes up first as the second. Confirm the calendar still holds.
 - Headlights is outside the three series; its end says "EVERYDAY THINGS. EXPLAINED." The owner uploads it anyway. Open: make "Everyday Things Explained" an official fourth series (then record it in first-12-ideas.md and give it an idea number; the package file is named `special-` for now) or keep it a one-off.
 - The headlights video uses photoreal-looking stills made in ChatGPT (headlight macro, mirror, mountain road); channel rule says no photoreal AI footage presented as real. The package recommends answering "Yes" to Studio's altered or synthetic content question and the description says some scenes use AI-generated imagery. Owner decides.
