@@ -1,41 +1,62 @@
 <template>
+  <!-- v2 HUD: almost nothing on screen. The 3D carries the numbers; this layer adds the part name pills (step n of 5),
+       the "NO BRAKES." stamp, the payoff title and the "SHOES: RETIRED" joke. Times are voiceover word times. -->
   <style>
     @font-face { font-family: "BrandOutfit"; src: url("assets/fonts/Outfit-Bold.ttf"); font-weight: 700; }
     @font-face { font-family: "BrandOutfit"; src: url("assets/fonts/Outfit-Regular.ttf"); font-weight: 400; }
     #root { position: absolute; inset: 0; font-family: "BrandOutfit", sans-serif; color: #F4F1EA; pointer-events: none; }
-    .band { position: absolute; left: 0; top: 196px; width: 1080px; display: flex; flex-direction: column; align-items: center; text-align: center; }
-    .big { font-weight: 700; font-size: 104px; line-height: 1.02; letter-spacing: 0.01em; text-shadow: 0 6px 30px rgba(3, 9, 20, 0.9); }
-    .mid { font-weight: 700; font-size: 76px; line-height: 1.05; text-shadow: 0 6px 30px rgba(3, 9, 20, 0.9); }
-    .kick { font-weight: 700; font-size: 34px; letter-spacing: 0.2em; margin-top: 16px; color: rgba(244, 241, 234, 0.85); text-shadow: 0 4px 20px rgba(3, 9, 20, 0.9); }
-    .teal { color: #19C3B1; }
+    .band { position: absolute; left: 0; width: 1080px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .pill { display: inline-flex; align-items: center; gap: 22px; padding: 14px 40px 14px 16px; border-radius: 60px;
+            background: rgba(11, 27, 51, 0.82); border: 4px solid #19C3B1; box-shadow: 0 10px 40px rgba(3, 9, 20, 0.6), 0 0 32px rgba(25, 195, 177, 0.25); }
+    .num { width: 78px; height: 78px; border-radius: 50%; background: #19C3B1; color: #0B1B33; font-weight: 700; font-size: 44px;
+           display: flex; align-items: center; justify-content: center; }
+    .name { font-weight: 700; font-size: 58px; letter-spacing: 0.04em; line-height: 1; }
+    .of { font-weight: 400; font-size: 30px; color: rgba(244, 241, 234, 0.7); letter-spacing: 0.1em; margin-left: -6px; }
+    .stamp { font-weight: 700; font-size: 132px; line-height: 1; color: #19C3B1; letter-spacing: 0.02em;
+             -webkit-text-stroke: 12px #0B1B33; paint-order: stroke fill; text-shadow: 0 10px 40px rgba(3, 9, 20, 0.9); }
+    .kick { font-weight: 700; font-size: 58px; line-height: 1; letter-spacing: 0.08em; -webkit-text-stroke: 10px #0B1B33; paint-order: stroke fill; text-shadow: 0 8px 30px rgba(3, 9, 20, 0.9); }
+    .big { font-weight: 700; font-size: 128px; line-height: 1.0; color: #19C3B1; -webkit-text-stroke: 12px #0B1B33; paint-order: stroke fill; text-shadow: 0 10px 40px rgba(3, 9, 20, 0.9); }
+    .retired { display: inline-block; padding: 14px 34px; border: 7px solid #F4F1EA; border-radius: 18px; font-weight: 700; font-size: 60px; letter-spacing: 0.08em;
+               background: rgba(11, 27, 51, 0.7); transform: rotate(-7deg); box-shadow: 0 10px 40px rgba(3, 9, 20, 0.6); }
+    .retired b { color: #19C3B1; }
   </style>
   <div id="root" data-composition-id="hud" data-width="1080" data-height="1920">
-    <div id="hud-hook" class="clip band" data-start="0" data-duration="9.46"><div class="big" id="hk1">80 KG. 32 KM/H.</div><div class="big teal" id="hk2">NO BRAKES.</div></div>
-    <div id="hud-s0" class="clip band" data-start="9.46" data-duration="10.16"><div class="mid" id="sn0"><span class="teal">STEP 1</span> / 5</div><div class="kick" id="pk0">PROBLEM: NO BRAKES</div></div>
-    <div id="hud-s1" class="clip band" data-start="19.66" data-duration="7.78"><div class="mid" id="sn1"><span class="teal">STEP 2</span> / 5</div><div class="kick" id="pk1">PROBLEM: CAN&#x27;T REACH IT</div></div>
-    <div id="hud-s2" class="clip band" data-start="27.48" data-duration="8.56"><div class="mid" id="sn2"><span class="teal">STEP 3</span> / 5</div><div class="kick" id="pk2">PROBLEM: RAIN</div></div>
-    <div id="hud-s3" class="clip band" data-start="36.08" data-duration="8.58"><div class="mid" id="sn3"><span class="teal">STEP 4</span> / 5</div><div class="kick" id="pk3">PROBLEM: CABLE STRETCH</div></div>
-    <div id="hud-s4" class="clip band" data-start="44.7" data-duration="6.6"><div class="mid" id="sn4"><span class="teal">STEP 5</span> / 5</div><div class="kick" id="pk4">PROBLEM: HEAT</div></div>
-    <div id="hud-pay" class="clip band" data-start="51.34" data-duration="6.0"><div class="big teal" id="py1">YOU BUILT A DISC BRAKE.</div><div class="kick" id="py2">ONE PROBLEM AT A TIME</div></div>
-    <div id="hud-hook2" class="clip band" data-start="60.02" data-duration="0.15"><div class="big">80 KG. 32 KM/H.</div><div class="big teal">NO BRAKES.</div></div>
+    <div id="hud-nob" class="clip band" data-start="6.44" data-duration="1.86" style="top: 236px"><div class="stamp" id="nob">NO BRAKES.</div></div>
+
+    <div id="hud-p1" class="clip band" data-start="18.6" data-duration="2.4" style="top: 214px"><div class="pill" id="p1"><div class="num">1</div><div class="name">RIM BRAKE</div><div class="of">/ 5</div></div></div>
+    <div id="hud-p2" class="clip band" data-start="23.96" data-duration="2.5" style="top: 214px"><div class="pill" id="p2"><div class="num">2</div><div class="name">LEVER + CABLE</div><div class="of">/ 5</div></div></div>
+    <div id="hud-p3" class="clip band" data-start="35.0" data-duration="1.62" style="top: 214px"><div class="pill" id="p3"><div class="num">3</div><div class="name">DISC BRAKE</div><div class="of">/ 5</div></div></div>
+    <div id="hud-p4" class="clip band" data-start="43.5" data-duration="2.1" style="top: 214px"><div class="pill" id="p4"><div class="num">4</div><div class="name">HYDRAULIC</div><div class="of">/ 5</div></div></div>
+    <div id="hud-p5" class="clip band" data-start="48.94" data-duration="2.3" style="top: 214px"><div class="pill" id="p5"><div class="num">5</div><div class="name">BIGGER ROTOR</div><div class="of">/ 5</div></div></div>
+
+    <div id="hud-pay" class="clip band" data-start="51.34" data-duration="6.05" style="top: 196px">
+      <div class="kick" id="py1">YOU BUILT A</div>
+      <div class="big" id="py2">DISC BRAKE.</div>
+    </div>
+    <div id="hud-ret" class="clip band" data-start="56.14" data-duration="1.25" style="top: 690px"><div class="retired" id="ret">SHOES: <b>RETIRED</b></div></div>
   </div>
   <script>
     (function () {
       const tl = gsap.timeline({ paused: true });
-      tl.fromTo("#hk2", { scale: 1 }, { scale: 1.08, duration: 0.16, ease: "power2.out" }, 0.9);
-      tl.to("#hk2", { scale: 1, duration: 0.3, ease: "power2.inOut" }, 1.06);
-      tl.fromTo("#sn0", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.35, ease: "expo.out" }, 9.46);
-      tl.fromTo("#pk0", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 9.58);
-      tl.fromTo("#sn1", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.35, ease: "expo.out" }, 19.66);
-      tl.fromTo("#pk1", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 19.78);
-      tl.fromTo("#sn2", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.35, ease: "expo.out" }, 27.48);
-      tl.fromTo("#pk2", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 27.6);
-      tl.fromTo("#sn3", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.35, ease: "expo.out" }, 36.08);
-      tl.fromTo("#pk3", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 36.2);
-      tl.fromTo("#sn4", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.35, ease: "expo.out" }, 44.7);
-      tl.fromTo("#pk4", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 44.82);
-      tl.fromTo("#py1", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2)" }, 51.34);
-      tl.fromTo("#py2", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 51.59);
+      // NO BRAKES. slams in, small shake
+      tl.fromTo("#nob", { scale: 1.9, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: -3, duration: 0.22, ease: "power3.in" }, 6.44);
+      tl.fromTo("#nob", { x: -10 }, { x: 0, duration: 0.25, ease: "elastic.out(1.2, 0.3)" }, 6.66);
+      tl.to("#nob", { scale: 1.06, duration: 0.12, yoyo: true, repeat: 1, ease: "power2.out" }, 7.86);
+      tl.to("#nob", { opacity: 0, y: -30, duration: 0.2, ease: "power2.in" }, 8.1);
+      // part pills: pop in, settle, leave upwards
+      const pills = [["#p1", 18.6, 2.4], ["#p2", 23.96, 2.5], ["#p3", 35.0, 1.62], ["#p4", 43.5, 2.1], ["#p5", 48.94, 2.3]];
+      for (const [id, t0, d] of pills) {
+        tl.fromTo(id, { scale: 0.6, opacity: 0, y: 24 }, { scale: 1, opacity: 1, y: 0, duration: 0.38, ease: "back.out(2.2)" }, t0);
+        tl.fromTo(id + " .num", { rotation: -120 }, { rotation: 0, duration: 0.5, ease: "back.out(1.8)" }, t0 + 0.05);
+        tl.to(id, { opacity: 0, y: -26, duration: 0.22, ease: "power2.in" }, t0 + d - 0.24);
+      }
+      // payoff
+      tl.fromTo("#py1", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 51.34);
+      tl.fromTo("#py2", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2)" }, 52.44);
+      tl.to("#hud-pay", { opacity: 0, duration: 0.2 }, 57.18);
+      // SHOES: RETIRED stamp
+      tl.fromTo("#ret", { scale: 2.2, opacity: 0, rotation: -18 }, { scale: 1, opacity: 1, rotation: -7, duration: 0.2, ease: "power3.in" }, 56.14);
+      tl.to("#ret", { opacity: 0, duration: 0.15 }, 57.22);
       window.__timelines["hud"] = tl;
     })();
   </script>

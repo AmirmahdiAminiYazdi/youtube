@@ -24,3 +24,12 @@ Look: deep navy backdrop with a soft teal rim light, a glossy dark floor with re
 
 Transitions: whip-pan blur between 4->5 and 6->7, push-through into the rotor holes between 10 and 11, hard cuts elsewhere on the voice beats. Sound: existing code-made SFX plus a whoosh on each whip and a low heat rumble in shot 10 (made in code).
 Captions: the existing word-by-word captions, kept at y 1178-1328; the top HUD is removed except a tiny step number.
+
+## Build notes (v2, 2026-11-10)
+
+- Engine: `channel/motion/special-bicycle-brakes/assets/cine.js` (replaces the generic `world.js` in `index.html`; `world.js` stays as the v1 reference).
+  Shot list = `SHOTS` (camera keys per shot), story state = keyframe tables (`SPEED`, `RIM`, `DISC`, `LEVER`, `HEAT_*`, `RAIN`, `WET`), all on voiceover word times.
+- Look: ACES tone mapping, studio environment, unlit navy floor with a shadow catcher and a soft light pool, teal rim light, bloom only above HDR 1.6 (emissive heat, glow beads), depth of field from the main depth buffer, FXAA, grain and vignette.
+- Changes against the table above: no orange sparks from rubber (rubber pads and shoes make dust and smoke, not sparks; sparks only from the hot steel pads in shot 10); the shoe gag (13.9-15.3 s) and the retired shoes land on the top tube in the hero shot (55.7 s).
+- HUD (`compositions/hud.html`): "NO BRAKES." stamp, five part pills (n / 5), payoff "YOU BUILT A DISC BRAKE.", "SHOES: RETIRED" stamp. Sound: `scripts/make_sfx_v2.py`.
+- Speed in this container: about 2.8 s per frame on the CPU renderer (MSAA and the BokehPass were dropped for that reason: 4.9 s per frame).
