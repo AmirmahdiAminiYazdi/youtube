@@ -1,0 +1,123 @@
+{
+ "slug": "special-bicycle-brakes",
+ "estimate": false,
+ "total": 60.17,
+ "loop": 60.02,
+ "voice_duration": 59.559,
+ "cta_start": 57.39,
+ "cta_dur": 2.63,
+ "payoff_t": 51.34,
+ "segments": [
+  {
+   "id": "hook",
+   "seg": "hook",
+   "t": 0.0,
+   "t_end": 8.3,
+   "t_anchor": 0.0,
+   "say": "80 kilos. 32 kilometers per hour. Just an 8% hill. And your bike has no brakes. Congratulations!"
+  },
+  {
+   "id": "rim-brake",
+   "seg": "beat",
+   "t": 9.46,
+   "t_end": 19.24,
+   "t_anchor": 18.92,
+   "say": "Holding that speed means shedding about 560 watts. Your shoes can't. So you press a rubber pad on the rim. That's a rim brake."
+  },
+  {
+   "id": "lever-cable",
+   "seg": "beat",
+   "t": 19.66,
+   "t_end": 27.0,
+   "t_anchor": 23.96,
+   "say": "But you can't reach the wheel while riding. So a cable runs to a lever on your handlebar. Now squeezing stops you."
+  },
+  {
+   "id": "disc",
+   "seg": "beat",
+   "t": 27.48,
+   "t_end": 35.68,
+   "t_anchor": 31.96,
+   "say": "Then it rains, and wet rims brake badly. So you squeeze a disc on the hub, away from the rim. That's a disc brake."
+  },
+  {
+   "id": "hydraulic",
+   "seg": "beat",
+   "t": 36.08,
+   "t_end": 44.02,
+   "t_anchor": 43.5,
+   "say": "But cables stretch and drag. So you swap the cable for fluid in a sealed hose, like a syringe. That's hydraulic."
+  },
+  {
+   "id": "rotor",
+   "seg": "beat",
+   "t": 44.7,
+   "t_end": 50.94,
+   "t_anchor": 48.94,
+   "say": "On a long descent, heat weakens the brakes. So you fit a bigger rotor, which sheds heat better."
+  },
+  {
+   "id": "payoff",
+   "seg": "payoff",
+   "t": 51.34,
+   "t_end": 56.92,
+   "t_anchor": 51.34,
+   "say": "You built a modern disc brake. It turns that hill into heat. Your shoes can retire."
+  },
+  {
+   "id": "ask",
+   "seg": "ask",
+   "t": 57.44,
+   "t_end": 59.22,
+   "t_anchor": 57.44,
+   "say": "Save this for your next big hill."
+  }
+ ],
+ "parts": [
+  {
+   "id": "base",
+   "t": 0.0,
+   "label": "BIKE",
+   "step": 0
+  },
+  {
+   "id": "rim-brake",
+   "t": 18.92,
+   "label": "RIM BRAKE",
+   "step": 1
+  },
+  {
+   "id": "lever-cable",
+   "t": 23.96,
+   "label": "LEVER + CABLE",
+   "step": 2
+  },
+  {
+   "id": "disc",
+   "t": 31.96,
+   "label": "DISC BRAKE",
+   "step": 3
+  },
+  {
+   "id": "hydraulic",
+   "t": 43.5,
+   "label": "HYDRAULIC LINE",
+   "step": 4
+  },
+  {
+   "id": "rotor",
+   "t": 48.94,
+   "label": "BIGGER ROTOR",
+   "step": 5
+  }
+ ],
+ "emphasis": [
+  "brakes",
+  "rim",
+  "lever",
+  "disc",
+  "hydraulic",
+  "rotor",
+  "congratulations"
+ ]
+}

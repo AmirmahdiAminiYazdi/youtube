@@ -1,0 +1,42 @@
+<template>
+  <style>
+    @font-face { font-family: "BrandOutfit"; src: url("assets/fonts/Outfit-Bold.ttf"); font-weight: 700; }
+    @font-face { font-family: "BrandOutfit"; src: url("assets/fonts/Outfit-Regular.ttf"); font-weight: 400; }
+    #root { position: absolute; inset: 0; font-family: "BrandOutfit", sans-serif; color: #F4F1EA; pointer-events: none; }
+    .band { position: absolute; left: 0; top: 196px; width: 1080px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .big { font-weight: 700; font-size: 104px; line-height: 1.02; letter-spacing: 0.01em; text-shadow: 0 6px 30px rgba(3, 9, 20, 0.9); }
+    .mid { font-weight: 700; font-size: 76px; line-height: 1.05; text-shadow: 0 6px 30px rgba(3, 9, 20, 0.9); }
+    .kick { font-weight: 700; font-size: 34px; letter-spacing: 0.2em; margin-top: 16px; color: rgba(244, 241, 234, 0.85); text-shadow: 0 4px 20px rgba(3, 9, 20, 0.9); }
+    .teal { color: #19C3B1; }
+  </style>
+  <div id="root" data-composition-id="hud" data-width="1080" data-height="1920">
+    <div id="hud-hook" class="clip band" data-start="0" data-duration="9.46"><div class="big" id="hk1">80 KG. 32 KM/H.</div><div class="big teal" id="hk2">NO BRAKES.</div></div>
+    <div id="hud-s0" class="clip band" data-start="9.46" data-duration="10.16"><div class="mid" id="sn0"><span class="teal">STEP 1</span> / 5</div><div class="kick" id="pk0">PROBLEM: NO BRAKES</div></div>
+    <div id="hud-s1" class="clip band" data-start="19.66" data-duration="7.78"><div class="mid" id="sn1"><span class="teal">STEP 2</span> / 5</div><div class="kick" id="pk1">PROBLEM: CAN&#x27;T REACH IT</div></div>
+    <div id="hud-s2" class="clip band" data-start="27.48" data-duration="8.56"><div class="mid" id="sn2"><span class="teal">STEP 3</span> / 5</div><div class="kick" id="pk2">PROBLEM: RAIN</div></div>
+    <div id="hud-s3" class="clip band" data-start="36.08" data-duration="8.58"><div class="mid" id="sn3"><span class="teal">STEP 4</span> / 5</div><div class="kick" id="pk3">PROBLEM: CABLE STRETCH</div></div>
+    <div id="hud-s4" class="clip band" data-start="44.7" data-duration="6.6"><div class="mid" id="sn4"><span class="teal">STEP 5</span> / 5</div><div class="kick" id="pk4">PROBLEM: HEAT</div></div>
+    <div id="hud-pay" class="clip band" data-start="51.34" data-duration="6.0"><div class="big teal" id="py1">YOU BUILT A DISC BRAKE.</div><div class="kick" id="py2">ONE PROBLEM AT A TIME</div></div>
+    <div id="hud-hook2" class="clip band" data-start="60.02" data-duration="0.15"><div class="big">80 KG. 32 KM/H.</div><div class="big teal">NO BRAKES.</div></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#hk2", { scale: 1 }, { scale: 1.08, duration: 0.16, ease: "power2.out" }, 0.9);
+      tl.to("#hk2", { scale: 1, duration: 0.3, ease: "power2.inOut" }, 1.06);
+      tl.fromTo("#sn0", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.35, ease: "expo.out" }, 9.46);
+      tl.fromTo("#pk0", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 9.58);
+      tl.fromTo("#sn1", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.35, ease: "expo.out" }, 19.66);
+      tl.fromTo("#pk1", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 19.78);
+      tl.fromTo("#sn2", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.35, ease: "expo.out" }, 27.48);
+      tl.fromTo("#pk2", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 27.6);
+      tl.fromTo("#sn3", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.35, ease: "expo.out" }, 36.08);
+      tl.fromTo("#pk3", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 36.2);
+      tl.fromTo("#sn4", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.35, ease: "expo.out" }, 44.7);
+      tl.fromTo("#pk4", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 44.82);
+      tl.fromTo("#py1", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2)" }, 51.34);
+      tl.fromTo("#py2", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 51.59);
+      window.__timelines["hud"] = tl;
+    })();
+  </script>
+</template>
