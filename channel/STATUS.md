@@ -3,15 +3,15 @@
 Read this file first at the start of every session. The block between the AUTO markers is rewritten every day by `scripts/refresh_status.py` (scheduled task, early morning Europe/Berlin). Everything outside the markers is maintained by hand and by Claude during work sessions, and the daily job never touches it.
 
 <!-- AUTO:START -->
-_Auto-refreshed: 2026-11-10 17:08 (Europe/Berlin)._
+_Auto-refreshed: 2026-11-11 06:11 (Europe/Berlin)._
 
 ### Snapshot
 
-- Today: Tue 2026-11-10 (work day); next work day: Wed 2026-11-11
+- Today: Wed 2026-11-11 (work day); next work day: Thu 2026-11-12
 - Stage: pre-launch, nothing published yet
 - Next in the pipeline: #1 "3 Lines That Make AI Useful": next stage is Voiceover
 - Skills installed: 73 committed in `.claude/skills/`
-- Files: ideas 2, scripts 5, thumbnails 0, motion 268, voiceover 4, published 7, research 5
+- Files: ideas 2, scripts 5, thumbnails 0, motion 63, voiceover 4, published 7, research 5
 
 ### Pipeline (from `channel/ideas/first-12-ideas.md`)
 
@@ -32,6 +32,7 @@ _Auto-refreshed: 2026-11-10 17:08 (Europe/Berlin)._
 
 ### Last 10 commits
 
+- 2026-11-10  Bicycle-brake Short: upload package, English SRT, status
 - 2026-11-10  Status: bicycle-brake Short v2 rendered, waiting for Gate B
 - 2026-11-10  Bicycle-brake Short v2: cinematic shot-based Three.js engine, minimal HUD, new code-made sound
 - 2026-11-10  Status: bicycle brake v1 rejected, v2 research and scenario done, direction pending
@@ -41,7 +42,6 @@ _Auto-refreshed: 2026-11-10 17:08 (Europe/Berlin)._
 - 2026-11-10  STATUS: bicycle-brake Short script waiting for Gate A
 - 2026-11-10  Add bicycle-brake Short: fact sheet, beats.json, script with Eleven v4 text
 - 2026-11-10  Add step-by-step Short idea research (YouTube search snapshot, 8 topics)
-- 2026-11-10  Add step-by-step-short skill: airplane-style 3D build Short from one topic
 <!-- AUTO:END -->
 
 ## Current focus (update at the end of every work session)
