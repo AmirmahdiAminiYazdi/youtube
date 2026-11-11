@@ -1,0 +1,242 @@
+{
+  "slug": "special-water-well",
+  "series": "Everyday Things Explained",
+  "topic": "How a drilled water well works, built one part at a time from a drill and a patch of dirt",
+  "hook": {
+    "say": "You're building the hole 43 million Americans drink from. Before dinner, it fails 5 ways. How do you stop it?",
+    "title_top": "43 MILLION",
+    "title_bottom": "DRINK FROM IT."
+  },
+  "base": {
+    "part": "DRILL RIG",
+    "label": "DRILL RIG",
+    "kind": "box",
+    "tone": "steel",
+    "pos": [
+      -1.8,
+      0.5,
+      0
+    ],
+    "size": [
+      1.2,
+      1.0,
+      0.8
+    ],
+    "rot": [
+      0,
+      0,
+      0
+    ]
+  },
+  "beats": [
+    {
+      "say": "Water hides underground in sand and rock layers called aquifers. So you drill down to one. That's the borehole.",
+      "anchor": "borehole",
+      "part": "BOREHOLE",
+      "label": "BOREHOLE",
+      "kind": "cyl",
+      "tone": "navy",
+      "pos": [
+        0.6,
+        -1.0,
+        0
+      ],
+      "size": [
+        0.5,
+        2.4,
+        0.5
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "problem_text": "PROBLEM: NO WATER",
+      "creates": "the hole caves in",
+      "solves": "no water underground"
+    },
+    {
+      "say": "But loose ground caves in. So you slide a pipe down the hole. That's the casing.",
+      "anchor": "casing",
+      "part": "CASING",
+      "label": "CASING",
+      "kind": "cyl",
+      "tone": "steel",
+      "pos": [
+        0.6,
+        -0.8,
+        0
+      ],
+      "size": [
+        0.62,
+        2.2,
+        0.62
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "problem_text": "PROBLEM: HOLE CAVES IN",
+      "creates": "rain seeps down the outside of the pipe",
+      "solves": "hole caves in"
+    },
+    {
+      "say": "Now rain seeps down the outside of the pipe. So you fill the gap with cement or clay. That's the grout seal.",
+      "anchor": "grout",
+      "part": "GROUT SEAL",
+      "label": "GROUT SEAL",
+      "kind": "cyl",
+      "tone": "white",
+      "pos": [
+        0.6,
+        -0.3,
+        0
+      ],
+      "size": [
+        0.9,
+        0.7,
+        0.9
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "problem_text": "PROBLEM: RAIN SEEPS DOWN",
+      "creates": "sand comes in with the water",
+      "solves": "rain seeps down the outside"
+    },
+    {
+      "say": "In sandy ground, water drags sand in. So a slotted pipe holds the sand back, like a strainer. That's the well screen.",
+      "anchor": "screen",
+      "part": "WELL SCREEN",
+      "label": "WELL SCREEN",
+      "kind": "cyl",
+      "tone": "teal",
+      "pos": [
+        0.6,
+        -1.7,
+        0
+      ],
+      "size": [
+        0.64,
+        0.7,
+        0.64
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "analogy": "like a strainer",
+      "problem_text": "PROBLEM: SAND COMES IN",
+      "creates": "the water sits too deep to reach",
+      "solves": "sand comes in with the water"
+    },
+    {
+      "say": "Now the water sits far below. A pump built for underwater work pushes it up. That's the submersible pump.",
+      "anchor": "pump",
+      "part": "SUBMERSIBLE PUMP",
+      "label": "SUBMERSIBLE PUMP",
+      "kind": "cyl",
+      "tone": "orange",
+      "pos": [
+        0.6,
+        -1.45,
+        0
+      ],
+      "size": [
+        0.4,
+        0.5,
+        0.4
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "problem_text": "PROBLEM: WATER TOO DEEP",
+      "creates": "the pump starts every time you pour a glass",
+      "solves": "the water sits too deep"
+    },
+    {
+      "say": "Now the pump starts whenever you pour a glass. So a tank holds pressurized water. That's the pressure tank.",
+      "anchor": "tank",
+      "part": "PRESSURE TANK",
+      "label": "PRESSURE TANK",
+      "kind": "cyl",
+      "tone": "white",
+      "pos": [
+        2.4,
+        0.1,
+        0
+      ],
+      "size": [
+        0.9,
+        1.2,
+        0.9
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "problem_text": "PROBLEM: PUMP KEEPS STARTING",
+      "creates": "",
+      "solves": "the pump starts every time you pour a glass"
+    }
+  ],
+  "payoff": {
+    "say": "You built a water well. The neighbor brings a bucket.",
+    "title": "YOU BUILT A WELL.",
+    "subtitle": "ONE PROBLEM AT A TIME"
+  },
+  "ask": {
+    "say": "Save this for when someone asks where well water comes from."
+  },
+  "original_element": "The build itself: a cutaway of a drilled well where every part is added on screen to fix the exact problem the previous part caused.",
+  "sources": [
+    {
+      "claim": "More than 43 million people in the US (about 15 percent) rely on private wells for drinking water",
+      "source": "USGS, What's in Your Well Water? (usgs.gov/mission-areas/water-resources/science/domestic-private-supply-wells); USGS Circular 1360 summary (usgs.gov/programs/environmental-health-program/science/groundwater-quality-principal-aquifers-united-states); EPA, About Private Water Wells (about 15 percent of Americans)"
+    },
+    {
+      "claim": "5 = our own count of the problems shown after the water is found: hole caves in, rain seeps down, sand comes in, water too deep, pump keeps starting. 6 = our own count of the parts built.",
+      "source": "This script (beats.json problem_text fields)"
+    },
+    {
+      "claim": "Aquifers are water-bearing rock or sediment that yields water to wells",
+      "source": "USGS Water Science School, Aquifers and Groundwater, usgs.gov/water-science-school/science/aquifers-and-groundwater; Maine Geological Survey, Sand and Gravel Aquifers"
+    },
+    {
+      "claim": "Casing is a steel or plastic pipe that keeps the borehole from caving in",
+      "source": "University of Arizona Cooperative Extension, Private Water Well Components (az1486b); US EPA Private Well module (PRIV_WELL_Module_508)"
+    },
+    {
+      "claim": "Grout (cement or clay) fills the gap between casing and hole to stop surface water running down the outside",
+      "source": "Washington State WAC 173-160-231 (surface seals); University of Arizona Cooperative Extension az1504; Mississippi State Extension P1815 Wellhead Protection"
+    },
+    {
+      "claim": "A well screen lets water in and keeps sand out; used in sand and gravel aquifers, bedrock wells are often open holes",
+      "source": "University of Arizona Cooperative Extension az1504; Warren County (Ohio) well screens BMP; US EPA Private Well module"
+    },
+    {
+      "claim": "A submersible pump sits in the well below the water level and pushes water up",
+      "source": "University of Nebraska-Lincoln Extension G2152 (2012); University of Arizona Cooperative Extension az1504"
+    },
+    {
+      "claim": "A pressure tank stores water under pressure so the pump starts and stops less often",
+      "source": "University of Nebraska-Lincoln Extension G2152 (2012); University of Arizona Cooperative Extension az1504"
+    }
+  ],
+  "emphasis": [
+    "aquifers",
+    "casing",
+    "grout",
+    "strainer",
+    "pump",
+    "pressurized",
+    "well"
+  ]
+}

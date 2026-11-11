@@ -3,7 +3,7 @@
 Read this file first at the start of every session. The block between the AUTO markers is rewritten every day by `scripts/refresh_status.py` (scheduled task, early morning Europe/Berlin). Everything outside the markers is maintained by hand and by Claude during work sessions, and the daily job never touches it.
 
 <!-- AUTO:START -->
-_Auto-refreshed: 2026-11-11 06:11 (Europe/Berlin)._
+_Auto-refreshed: 2026-11-11 13:16 (Europe/Berlin)._
 
 ### Snapshot
 
@@ -11,7 +11,7 @@ _Auto-refreshed: 2026-11-11 06:11 (Europe/Berlin)._
 - Stage: pre-launch, nothing published yet
 - Next in the pipeline: #1 "3 Lines That Make AI Useful": next stage is Voiceover
 - Skills installed: 73 committed in `.claude/skills/`
-- Files: ideas 2, scripts 5, thumbnails 0, motion 63, voiceover 4, published 7, research 5
+- Files: ideas 2, scripts 8, thumbnails 1, motion 63, voiceover 7, published 7, research 6
 
 ### Pipeline (from `channel/ideas/first-12-ideas.md`)
 
@@ -32,16 +32,7 @@ _Auto-refreshed: 2026-11-11 06:11 (Europe/Berlin)._
 
 ### Last 10 commits
 
-- 2026-11-10  Bicycle-brake Short: upload package, English SRT, status
-- 2026-11-10  Status: bicycle-brake Short v2 rendered, waiting for Gate B
-- 2026-11-10  Bicycle-brake Short v2: cinematic shot-based Three.js engine, minimal HUD, new code-made sound
-- 2026-11-10  Status: bicycle brake v1 rejected, v2 research and scenario done, direction pending
-- 2026-11-10  Add cinematic 3D research note and motion scenario for the bicycle-brake Short
-- 2026-11-10  Bicycle-brake Short: voiceover (Eleven v4), word timings, 3D project with real bike parts
-- 2026-11-10  Bicycle-brake script: numeric surprise hook (80 kg, 32 km/h, 8 percent, 560 W) with sourced calculation
-- 2026-11-10  STATUS: bicycle-brake Short script waiting for Gate A
-- 2026-11-10  Add bicycle-brake Short: fact sheet, beats.json, script with Eleven v4 text
-- 2026-11-10  Add step-by-step Short idea research (YouTube search snapshot, 8 topics)
+- (no commits)
 <!-- AUTO:END -->
 
 ## Current focus (update at the end of every work session)
@@ -57,7 +48,11 @@ _Auto-refreshed: 2026-11-11 06:11 (Europe/Berlin)._
 - Adaptive-headlights Short (2026-11-04): the owner made a finished 36.5 s vertical video, `brainmaxx-adaptive-headlights`, in ChatGPT (file says hyperframes 0.8.212; outside our template) and decided to upload it as is, as the second video. Review: `channel/research/2026-11-04-adaptive-headlights-review.fa.md` (known issues left in: a wrong scene flashes in the first 0.47 s, narration ends with "Like and subscribe" against voice.md, silent last 1 s with a thumbnail-style card, fonts and colours are not Outfit / brand palette, captions sit below y 1420). Upload package is ready in `channel/published/special-adaptive-headlights.md` (title "How Adaptive Headlights Work", description, 12 tags, pinned comment, Studio settings, TikTok and Reels captions); not published yet, the owner publishes. New gate for later Shorts: `python3 scripts/check_short.py video.mp4` after every render. After publishing: pin the comment, add this video or a playlist to the End screen of "The Impossible Escape", read Viewed vs Swiped Away after 48 h. Re-checked 2026-11-05 with the full yt skills (metadata and shorts sub-skills, seo-playbook, algorithm-guide, monetization-guide): hashtags cut to 4 (50 chars, the old 5 were 62 against the playbook's 60 for Shorts), description lines 1-2 rewritten so the yt-seo query test passes, three title types written (search recommended), claims verified with two sources, audio measured (no music bed). Optional extras: a fixed video that holds the settled hook frame for the first 0.6 s (no flash frame, `check_short.py` 0 FAIL; sent in chat, not committed) and an exact English SRT built by OCR of the burned-in captions (`channel/published/special-adaptive-headlights.en.srt`). The first review overstated two things and was corrected: caption gaps at sentence ends are normal, and the narration is 110 words in about 35.4 s (about 186 wpm), with short pauses.
 - Bicycle-brake Short (2026-11-10, `special-bicycle-brakes`): first topic for `step-by-step-short`. Script drafted (136 words, about 52 s, `script_budget.py` 0 FAIL / 1 WARN hookscore 43), facts checked with two sources each (`channel/research/special-bicycle-brakes.facts.md`), Eleven v4 tagged text in `channel/scripts/special-bicycle-brakes.md`. Voiceover received (59.56 s, `channel/voiceover/special-bicycle-brakes.mp3` + `.words.json`) and a first 3D render (v1) was built. The owner REJECTED the v1 motion (too flat, parts too small, no visible cause and effect). Research on viral brake and parts Shorts and on Claude-made 3D videos: `channel/research/2026-11-10-cinematic-3d-research.md`; 12-shot rebuild scenario: `channel/scripts/special-bicycle-brakes.motion.md`. Claude-made trend (2 Shorts inspected, small sample): talking-head tutorials with short inserts of low-poly or isometric clean 3D. The owner chose cinematic Three.js (2026-11-10). v2 built: `assets/cine.js` (shot-based cameras, PBR bike, rim brake, lever and cable, disc and caliper, hydraulic hose with a glass master cylinder, rain, heat glow, bigger rotor, 3D numbers, shoes gag), minimal HUD (`compositions/hud.html`), new sound (`scripts/make_sfx_v2.py`). Rendered here in about 1 h 40 min with 2 workers (about 2.8 s per frame); master `renders/special-bicycle-brakes.mp4` passes `check_short.py` (0 FAIL, 0 WARN, -14.7 LUFS), 8 Mbps copy sent to the owner. Gate B passed (owner asked for the upload package, 2026-11-10). Upload package ready: `channel/published/special-bicycle-brakes.md` + `.en.srt` (title "How Bike Brakes Work, Built Step by Step" after a live YouTube autocomplete and Shorts check, description with sources and "Narration is an AI-generated voice.", 15 tags, pinned comment, Studio settings with altered content: Yes, TikTok and Reels captions, test criteria); not published, the owner publishes. NEXT: owner uploads the 8 Mbps file; read Viewed vs Swiped Away after 48-96 h. Known small issue: the word-by-word captions sometimes squeeze the space next to the highlighted word.
 
+- Water-well Short (2026-11-11, `special-water-well`, second `step-by-step-short` topic): facts with two sources per claim (`channel/research/special-water-well.facts.md`, incl. C7: more than 43 million people in the US use private wells, USGS + EPA), script and beats (`channel/scripts/special-water-well.md`, `.beats.json`, 158 words, `script_budget.py` 0 FAIL 0 WARN), hook rewritten three times on owner feedback to a numeric first sentence (hookscore 85): "You're building the hole 43 million Americans drink from. Before dinner, it fails 5 ways. How do you stop it?" Gate A passed. Voiceover generated through the ElevenLabs connector (Eleven v4, library voice "Jon - Catalyst", tagged text `channel/voiceover/special-water-well.elevenlabs-v4.tagged.txt`), owner chose take 1; Scribe word timings in `channel/voiceover/special-water-well.words.json` (spoken 53.76 s). Motion scenario (cinematic, floating earth-block cutaway, FAIL meter 0-5, problem animation before every part): `channel/scripts/special-water-well.motion.md`. Cover prompt for the owner: `channel/thumbnails/special-water-well.cover-prompt.md`; the owner's cover image is held 1 s at the end. NEXT: owner sends the take-1 mp3 (the container cannot download from elevenlabsusercontent.com) and the cover PNG; then build the 3D project from the brake v2 engine, snapshots, render, `check_short.py`, Gate B.
+
 ## Decisions made
+
+- 2026-11-11: water-well Short uses the floating earth-block cutaway, a problem animation before every part, ElevenLabs voice "Jon - Catalyst" (take 1), and the owner's cover image held about 1 s at the end.
 
 - 2026-11-10: bicycle-brake v2 uses cinematic Three.js (PBR, depth of field, sparks, heat glow), chosen by the owner after the v1 motion was rejected as too flat.
 
@@ -81,6 +76,8 @@ _Auto-refreshed: 2026-11-11 06:11 (Europe/Berlin)._
 - 2026-11-10: first topic for `step-by-step-short` is the bicycle brake (slug `special-bicycle-brakes` until the series question is decided). Voiceover with ElevenLabs Eleven v4 and light audio tags (voice-quality only, no sound-effect tags, since SFX are made in code).
 
 ## Open questions
+
+- Water-well: take-1 mp3 from the ElevenLabs flow "Brainmaxx - How a Water Well Works (voiceover)" must be downloaded by the owner and put in `channel/voiceover/special-water-well.mp3`.
 
 - Source links for the bicycle-brake description: the facts sheet lists only titles and outlets; the package cites them without URLs. Add links if the owner wants them (needs a re-check of each page).
 
