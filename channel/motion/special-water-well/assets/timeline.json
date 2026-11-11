@@ -1,0 +1,139 @@
+{
+ "slug": "special-water-well",
+ "estimate": false,
+ "total": 55.05,
+ "loop": 54.9,
+ "voice_duration": 53.708,
+ "cta_start": 50.956,
+ "cta_dur": 2.944,
+ "payoff_t": 47.2,
+ "segments": [
+  {
+   "id": "hook",
+   "seg": "hook",
+   "t": 0.08,
+   "t_end": 7.64,
+   "t_anchor": 0.08,
+   "say": "You're building the hole 43 million Americans drink from. Before dinner, it fails 5 ways. How do you stop it?"
+  },
+  {
+   "id": "b1",
+   "seg": "beat",
+   "t": 7.92,
+   "t_end": 14.8,
+   "t_anchor": 14.0,
+   "say": "Water hides underground in sand and rock layers called aquifers. So you drill down to one. That's the borehole."
+  },
+  {
+   "id": "b2",
+   "seg": "beat",
+   "t": 14.88,
+   "t_end": 19.76,
+   "t_anchor": 19.12,
+   "say": "But loose ground caves in. So you slide a pipe down the hole. That's the casing."
+  },
+  {
+   "id": "b3",
+   "seg": "beat",
+   "t": 19.84,
+   "t_end": 26.4,
+   "t_anchor": 25.44,
+   "say": "Now rain seeps down the outside of the pipe. So you fill the gap with cement or clay. That's the grout seal."
+  },
+  {
+   "id": "b4",
+   "seg": "beat",
+   "t": 26.48,
+   "t_end": 34.0,
+   "t_anchor": 33.28,
+   "say": "In sandy ground, water drags sand in. So a slotted pipe holds the sand back, like a strainer. That's the well screen."
+  },
+  {
+   "id": "b5",
+   "seg": "beat",
+   "t": 34.08,
+   "t_end": 40.64,
+   "t_anchor": 36.24,
+   "say": "Now the water sits far below. A pump built for underwater work pushes it up. That's the submersible pump."
+  },
+  {
+   "id": "b6",
+   "seg": "beat",
+   "t": 40.72,
+   "t_end": 47.12,
+   "t_anchor": 43.84,
+   "say": "Now the pump starts whenever you pour a glass. So a tank holds pressurized water. That's the pressure tank."
+  },
+  {
+   "id": "payoff",
+   "seg": "payoff",
+   "t": 47.2,
+   "t_end": 50.8,
+   "t_anchor": 47.2,
+   "say": "You built a water well. The neighbor brings a bucket."
+  },
+  {
+   "id": "ask",
+   "seg": "ask",
+   "t": 51.006,
+   "t_end": 53.76,
+   "t_anchor": 51.006,
+   "say": "Save this for when someone asks where well water comes from."
+  }
+ ],
+ "parts": [
+  {
+   "id": "base",
+   "t": 0.0,
+   "label": "DRILL RIG",
+   "step": 0
+  },
+  {
+   "id": "b1",
+   "t": 14.0,
+   "label": "BOREHOLE",
+   "step": 1
+  },
+  {
+   "id": "b2",
+   "t": 19.12,
+   "label": "CASING",
+   "step": 2
+  },
+  {
+   "id": "b3",
+   "t": 25.44,
+   "label": "GROUT SEAL",
+   "step": 3
+  },
+  {
+   "id": "b4",
+   "t": 33.28,
+   "label": "WELL SCREEN",
+   "step": 4
+  },
+  {
+   "id": "b5",
+   "t": 36.24,
+   "label": "SUBMERSIBLE PUMP",
+   "step": 5
+  },
+  {
+   "id": "b6",
+   "t": 43.84,
+   "label": "PRESSURE TANK",
+   "step": 6
+  }
+ ],
+ "emphasis": [
+  "aquifers",
+  "casing",
+  "grout",
+  "strainer",
+  "pump",
+  "pressurized",
+  "well"
+ ],
+ "cover_start": 53.9,
+ "cover_dur": 1.0
+}

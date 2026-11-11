@@ -1,7 +1,6 @@
 {
  "audio": "special-water-well.mp3",
- "duration_s": null,
- "spoken_s": 53.76,
+ "duration_s": 53.708,
  "source": "ElevenLabs Scribe v1 of take 1 (voice: Jon - Catalyst, Eleven v4, tagged text); audio tags removed. duration_s to be set from the mp3 with ffprobe.",
  "words": [
   {

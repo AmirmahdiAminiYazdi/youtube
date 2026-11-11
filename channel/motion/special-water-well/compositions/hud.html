@@ -1,0 +1,149 @@
+<template>
+  <!-- special-water-well HUD (hand-written, motion scenario channel/scripts/special-water-well.motion.md).
+       Hook title, FAIL meter (0..5 problems -> fixes), part pills (n / 6), strainer badge, pump ON/OFF toggle, payoff title.
+       All times are voiceover word times of take 1. -->
+  <style>
+    @font-face { font-family: "BrandOutfit"; src: url("assets/fonts/Outfit-Bold.ttf"); font-weight: 700; }
+    @font-face { font-family: "BrandOutfit"; src: url("assets/fonts/Outfit-Regular.ttf"); font-weight: 400; }
+    #root { position: absolute; inset: 0; font-family: "BrandOutfit", sans-serif; color: #F4F1EA; pointer-events: none; }
+    .band { position: absolute; left: 0; width: 1080px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .t-big { font-weight: 700; font-size: 168px; line-height: 0.95; letter-spacing: 0.01em; -webkit-text-stroke: 14px #0B1B33; paint-order: stroke fill; text-shadow: 0 12px 44px rgba(3, 9, 20, 0.9); }
+    .t-sub { font-weight: 700; font-size: 78px; line-height: 1; color: #19C3B1; letter-spacing: 0.04em; margin-top: 10px; -webkit-text-stroke: 10px #0B1B33; paint-order: stroke fill; text-shadow: 0 8px 30px rgba(3, 9, 20, 0.9); }
+    .meter { display: flex; align-items: center; gap: 16px; padding: 14px 26px 14px 30px; border-radius: 70px; background: rgba(8, 20, 40, 0.72); border: 3px solid rgba(25, 195, 177, 0.45); box-shadow: 0 10px 40px rgba(3, 9, 20, 0.55); }
+    .mlabel { font-weight: 700; font-size: 40px; letter-spacing: 0.14em; color: rgba(244, 241, 234, 0.85); margin-right: 8px; }
+    .hex { position: relative; width: 82px; height: 92px; }
+    .hex .b, .hex .f { position: absolute; inset: 0; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); }
+    .hex .b { background: rgba(244, 241, 234, 0.28); }
+    .hex .b::after { content: ""; position: absolute; inset: 6px; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); background: #0B1B33; }
+    .hex .f { background: #FF7A3D; opacity: 0; }
+    .hex svg { position: absolute; left: 21px; top: 26px; width: 40px; height: 40px; opacity: 0; }
+    .pill { display: inline-flex; align-items: center; gap: 22px; padding: 14px 40px 14px 16px; border-radius: 60px;
+            background: rgba(11, 27, 51, 0.85); border: 4px solid #19C3B1; box-shadow: 0 10px 40px rgba(3, 9, 20, 0.6), 0 0 32px rgba(25, 195, 177, 0.25); }
+    .num { width: 74px; height: 74px; border-radius: 50%; background: #19C3B1; color: #0B1B33; font-weight: 700; font-size: 42px; display: flex; align-items: center; justify-content: center; }
+    .name { font-weight: 700; font-size: 56px; letter-spacing: 0.035em; line-height: 1; white-space: nowrap; }
+    .of { font-weight: 400; font-size: 30px; color: rgba(244, 241, 234, 0.7); letter-spacing: 0.1em; margin-left: -6px; }
+    .badge { position: absolute; display: flex; align-items: center; gap: 18px; padding: 14px 28px 14px 14px; border-radius: 60px; background: rgba(11, 27, 51, 0.88); border: 3px solid #19C3B1; box-shadow: 0 10px 40px rgba(3, 9, 20, 0.6); }
+    .badge .ic { width: 92px; height: 92px; border-radius: 50%; background: rgba(25, 195, 177, 0.16); display: flex; align-items: center; justify-content: center; }
+    .badge .tx { font-weight: 700; font-size: 44px; letter-spacing: 0.05em; white-space: nowrap; }
+    .tog { position: relative; width: 150px; height: 70px; border-radius: 40px; background: #31404f; border: 3px solid rgba(244, 241, 234, 0.4); }
+    .knob { position: absolute; top: 6px; left: 6px; width: 52px; height: 52px; border-radius: 50%; background: #F4F1EA; }
+    .state { font-weight: 700; font-size: 44px; letter-spacing: 0.08em; width: 210px; text-align: left; }
+    .kick { font-weight: 700; font-size: 64px; line-height: 1; letter-spacing: 0.08em; -webkit-text-stroke: 10px #0B1B33; paint-order: stroke fill; text-shadow: 0 8px 30px rgba(3, 9, 20, 0.9); }
+    .big { font-weight: 700; font-size: 140px; line-height: 1.0; color: #19C3B1; -webkit-text-stroke: 12px #0B1B33; paint-order: stroke fill; text-shadow: 0 10px 40px rgba(3, 9, 20, 0.9); }
+    .small { font-weight: 700; font-size: 44px; letter-spacing: 0.12em; margin-top: 14px; color: #F4F1EA; -webkit-text-stroke: 8px #0B1B33; paint-order: stroke fill; }
+  </style>
+  <div id="root" data-composition-id="hud" data-width="1080" data-height="1920">
+    <div id="hud-hook" class="clip band" data-start="0" data-duration="3.75" style="top: 210px">
+      <div class="t-big" id="h1">43 MILLION</div>
+      <div class="t-sub" id="h2">DRINK FROM IT.</div>
+    </div>
+
+    <div id="hud-meter" class="clip band" data-start="5.3" data-duration="41.85" style="top: 204px">
+      <div class="meter" id="meter">
+        <div class="mlabel" id="mlabel">FAILS</div>
+        <div class="hex" id="x1"><div class="b"></div><div class="f"></div><svg class="sx" viewBox="0 0 40 40"><path d="M8 8 L32 32 M32 8 L8 32" stroke="#0B1B33" stroke-width="7" stroke-linecap="round"/></svg><svg class="sc" viewBox="0 0 40 40"><path d="M6 21 L16 31 L34 9" fill="none" stroke="#0B1B33" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="hex" id="x2"><div class="b"></div><div class="f"></div><svg class="sx" viewBox="0 0 40 40"><path d="M8 8 L32 32 M32 8 L8 32" stroke="#0B1B33" stroke-width="7" stroke-linecap="round"/></svg><svg class="sc" viewBox="0 0 40 40"><path d="M6 21 L16 31 L34 9" fill="none" stroke="#0B1B33" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="hex" id="x3"><div class="b"></div><div class="f"></div><svg class="sx" viewBox="0 0 40 40"><path d="M8 8 L32 32 M32 8 L8 32" stroke="#0B1B33" stroke-width="7" stroke-linecap="round"/></svg><svg class="sc" viewBox="0 0 40 40"><path d="M6 21 L16 31 L34 9" fill="none" stroke="#0B1B33" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="hex" id="x4"><div class="b"></div><div class="f"></div><svg class="sx" viewBox="0 0 40 40"><path d="M8 8 L32 32 M32 8 L8 32" stroke="#0B1B33" stroke-width="7" stroke-linecap="round"/></svg><svg class="sc" viewBox="0 0 40 40"><path d="M6 21 L16 31 L34 9" fill="none" stroke="#0B1B33" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="hex" id="x5"><div class="b"></div><div class="f"></div><svg class="sx" viewBox="0 0 40 40"><path d="M8 8 L32 32 M32 8 L8 32" stroke="#0B1B33" stroke-width="7" stroke-linecap="round"/></svg><svg class="sc" viewBox="0 0 40 40"><path d="M6 21 L16 31 L34 9" fill="none" stroke="#0B1B33" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+    </div>
+
+    <div id="hud-p1" class="clip band" data-start="14.0" data-duration="1.75" style="top: 334px"><div class="pill" id="p1"><div class="num">1</div><div class="name">BOREHOLE</div><div class="of">/ 6</div></div></div>
+    <div id="hud-p2" class="clip band" data-start="19.12" data-duration="1.8" style="top: 334px"><div class="pill" id="p2"><div class="num">2</div><div class="name">CASING</div><div class="of">/ 6</div></div></div>
+    <div id="hud-p3" class="clip band" data-start="25.44" data-duration="1.9" style="top: 334px"><div class="pill" id="p3"><div class="num">3</div><div class="name">GROUT SEAL</div><div class="of">/ 6</div></div></div>
+    <div id="hud-p4" class="clip band" data-start="33.08" data-duration="1.85" style="top: 334px"><div class="pill" id="p4"><div class="num">4</div><div class="name">WELL SCREEN</div><div class="of">/ 6</div></div></div>
+    <div id="hud-p5" class="clip band" data-start="39.36" data-duration="1.75" style="top: 334px"><div class="pill" id="p5"><div class="num">5</div><div class="name">SUBMERSIBLE PUMP</div><div class="of">/ 6</div></div></div>
+    <div id="hud-p6" class="clip band" data-start="46.16" data-duration="0.95" style="top: 334px"><div class="pill" id="p6"><div class="num">6</div><div class="name">PRESSURE TANK</div><div class="of">/ 6</div></div></div>
+
+    <div id="hud-str" class="clip" data-start="31.84" data-duration="1.2" style="position:absolute; left:0; top:452px; width:1080px; height:130px">
+      <div class="badge" id="str" style="left: 210px; top: 0">
+        <div class="ic"><svg width="70" height="70" viewBox="0 0 70 70"><path d="M8 26 H56 A24 24 0 0 1 8 26 Z" fill="none" stroke="#19C3B1" stroke-width="5" stroke-linejoin="round"/><path d="M56 30 L68 24" stroke="#19C3B1" stroke-width="5" stroke-linecap="round"/>
+          <g fill="#19C3B1"><circle cx="20" cy="34" r="2.6"/><circle cx="30" cy="34" r="2.6"/><circle cx="40" cy="34" r="2.6"/><circle cx="25" cy="42" r="2.6"/><circle cx="35" cy="42" r="2.6"/><circle cx="30" cy="49" r="2.6"/></g></svg></div>
+        <div class="tx">LIKE A STRAINER</div>
+      </div>
+    </div>
+
+    <div id="hud-tog" class="clip" data-start="41.2" data-duration="5.8" style="position:absolute; left:0; top:452px; width:1080px; height:130px">
+      <div class="badge" id="tog" style="left: 250px; top: 0">
+        <div class="tx" style="margin-left: 16px">PUMP</div>
+        <div class="tog" id="tg"><div class="knob" id="kn"></div></div>
+        <div class="state" style="position:relative; height:50px"><span id="sOff" style="position:absolute; left:0; top:0">OFF</span><span id="sOn" style="position:absolute; left:0; top:0; color:#FF7A3D; opacity:0">ON</span><span id="sRest" style="position:absolute; left:0; top:0; color:#19C3B1; opacity:0">RESTING</span></div>
+      </div>
+    </div>
+
+    <div id="hud-pay" class="clip band" data-start="47.12" data-duration="3.75" style="top: 206px">
+      <div class="kick" id="py1">YOU BUILT A</div>
+      <div class="big" id="py2">WATER WELL.</div>
+      <div class="small" id="py3">ONE PROBLEM AT A TIME</div>
+    </div>
+
+    <div id="hud-hook2" class="clip band" data-start="54.9" data-duration="0.15" style="top: 210px">
+      <div class="t-big">43 MILLION</div>
+      <div class="t-sub">DRINK FROM IT.</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // hook: settled at frame 0 (thumbnail), punch on "43", leaves up
+      tl.set("#h1, #h2", { opacity: 1 }, 0);
+      tl.to("#h1", { scale: 1.12, duration: 0.12, ease: "power2.out" }, 1.12).to("#h1", { scale: 1, duration: 0.35, ease: "back.out(2)" }, 1.24);
+      tl.to("#h2", { scale: 1.08, duration: 0.12, ease: "power2.out" }, 2.8).to("#h2", { scale: 1, duration: 0.3, ease: "back.out(2)" }, 2.92);
+      tl.to("#hud-hook", { opacity: 0, y: -50, duration: 0.22, ease: "power2.in" }, 3.5);
+
+      // FAIL meter: the 5 slots drop in on "5"
+      tl.fromTo("#meter", { opacity: 0, y: -30, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: "back.out(2)" }, 5.3);
+      for (let i = 1; i <= 5; i++) tl.fromTo("#x" + i, { scale: 0, rotation: -60 }, { scale: 1, rotation: 0, duration: 0.28, ease: "back.out(2.4)" }, 5.36 + (i - 1) * 0.08);
+      tl.to("#meter", { scale: 1.05, duration: 0.1, yoyo: true, repeat: 1 }, 5.9);
+      // problems (orange + x + shake) and fixes (teal + check)
+      const P = [[15.76, 19.12], [20.64, 25.44], [28.0, 33.08], [35.04, 39.36], [41.28, 46.16]];
+      P.forEach(([f, ok], i) => {
+        const id = "#x" + (i + 1);
+        tl.set(id + " .f", { backgroundColor: "#FF7A3D" }, f);
+        tl.fromTo(id + " .f", { opacity: 0 }, { opacity: 1, duration: 0.12 }, f);
+        tl.fromTo(id + " .sx", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.22, ease: "back.out(3)" }, f);
+        tl.fromTo(id, { x: -9 }, { x: 0, duration: 0.45, ease: "elastic.out(1.2, 0.25)" }, f + 0.02);
+        tl.fromTo(id, { scale: 1.25 }, { scale: 1, duration: 0.3, ease: "power2.out" }, f);
+        tl.to(id + " .sx", { opacity: 0, duration: 0.12 }, ok);
+        tl.to(id + " .f", { backgroundColor: "#19C3B1", duration: 0.18 }, ok);
+        tl.fromTo(id + " .sc", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }, ok + 0.04);
+        tl.fromTo(id, { scale: 1.3 }, { scale: 1, duration: 0.35, ease: "back.out(2)" }, ok);
+      });
+      tl.to("#mlabel", { color: "#19C3B1", duration: 0.2 }, 46.3);
+      for (let i = 1; i <= 5; i++) tl.to("#x" + i, { scale: 1.18, duration: 0.12, yoyo: true, repeat: 1, ease: "power2.out" }, 46.45 + (i - 1) * 0.06);
+      tl.to("#meter", { opacity: 0, y: -30, duration: 0.22, ease: "power2.in" }, 46.95);
+
+      // part pills
+      const pills = [["#p1", 14.0, 1.75], ["#p2", 19.12, 1.8], ["#p3", 25.44, 1.9], ["#p4", 33.08, 1.85], ["#p5", 39.36, 1.75], ["#p6", 46.16, 0.95]];
+      for (const [id, t0, d] of pills) {
+        tl.fromTo(id, { scale: 0.6, opacity: 0, y: 24 }, { scale: 1, opacity: 1, y: 0, duration: 0.36, ease: "back.out(2.2)" }, t0);
+        tl.fromTo(id + " .num", { rotation: -120 }, { rotation: 0, duration: 0.5, ease: "back.out(1.8)" }, t0 + 0.05);
+        tl.to(id, { opacity: 0, y: -24, duration: 0.2, ease: "power2.in" }, t0 + d - 0.22);
+      }
+
+      // strainer badge
+      tl.fromTo("#str", { opacity: 0, scale: 0.5, x: -40 }, { opacity: 1, scale: 1, x: 0, duration: 0.32, ease: "back.out(2.2)" }, 31.84);
+      tl.to("#str", { opacity: 0, duration: 0.18 }, 32.84);
+
+      // pump toggle: blinks ON/OFF on every pour, then rests after the tank
+      tl.fromTo("#tog", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, 41.2);
+      const B = [[41.28, 41.52], [41.72, 41.92], [42.12, 42.3], [42.48, 42.62], [42.8, 42.92], [43.08, 43.18]];
+      for (const [a, b] of B) {
+        tl.to("#kn", { x: 80, duration: 0.05 }, a).set("#tg", { backgroundColor: "#FF7A3D", borderColor: "#FFC6A8" }, a).set("#sOn", { opacity: 1 }, a).set("#sOff", { opacity: 0 }, a);
+        tl.to("#kn", { x: 0, duration: 0.05 }, b).set("#tg", { backgroundColor: "#31404f", borderColor: "rgba(244,241,234,0.4)" }, b).set("#sOn", { opacity: 0 }, b).set("#sOff", { opacity: 1 }, b);
+        tl.fromTo("#tog", { scale: 1.06 }, { scale: 1, duration: 0.12 }, a);
+      }
+      tl.set("#sOff", { opacity: 0 }, 44.5).set("#sRest", { opacity: 1 }, 44.5).set("#tg", { backgroundColor: "#16514f", borderColor: "#19C3B1" }, 44.5);
+      tl.fromTo("#sRest", { scale: 1.2 }, { scale: 1, duration: 0.3, ease: "back.out(2)" }, 44.5);
+      tl.to("#tog", { opacity: 0, duration: 0.2 }, 46.75);
+
+      // payoff
+      tl.fromTo("#py1", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 47.2);
+      tl.fromTo("#py2", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2)" }, 47.85);
+      tl.fromTo("#py3", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 48.6);
+      tl.to("#hud-pay", { opacity: 0, duration: 0.2 }, 50.62);
+      window.__timelines["hud"] = tl;
+    })();
+  </script>
+</template>
