@@ -3,15 +3,15 @@
 Read this file first at the start of every session. The block between the AUTO markers is rewritten every day by `scripts/refresh_status.py` (scheduled task, early morning Europe/Berlin). Everything outside the markers is maintained by hand and by Claude during work sessions, and the daily job never touches it.
 
 <!-- AUTO:START -->
-_Auto-refreshed: 2026-11-11 15:45 (Europe/Berlin)._
+_Auto-refreshed: 2026-11-12 06:11 (Europe/Berlin)._
 
 ### Snapshot
 
-- Today: Wed 2026-11-11 (work day); next work day: Thu 2026-11-12
+- Today: Thu 2026-11-12 (work day); next work day: Fri 2026-11-13
 - Stage: pre-launch, nothing published yet
 - Next in the pipeline: #1 "3 Lines That Make AI Useful": next stage is Voiceover
 - Skills installed: 73 committed in `.claude/skills/`
-- Files: ideas 2, scripts 8, thumbnails 2, motion 288, voiceover 8, published 9, research 6
+- Files: ideas 2, scripts 8, thumbnails 2, motion 89, voiceover 8, published 9, research 6
 
 ### Pipeline (from `channel/ideas/first-12-ideas.md`)
 
@@ -32,8 +32,16 @@ _Auto-refreshed: 2026-11-11 15:45 (Europe/Berlin)._
 
 ### Last 10 commits
 
+- 2026-11-11  Water-well upload package v2: live YouTube research, new title, tags, Related video, TikTok and Reels captions
 - 2026-11-11  Water-well Short: cinematic 3D build, HUD, sound, cover tail, upload package and SRT
 - 2026-11-11  Water-well Short: facts, script, Eleven v4 voiceover timings, cinematic motion scenario, cover prompt
+- 2026-11-10  Bicycle-brake Short: upload package, English SRT, status
+- 2026-11-10  Status: bicycle-brake Short v2 rendered, waiting for Gate B
+- 2026-11-10  Bicycle-brake Short v2: cinematic shot-based Three.js engine, minimal HUD, new code-made sound
+- 2026-11-10  Status: bicycle brake v1 rejected, v2 research and scenario done, direction pending
+- 2026-11-10  Add cinematic 3D research note and motion scenario for the bicycle-brake Short
+- 2026-11-10  Bicycle-brake Short: voiceover (Eleven v4), word timings, 3D project with real bike parts
+- 2026-11-10  Bicycle-brake script: numeric surprise hook (80 kg, 32 km/h, 8 percent, 560 W) with sourced calculation
 <!-- AUTO:END -->
 
 ## Current focus (update at the end of every work session)
