@@ -3,11 +3,11 @@
 Read this file first at the start of every session. The block between the AUTO markers is rewritten every day by `scripts/refresh_status.py` (scheduled task, early morning Europe/Berlin). Everything outside the markers is maintained by hand and by Claude during work sessions, and the daily job never touches it.
 
 <!-- AUTO:START -->
-_Auto-refreshed: 2026-11-12 06:11 (Europe/Berlin)._
+_Auto-refreshed: 2026-11-13 06:18 (Europe/Berlin)._
 
 ### Snapshot
 
-- Today: Thu 2026-11-12 (work day); next work day: Fri 2026-11-13
+- Today: Fri 2026-11-13 (work day); next work day: Mon 2026-11-16
 - Stage: pre-launch, nothing published yet
 - Next in the pipeline: #1 "3 Lines That Make AI Useful": next stage is Voiceover
 - Skills installed: 73 committed in `.claude/skills/`
