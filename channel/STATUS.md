@@ -3,7 +3,7 @@
 Read this file first at the start of every session. The block between the AUTO markers is rewritten every day by `scripts/refresh_status.py` (scheduled task, early morning Europe/Berlin). Everything outside the markers is maintained by hand and by Claude during work sessions, and the daily job never touches it.
 
 <!-- AUTO:START -->
-_Auto-refreshed: 2026-11-17 06:12 (Europe/Berlin)._
+_Auto-refreshed: 2026-11-17 17:39 (Europe/Berlin)._
 
 ### Snapshot
 
@@ -11,7 +11,7 @@ _Auto-refreshed: 2026-11-17 06:12 (Europe/Berlin)._
 - Stage: pre-launch, nothing published yet
 - Next in the pipeline: #1 "3 Lines That Make AI Useful": next stage is Voiceover
 - Skills installed: 73 committed in `.claude/skills/`
-- Files: ideas 2, scripts 8, thumbnails 2, motion 89, voiceover 8, published 9, research 6
+- Files: ideas 2, scripts 9, thumbnails 4, motion 308, voiceover 10, published 11, research 7
 
 ### Pipeline (from `channel/ideas/first-12-ideas.md`)
 
@@ -32,16 +32,7 @@ _Auto-refreshed: 2026-11-17 06:12 (Europe/Berlin)._
 
 ### Last 10 commits
 
-- 2026-11-11  Water-well upload package v2: live YouTube research, new title, tags, Related video, TikTok and Reels captions
-- 2026-11-11  Water-well Short: cinematic 3D build, HUD, sound, cover tail, upload package and SRT
-- 2026-11-11  Water-well Short: facts, script, Eleven v4 voiceover timings, cinematic motion scenario, cover prompt
-- 2026-11-10  Bicycle-brake Short: upload package, English SRT, status
-- 2026-11-10  Status: bicycle-brake Short v2 rendered, waiting for Gate B
-- 2026-11-10  Bicycle-brake Short v2: cinematic shot-based Three.js engine, minimal HUD, new code-made sound
-- 2026-11-10  Status: bicycle brake v1 rejected, v2 research and scenario done, direction pending
-- 2026-11-10  Add cinematic 3D research note and motion scenario for the bicycle-brake Short
-- 2026-11-10  Bicycle-brake Short: voiceover (Eleven v4), word timings, 3D project with real bike parts
-- 2026-11-10  Bicycle-brake script: numeric surprise hook (80 kg, 32 km/h, 8 percent, 560 W) with sourced calculation
+- (no commits)
 <!-- AUTO:END -->
 
 ## Current focus (update at the end of every work session)
@@ -59,7 +50,11 @@ _Auto-refreshed: 2026-11-17 06:12 (Europe/Berlin)._
 
 - Water-well Short (2026-11-11, `special-water-well`, second `step-by-step-short` topic): facts with two sources per claim (`channel/research/special-water-well.facts.md`, incl. C7: more than 43 million people in the US use private wells, USGS + EPA), script and beats (`channel/scripts/special-water-well.md`, `.beats.json`, 158 words, `script_budget.py` 0 FAIL 0 WARN), hook rewritten three times on owner feedback to a numeric first sentence (hookscore 85): "You're building the hole 43 million Americans drink from. Before dinner, it fails 5 ways. How do you stop it?" Gate A passed. Voiceover generated through the ElevenLabs connector (Eleven v4, library voice "Jon - Catalyst", tagged text `channel/voiceover/special-water-well.elevenlabs-v4.tagged.txt`), owner chose take 1; Scribe word timings in `channel/voiceover/special-water-well.words.json` (spoken 53.76 s). Motion scenario (cinematic, floating earth-block cutaway, FAIL meter 0-5, problem animation before every part): `channel/scripts/special-water-well.motion.md`. Cover prompt for the owner: `channel/thumbnails/special-water-well.cover-prompt.md`; the owner's cover image is held 1 s at the end. Owner sent the take-1 mp3 and the cover PNG (`channel/thumbnails/special-water-well.cover.png`). 3D built in `channel/motion/special-water-well/` (`assets/cine.js` from the brake v2 engine: floating earth-block cutaway, drill rig with folding mast, cave-in chunks, casing, rain and seepage, grout, sand vs screen, pump, water rising, pressure tank with gauge, glass and tap, bucket gag; hand-written HUD with FAILS meter 0-5, part pills n/6, strainer badge, pump ON/OFF toggle; cover held 53.9-54.9 s; sound `scripts/make_sfx_well.py`). Rendered here in 1 h 41 min (2 workers, about 3.5 s per frame); master `renders/special-water-well.mp4` 55.1 s, -14.8 LUFS, `check_short.py` 0 FAIL 0 WARN; 8 Mbps copy sent to the owner. Upload package ready: `channel/published/special-water-well.md` + `.en.srt` (YouTube search check 2026-11-11: "how a water well works" autocompletes; big competitor Shorts at 24M, 24M, 5.1M views; recommended title "How a Water Well Works in 3D", cover = the last second). Package v2 the same day with creator-studio (yt-package, yt-seo, youtube metadata + shorts playbook) after a wider live search (top Shorts 24M/24M/5.1M, a 3D competitor from 2026-10-02 at 5.1M; pump and pressure-tank Shorts also strong): title now "How a Water Well Works (6 Parts)" (title.py 100, thumb/title words differ), 15 tags incl. borewell, 4 hashtags (48 chars), Related video + "Built Step by Step" playlist, TikTok/Reels captions with AI labels. NEXT: Gate B (owner watches), then the owner uploads.
 
+- Smart-glasses Short (2026-11-17, `special-smart-glasses`): topic from a live YouTube scan of AI news (Korea's tax exam top scorer, 397.5 of 400, confessed on 2026-11-15 to a tiny camera, a phone and generative AI; smart glasses were suspected but not named). Facts with two sources each: `channel/research/special-smart-glasses.facts.md`. Script (owner approved, hook 61): `channel/scripts/special-smart-glasses.md`, with the owner's new fixed line "If you love AI stories like this, like and subscribe to Brainmaxx." and a yes/no comment question last. Voice: ElevenLabs Eleven v4, "Jon - Catalyst", owner chose take 2 (46.29 s), mp3 and owner cover sent in chat; word times `channel/voiceover/special-smart-glasses.words.json`. Look copied from the latest published Short (Fable 5.2: floating slab, Brainmaxx robot with screen face, game HUD), checked live on YouTube with Claude in Chrome; the Fable and AI-lies projects are NOT in this repo (owner's Mac), so the robot and HUD were rebuilt in `channel/motion/special-smart-glasses/`. Cover prompt: `channel/thumbnails/special-smart-glasses.cover-prompt.md`. Upload package + SRT: `channel/published/special-smart-glasses.md`. NEXT: Gate B (owner watches), then the owner uploads.
+
 ## Decisions made
+
+- 2026-11-17: every video ends with the fixed line "If you love AI stories like this, like and subscribe to Brainmaxx." and then a yes/no question for the comments (owner's rule). Stories are told for a broad Explore audience. The style reference for new Shorts is the latest published one (Fable 5.2 look), combined with the build-step-by-step chain when it fits.
 
 - 2026-11-11: water-well Short uses the floating earth-block cutaway, a problem animation before every part, ElevenLabs voice "Jon - Catalyst" (take 1), and the owner's cover image held about 1 s at the end.
 
@@ -85,6 +80,8 @@ _Auto-refreshed: 2026-11-17 06:12 (Europe/Berlin)._
 - 2026-11-10: first topic for `step-by-step-short` is the bicycle brake (slug `special-bicycle-brakes` until the series question is decided). Voiceover with ElevenLabs Eleven v4 and light audio tags (voice-quality only, no sound-effect tags, since SFX are made in code).
 
 ## Open questions
+
+- Push the Fable 5.2 and AI-lies motion projects from the owner's Mac to this repo, so later Shorts reuse the exact robot and HUD instead of a rebuild.
 
 - Water-well: Gate B pending (owner watches the 8 Mbps file and approves or lists fixes).
 

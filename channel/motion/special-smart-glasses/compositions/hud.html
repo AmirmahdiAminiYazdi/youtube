@@ -1,0 +1,237 @@
+<template>
+  <!-- special-smart-glasses HUD (hand-written). Game-style HUD in the Fable 5.2 look: hook title, badges, build meter
+       (hex counter + 5 segments), orange problem pills, teal part pills, 12 MP number, lens viewfinder, payoff equation,
+       confession card, comment question with YES / NO. All times are voiceover word times of take 2. -->
+  <style>
+    @font-face { font-family: "BrandOutfit"; src: url("assets/fonts/Outfit-Bold.ttf"); font-weight: 700; }
+    @font-face { font-family: "BrandOutfit"; src: url("assets/fonts/Outfit-Regular.ttf"); font-weight: 400; }
+    #root { position: absolute; inset: 0; font-family: "BrandOutfit", sans-serif; color: #F4F1EA; pointer-events: none; }
+    .band { position: absolute; left: 0; width: 1080px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .stroke { -webkit-text-stroke: 14px #0B1B33; paint-order: stroke fill; text-shadow: 0 12px 44px rgba(3, 9, 20, 0.9); }
+    .t-big { font-weight: 700; font-size: 176px; line-height: 0.95; letter-spacing: 0.0em; }
+    .t-sub { font-weight: 700; font-size: 104px; line-height: 1; color: #FF7A3D; letter-spacing: 0.02em; margin-top: 6px; }
+    .badge { display: inline-flex; align-items: center; gap: 20px; padding: 14px 40px 14px 16px; border-radius: 70px; background: rgba(8, 20, 40, 0.84);
+             border: 3px solid rgba(25, 195, 177, 0.7); box-shadow: 0 10px 40px rgba(3, 9, 20, 0.6), 0 0 30px rgba(25, 195, 177, 0.2); }
+    .badge.o { border-color: #FF7A3D; box-shadow: 0 10px 40px rgba(3, 9, 20, 0.6), 0 0 34px rgba(255, 122, 61, 0.35); background: rgba(40, 18, 10, 0.86); }
+    .bic { width: 74px; height: 74px; border-radius: 50%; background: #19C3B1; color: #0B1B33; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 44px; flex: none; }
+    .badge.o .bic { background: #FF7A3D; color: #2a0f05; }
+    .btx { display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
+    .bk { font-weight: 700; font-size: 28px; letter-spacing: 0.18em; color: #19C3B1; line-height: 1.1; }
+    .badge.o .bk { color: #FFB08A; }
+    .bt { font-weight: 700; font-size: 58px; letter-spacing: 0.02em; line-height: 1.02; white-space: nowrap; }
+    .meter { display: flex; align-items: center; gap: 20px; padding: 14px 30px 14px 16px; border-radius: 70px; background: rgba(8, 20, 40, 0.78);
+             border: 3px solid rgba(25, 195, 177, 0.55); box-shadow: 0 10px 40px rgba(3, 9, 20, 0.55); }
+    .hex { position: relative; width: 78px; height: 88px; flex: none; }
+    .hex .b { position: absolute; inset: 0; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); background: #19C3B1; }
+    .hex .i { position: absolute; inset: 6px; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); background: #0B1B33; }
+    .hex .n { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 44px; }
+    .hex .n span { position: absolute; opacity: 0; }
+    .mtx { display: flex; flex-direction: column; gap: 10px; }
+    .ml { font-weight: 700; font-size: 36px; letter-spacing: 0.12em; white-space: nowrap; }
+    .segs { display: flex; gap: 10px; }
+    .sg { width: 104px; height: 16px; border-radius: 8px; background: rgba(244, 241, 234, 0.18); overflow: hidden; }
+    .sg i { display: block; width: 100%; height: 100%; background: #19C3B1; transform: scaleX(0); transform-origin: 0 50%; box-shadow: 0 0 14px #19C3B1; }
+    .big { font-weight: 700; font-size: 170px; line-height: 0.95; color: #F4F1EA; }
+    .bigsub { font-weight: 700; font-size: 40px; letter-spacing: 0.22em; color: #19C3B1; margin-top: 8px; -webkit-text-stroke: 8px #0B1B33; paint-order: stroke fill; }
+    .vf { position: absolute; width: 110px; height: 110px; border-color: #F4F1EA; border-style: solid; border-width: 0; filter: drop-shadow(0 0 10px rgba(25, 195, 177, 0.8)); }
+    .vtag { position: absolute; font-weight: 700; font-size: 34px; letter-spacing: 0.14em; padding: 8px 18px; border-radius: 10px; background: rgba(8, 20, 40, 0.7); }
+    .chip { display: inline-flex; align-items: center; padding: 12px 30px; border-radius: 60px; font-weight: 700; font-size: 62px; background: rgba(11, 27, 51, 0.88); border: 4px solid #19C3B1; margin: 0 8px; }
+    .plus { font-weight: 700; font-size: 70px; color: #FF7A3D; }
+    .bigt { font-weight: 700; font-size: 148px; line-height: 1; color: #19C3B1; -webkit-text-stroke: 14px #0B1B33; paint-order: stroke fill; text-shadow: 0 12px 44px rgba(3, 9, 20, 0.9); margin-top: 26px; }
+    .card { width: 860px; border-radius: 40px; padding: 30px 40px 26px; background: linear-gradient(160deg, rgba(23, 46, 82, 0.95), rgba(11, 27, 51, 0.96));
+            border: 3px solid rgba(25, 195, 177, 0.6); box-shadow: 0 24px 70px rgba(2, 8, 18, 0.7); text-align: left; }
+    .ck { font-weight: 700; font-size: 32px; letter-spacing: 0.2em; color: #FF7A3D; }
+    .row { display: flex; align-items: center; gap: 22px; margin-top: 20px; font-weight: 700; font-size: 58px; }
+    .box { width: 64px; height: 64px; border-radius: 16px; border: 4px solid rgba(244, 241, 234, 0.5); display: flex; align-items: center; justify-content: center; flex: none; }
+    .box svg { width: 44px; height: 44px; opacity: 0; }
+    .row.no { color: rgba(244, 241, 234, 0.55); }
+    .note { margin-top: 22px; font-weight: 400; font-size: 32px; color: rgba(244, 241, 234, 0.75); letter-spacing: 0.04em; }
+    .cpill { display: inline-block; padding: 10px 36px; border-radius: 40px; background: #19C3B1; color: #0B1B33; font-weight: 700; font-size: 40px; letter-spacing: 0.24em; }
+    .q { font-weight: 700; font-size: 84px; line-height: 1.02; margin-top: 18px; }
+    .yn { display: flex; gap: 40px; margin-top: 30px; }
+    .btn { width: 300px; height: 120px; border-radius: 60px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 64px; letter-spacing: 0.08em; box-shadow: 0 14px 40px rgba(2, 8, 18, 0.6); }
+    .defend { margin-top: 28px; display: inline-flex; align-items: center; gap: 16px; font-weight: 700; font-size: 40px; letter-spacing: 0.1em; color: #F4F1EA; padding: 12px 30px; border-radius: 40px; background: rgba(8, 20, 40, 0.8); border: 3px solid rgba(244, 241, 234, 0.3); }
+    .dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #19C3B1; margin: 0 3px; }
+    .ray { position: absolute; left: 540px; top: 330px; width: 10px; height: 260px; margin-left: -5px; border-radius: 5px; background: rgba(244, 241, 234, 0.75); transform-origin: 50% 0; }
+    .ray.g { background: rgba(255, 190, 90, 0.85); width: 6px; }
+  </style>
+  <div id="root" data-composition-id="hud" data-width="1080" data-height="1920">
+    <!-- hook (frame 0 = thumbnail) -->
+    <div id="hud-rays" class="clip" data-start="0.44" data-duration="0.8" style="position:absolute; inset:0">
+      <div class="ray" id="r0"></div><div class="ray g" id="r1"></div><div class="ray" id="r2"></div><div class="ray g" id="r3"></div><div class="ray" id="r4"></div><div class="ray g" id="r5"></div>
+      <div class="ray" id="r6"></div><div class="ray g" id="r7"></div><div class="ray" id="r8"></div><div class="ray g" id="r9"></div><div class="ray" id="r10"></div><div class="ray g" id="r11"></div>
+    </div>
+    <div id="hud-hook" class="clip band" data-start="0" data-duration="3.75" style="top: 200px">
+      <div class="t-big stroke" id="h1">397.5/400</div>
+      <div class="t-sub stroke" id="h2">WHO HELPED?</div>
+    </div>
+
+    <div id="hud-conf" class="clip band" data-start="4.3" data-duration="2.0" style="top: 214px">
+      <div class="badge" id="conf"><div class="bic">AI</div><div class="btx"><div class="bk">THE CONFESSION</div><div class="bt">"AN AI HELPED"</div></div></div>
+    </div>
+    <div id="hud-blame" class="clip band" data-start="6.95" data-duration="1.45" style="top: 214px">
+      <div class="badge o" id="blame"><div class="bic">!</div><div class="btx"><div class="bk">EVERYONE BLAMED</div><div class="bt">THE GLASSES</div></div></div>
+    </div>
+
+    <!-- build meter -->
+    <div id="hud-meter" class="clip band" data-start="8.45" data-duration="18.9" style="top: 196px">
+      <div class="meter" id="meter">
+        <div class="hex"><div class="b"></div><div class="i"></div><div class="n"><span id="n0" style="opacity:1">0</span><span id="n1">1</span><span id="n2">2</span><span id="n3">3</span><span id="n4">4</span><span id="n5">5</span></div></div>
+        <div class="mtx"><div class="ml">BUILD THE SMART GLASSES</div>
+          <div class="segs"><div class="sg"><i id="s1"></i></div><div class="sg"><i id="s2"></i></div><div class="sg"><i id="s3"></i></div><div class="sg"><i id="s4"></i></div><div class="sg"><i id="s5"></i></div></div></div>
+      </div>
+    </div>
+
+    <!-- problem pills (orange) -->
+    <div id="hud-pr1" class="clip band" data-start="9.12" data-duration="2.1" style="top: 340px"><div class="badge o" id="pr1"><div class="bic">!</div><div class="btx"><div class="bk">PROBLEM</div><div class="bt">IT HEARS NOTHING</div></div></div></div>
+    <div id="hud-pr2" class="clip band" data-start="12.98" data-duration="0.66" style="top: 340px"><div class="badge o" id="pr2"><div class="bic">!</div><div class="btx"><div class="bk">PROBLEM</div><div class="bt">IT'S BLIND</div></div></div></div>
+    <div id="hud-pr3" class="clip band" data-start="21.16" data-duration="1.5" style="top: 340px"><div class="badge o" id="pr3"><div class="bic">!</div><div class="btx"><div class="bk">PROBLEM</div><div class="bt">NO BRAIN INSIDE</div></div></div></div>
+
+    <!-- part pills (teal) -->
+    <div id="hud-p1" class="clip band" data-start="11.26" data-duration="1.62" style="top: 340px"><div class="badge" id="p1"><div class="bic">1</div><div class="btx"><div class="bk">PART 1 / 5</div><div class="bt">MICROPHONES</div></div></div></div>
+    <div id="hud-p2" class="clip band" data-start="14.52" data-duration="1.4" style="top: 340px"><div class="badge" id="p2"><div class="bic">2</div><div class="btx"><div class="bk">PART 2 / 5</div><div class="bt">CAMERA</div></div></div></div>
+    <div id="hud-p3" class="clip band" data-start="17.98" data-duration="2.55" style="top: 340px"><div class="badge" id="p3"><div class="bic">3</div><div class="btx"><div class="bk">PART 3 / 5</div><div class="bt">OPEN-EAR SPEAKERS</div></div></div></div>
+    <div id="hud-p4" class="clip band" data-start="23.34" data-duration="1.25" style="top: 340px"><div class="badge" id="p4"><div class="bic">4</div><div class="btx"><div class="bk">PART 4 / 5</div><div class="bt">PHONE + CLOUD</div></div></div></div>
+    <div id="hud-p5" class="clip band" data-start="25.2" data-duration="2.15" style="top: 340px"><div class="badge" id="p5"><div class="bic">5</div><div class="btx"><div class="bk">PART 5 / 5</div><div class="bt">RECORDING LIGHT</div></div></div></div>
+
+    <!-- 12 MP -->
+    <div id="hud-mp" class="clip band" data-start="13.64" data-duration="0.86" style="top: 470px">
+      <div class="big stroke" id="mp">12 MP</div><div class="bigsub" id="mps">MEGAPIXELS</div>
+    </div>
+
+    <!-- lens viewfinder (POV) -->
+    <div id="hud-vf" class="clip" data-start="15.98" data-duration="1.25" style="position:absolute; inset:0">
+      <div id="vfw" style="position:absolute; inset:0">
+        <div class="vf" style="left:110px; top:470px; border-left-width:8px; border-top-width:8px"></div>
+        <div class="vf" style="right:110px; top:470px; border-right-width:8px; border-top-width:8px"></div>
+        <div class="vf" style="left:110px; top:1050px; border-left-width:8px; border-bottom-width:8px"></div>
+        <div class="vf" style="right:110px; top:1050px; border-right-width:8px; border-bottom-width:8px"></div>
+        <div class="vtag" style="left:110px; top:396px; color:#19C3B1">LENS VIEW</div>
+        <div class="vtag" style="right:110px; top:396px">12 MP</div>
+        <div id="vfbox" style="position:absolute; left:380px; top:700px; width:320px; height:240px; border:5px solid #19C3B1; border-radius:14px; box-shadow:0 0 24px rgba(25,195,177,0.8)"></div>
+        <div class="vtag" id="vflab" style="left:380px; top:950px; color:#0B1B33; background:#19C3B1">EXAM PAPER</div>
+      </div>
+    </div>
+
+    <!-- payoff -->
+    <div id="hud-pay" class="clip band" data-start="27.6" data-duration="4.25" style="top: 210px">
+      <div style="display:flex; align-items:center; justify-content:center">
+        <div class="chip" id="c1">CAMERA</div><div class="plus stroke" id="pl1">+</div><div class="chip" id="c2">MIC</div><div class="plus stroke" id="pl2">+</div><div class="chip" id="c3">AI</div>
+      </div>
+      <div class="bigt" id="onface">ON YOUR FACE.</div>
+    </div>
+
+    <!-- confession card -->
+    <div id="hud-card" class="clip band" data-start="32.45" data-duration="4.2" style="top: 206px">
+      <div class="card" id="card">
+        <div class="ck">THE REAL CONFESSION NAMED</div>
+        <div class="row" id="rw1"><div class="box"><svg id="k1" viewBox="0 0 40 40"><path d="M6 21 L16 31 L34 9" fill="none" stroke="#19C3B1" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>A TINY CAMERA</div>
+        <div class="row" id="rw2"><div class="box"><svg id="k2" viewBox="0 0 40 40"><path d="M6 21 L16 31 L34 9" fill="none" stroke="#19C3B1" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>A PHONE</div>
+        <div class="row" id="rw3"><div class="box"><svg id="k3" viewBox="0 0 40 40"><path d="M6 21 L16 31 L34 9" fill="none" stroke="#19C3B1" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>AN AI</div>
+        <div class="note" id="note">Smart glasses were suspected. The confession did not name them.</div>
+      </div>
+    </div>
+
+    <!-- comment question -->
+    <div id="hud-q" class="clip band" data-start="41.15" data-duration="5.2" style="top: 206px">
+      <div class="cpill" id="cp">COMMENT</div>
+      <div class="q stroke" id="q1">BAN SMART GLASSES</div>
+      <div class="q stroke" id="q2" style="margin-top:0; color:#19C3B1">IN EXAMS?</div>
+      <div class="yn"><div class="btn" id="yes" style="background:#19C3B1; color:#0B1B33">YES</div><div class="btn" id="no" style="background:#FF7A3D; color:#2a0f05">NO</div></div>
+      <div class="defend" id="defend">DEFEND YOUR ANSWER <span><span class="dot" id="d0"></span><span class="dot" id="d1"></span><span class="dot" id="d2"></span></span></div>
+    </div>
+
+    <div id="hud-hook2" class="clip band" data-start="47.35" data-duration="0.15" style="top: 200px">
+      <div class="t-big stroke">397.5/400</div>
+      <div class="t-sub stroke">WHO HELPED?</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // hook: settled at frame 0, punch on the numbers, speed rays on "397.5"
+      tl.set("#h1, #h2", { opacity: 1 }, 0);
+      tl.fromTo("#h1", { scale: 1 }, { scale: 1.12, duration: 0.12, ease: "power2.out" }, 0.46).to("#h1", { scale: 1, duration: 0.35, ease: "back.out(2)" }, 0.58);
+      tl.fromTo("#h2", { scale: 1 }, { scale: 1.1, duration: 0.12, ease: "power2.out" }, 2.8).to("#h2", { scale: 1, duration: 0.3, ease: "back.out(2)" }, 2.92);
+      tl.to("#hud-hook", { opacity: 0, y: -50, duration: 0.22, ease: "power2.in" }, 3.5);
+      for (let i = 0; i < 12; i++) {
+        const a = (i / 12) * 360 + 8;
+        tl.fromTo("#r" + i, { rotation: a, y: 0, scaleY: 0.2, opacity: 0 }, { scaleY: 1.6, opacity: 1, duration: 0.18, ease: "power2.out" }, 0.46 + (i % 3) * 0.02);
+        tl.to("#r" + i, { scaleY: 2.6, opacity: 0, duration: 0.5, ease: "power2.in" }, 0.7);
+      }
+      // badges
+      tl.fromTo("#conf", { opacity: 0, scale: 0.6, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 0.36, ease: "back.out(2.2)" }, 4.3);
+      tl.fromTo("#conf .bic", { rotation: -120 }, { rotation: 0, duration: 0.5, ease: "back.out(1.8)" }, 4.35);
+      tl.to("#conf", { opacity: 0, y: -24, duration: 0.2, ease: "power2.in" }, 6.08);
+      tl.fromTo("#blame", { opacity: 0, scale: 0.6, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 0.36, ease: "back.out(2.2)" }, 6.95);
+      tl.fromTo("#blame", { x: -12 }, { x: 0, duration: 0.5, ease: "elastic.out(1.2, 0.25)" }, 7.0);
+      tl.to("#blame", { opacity: 0, y: -24, duration: 0.2, ease: "power2.in" }, 8.2);
+
+      // build meter
+      tl.fromTo("#meter", { opacity: 0, y: -30, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: "back.out(2)" }, 8.45);
+      const STEP = [11.26, 14.52, 17.98, 23.34, 25.2];
+      STEP.forEach((s, i) => {
+        tl.to("#s" + (i + 1), { scaleX: 1, duration: 0.35, ease: "power2.out" }, s);
+        tl.set("#n" + i, { opacity: 0 }, s).set("#n" + (i + 1), { opacity: 1 }, s);
+        tl.fromTo("#meter .hex", { scale: 1.3 }, { scale: 1, duration: 0.35, ease: "back.out(2)" }, s);
+      });
+      tl.to("#meter", { borderColor: "#19C3B1", boxShadow: "0 0 40px rgba(25,195,177,0.6)", duration: 0.2 }, 25.4);
+      tl.to("#meter", { opacity: 0, y: -30, duration: 0.22, ease: "power2.in" }, 27.1);
+
+      // pills
+      const pills = [["#pr1", 9.12, 2.1], ["#pr2", 12.98, 0.66], ["#pr3", 21.16, 1.5], ["#p1", 11.26, 1.62], ["#p2", 14.52, 1.4], ["#p3", 17.98, 2.55], ["#p4", 23.34, 1.25], ["#p5", 25.2, 2.15]];
+      for (const [id, t0, d] of pills) {
+        tl.fromTo(id, { scale: 0.6, opacity: 0, y: 24 }, { scale: 1, opacity: 1, y: 0, duration: 0.34, ease: "back.out(2.2)" }, t0);
+        tl.fromTo(id + " .bic", { rotation: -120 }, { rotation: 0, duration: 0.5, ease: "back.out(1.8)" }, t0 + 0.04);
+        if (id.startsWith("#pr")) tl.fromTo(id, { x: -12 }, { x: 0, duration: 0.5, ease: "elastic.out(1.2, 0.25)" }, t0 + 0.05);
+        tl.to(id, { opacity: 0, y: -24, duration: 0.18, ease: "power2.in" }, t0 + d - 0.2);
+      }
+
+      // 12 MP
+      tl.fromTo("#mp", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2.4)" }, 13.64);
+      tl.fromTo("#mps", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.25 }, 13.92);
+      tl.to("#hud-mp", { opacity: 0, duration: 0.15 }, 14.36);
+
+      // viewfinder
+      tl.fromTo("#vfw", { opacity: 0, scale: 1.12 }, { opacity: 1, scale: 1, duration: 0.18, ease: "power2.out" }, 15.98);
+      tl.fromTo("#vfbox", { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2)" }, 16.38);
+      tl.fromTo("#vflab", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.2 }, 16.5);
+      tl.to("#vfw", { opacity: 0, duration: 0.12 }, 17.1);
+
+      // payoff equation
+      tl.fromTo("#c1", { opacity: 0, scale: 0.5, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.32, ease: "back.out(2.4)" }, 27.76);
+      tl.fromTo("#pl1", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(3)" }, 28.6);
+      tl.fromTo("#c2", { opacity: 0, scale: 0.5, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.32, ease: "back.out(2.4)" }, 28.72);
+      tl.fromTo("#pl2", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(3)" }, 29.8);
+      tl.fromTo("#c3", { opacity: 0, scale: 0.5, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.32, ease: "back.out(2.4)" }, 29.92);
+      tl.fromTo("#c3", { borderColor: "#19C3B1" }, { borderColor: "#FF7A3D", duration: 0.2 }, 30.1);
+      tl.fromTo("#onface", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2)" }, 31.1);
+      tl.to("#hud-pay", { opacity: 0, y: -40, duration: 0.22, ease: "power2.in" }, 31.75);
+
+      // confession card
+      tl.fromTo("#card", { opacity: 0, y: 60, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "expo.out" }, 32.45);
+      [["#rw1", "#k1", 34.22], ["#rw2", "#k2", 35.04], ["#rw3", "#k3", 35.96]].forEach(([r, k, s]) => {
+        tl.fromTo(r, { opacity: 0.35 }, { opacity: 1, duration: 0.15 }, s);
+        tl.fromTo(k, { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }, s);
+        tl.fromTo(r + " .box", { borderColor: "rgba(244,241,234,0.5)", scale: 1.25 }, { borderColor: "#19C3B1", scale: 1, duration: 0.3, ease: "back.out(2)" }, s);
+      });
+      tl.fromTo("#note", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.3 }, 33.3);
+      tl.to("#card", { opacity: 0, y: -40, duration: 0.25, ease: "power2.in" }, 36.4);
+
+      // comment question
+      tl.fromTo("#cp", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2.4)" }, 41.15);
+      tl.fromTo("#q1", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 41.3);
+      tl.fromTo("#q2", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 42.38);
+      tl.fromTo("#yes", { opacity: 0, scale: 0.5, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.32, ease: "back.out(2.4)" }, 43.56);
+      tl.fromTo("#no", { opacity: 0, scale: 0.5, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.32, ease: "back.out(2.4)" }, 43.9);
+      tl.fromTo("#defend", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 44.5);
+      for (let k = 0; k < 3; k++) ["#d0", "#d1", "#d2"].forEach((d, i) => {
+        const s = 44.9 + k * 0.45 + i * 0.08;
+        tl.fromTo(d, { y: 0 }, { y: -10, duration: 0.12, ease: "power2.out" }, s); tl.to(d, { y: 0, duration: 0.12, ease: "power2.in" }, s + 0.12);
+      });
+      tl.to("#yes", { scale: 1.08, duration: 0.15, yoyo: true, repeat: 1 }, 45.2);
+      tl.to("#no", { scale: 1.08, duration: 0.15, yoyo: true, repeat: 1 }, 45.55);
+      window.__timelines["hud"] = tl;
+    })();
+  </script>
+</template>
