@@ -19,3 +19,25 @@ No people, no human faces, no hands of real people, no brand logos, no watermark
 ```
 
 Notes: the text must be spelled exactly; if the model misspells it, ask it to regenerate the text only, or send the image without text and the text is added in code. "397.5 out of 400" is from Korea JoongAng Daily (second source still to confirm before upload). The cover says "WHO HELPED?" and not "glasses cheated", because the confession named a miniature camera, a smartphone and generative AI, not glasses.
+
+---
+
+## v2 (2026-11-18, creator-studio: yt-package + prompt-master)
+
+Paired with the v2 title "How Do AI Smart Glasses Work? Built in 3D". The headline is only two words ("WHO HELPED?") so it does not repeat the title and stays readable at feed size; the score is a prop on the exam paper, not a headline. Target tool: ChatGPT image generation (also works in Gemini). Ask for a 1080 x 1920 PNG.
+
+```
+Create a vertical 9:16 image, 1080x1920 px, as the cover of a YouTube Short. Style: glossy stylized 3D render like a premium toy or mobile game key art, clearly animation, never a photo. Dark navy background (#0B1B33) with a soft teal glow (#19C3B1) behind the subject and faint glowing teal grid lines at the bottom.
+
+Hero, large and close: the head and shoulders of a friendly chunky robot filling the middle of the frame (from about 28% to 78% of the height, centered slightly left). Rounded square teal head, a black glossy screen as its face with two glowing cyan eyes looking nervously to the side, a small teal sweat drop on the screen, and a tight awkward smile. Orange round ear cups (#FF7A3D) on both sides. A transparent glass dome on top of the head with a glowing teal circuit-brain inside. The robot wears oversized thick black smart glasses: a tiny camera lens with a teal ring on the left corner of the frame, a small bright white recording light on the right corner, and four tiny microphone dots on the top of the frame. The left lens shows a small reflection of an exam sheet.
+
+Props: on the left, a white exam sheet floats at a slight angle, with the score "397.5/400" handwritten in red marker and circled in red. On the right, a smartphone floats with a glowing teal screen showing a chat bubble with the letters "AI". Thin glowing teal data lines connect the glasses to the phone and up to a small soft white cloud above it. A few small orange sparks around the glasses.
+
+Headline in the top area only (between 7% and 24% of the height), centered, huge, very bold rounded geometric sans-serif like Outfit Bold, perfectly spelled, exactly two words: "WHO HELPED?" in warm off-white (#F4F1EA) with a thick navy outline, the question mark in orange (#FF7A3D).
+
+Lighting: teal rim light, warm orange backlight behind the head, soft bloom, high contrast, saturated clean colors, sharp focus on the glasses.
+
+Layout rules: keep the bottom 20% of the image empty dark navy, and keep the right 12% free of faces and text, because app buttons cover those areas. No other words or letters anywhere except "WHO HELPED?", "397.5/400" and "AI". No people, no human faces or hands, no brand logos, no watermark, no photo realism, no blur on the text.
+```
+
+Checks after generating: "WHO HELPED?" and "397.5/400" spelled exactly; robot, glasses and phone readable at thumbnail size; nothing important in the bottom 20% or the right edge. If the text is wrong, ask the model to fix only the text, or send the image without text and the text is set in code (Outfit Bold). When the PNG comes back, the last second of the video can be swapped with ffmpeg (no full re-render).
