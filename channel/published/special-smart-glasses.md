@@ -20,11 +20,11 @@ How Smart Glasses Work, Built in 3D
 
 ```
 How AI smart glasses work, built in 3D one part at a time: microphones, a 12 MP camera, open-ear speakers, your phone and the cloud, and a recording light.
-Inspired by the 2026 tax exam case in South Korea: the top scorer got 397.5 out of 400, smart glasses were suspected, and he later confessed to using a tiny camera, a phone and generative AI. The confession did not name glasses.
+Inspired by the 2026 tax exam case in South Korea: the top scorer got 397.5 out of 400 in the first round, smart glasses were suspected, and he later confessed to using a tiny camera, a phone and generative AI. The confession did not name glasses.
 
 Simplified on purpose: parts and numbers differ by model (for example, Ray-Ban Meta has five microphones, Rokid four), and some glasses run part of the AI on the device.
 
-Sources: SCMP and AFP (Nov 15, 2026), Korea JoongAng Daily, Kyunghyang Shinmun; TechRadar, Trusted Reviews, Digital Camera World, TechCrunch, Pickr.
+Sources: SCMP and AFP (Nov 15, 2026), Reuters, Korea JoongAng Daily, Kyunghyang Shinmun; TechRadar, Trusted Reviews, Digital Camera World, TechCrunch, Pickr.
 Narration is an AI-generated voice. The 3D scenes are illustrations, not real footage.
 
 #smartglasses #ai #shorts #howitworks
@@ -48,7 +48,9 @@ Should exam halls ban smart glasses? YES or NO, and why? 👇
 ‏- Made for kids: No.
 ‏- Category: Science & Technology.
 ‏- Playlist: «Built Step by Step». Related video: «Claude Fable 5.2 Made a Playable FPS in 8 Hours».
-‏- زیرنویس: فایل `special-smart-glasses.en.srt` را به‌عنوان English آپلود کنید.
+‏- زیرنویس: فایل `special-smart-glasses.en.srt` را به‌عنوان English آپلود کنید (با نسخهٔ ۲ هم‌زمان است، صدا تغییر نکرده).
+‏- کاور Short: در اپ موبایل یوتیوب، فریم حدود ۰:۴۶٫۸ (کاور خودتان) را انتخاب کنید. برای Reels و TikTok فایل `cover.jpg` را به‌عنوان کاور آپلود کنید.
+‏- فایل ویدیو: `special-smart-glasses-v2-master.mp4` (نسخهٔ ۲، ۲۰۲۶-۱۱-۱۸).
 
 ## کپشن TikTok و Reels
 
