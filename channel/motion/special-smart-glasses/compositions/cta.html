@@ -5,7 +5,7 @@
     #root { position: absolute; inset: 0; font-family: "BrandOutfit", sans-serif; color: #F4F1EA; pointer-events: none; }
     #cta-wrap { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
     #cta-panel {
-      position: absolute; left: 66px; top: 742px; width: 948px; height: 188px; border-radius: 48px;
+      position: absolute; left: 66px; top: 236px; width: 948px; height: 188px; border-radius: 48px;
       background: linear-gradient(135deg, rgba(23, 58, 102, 0.92), rgba(11, 27, 51, 0.94));
       border: 3px solid rgba(25, 195, 177, 0.6);
       box-shadow: 0 24px 70px rgba(2, 8, 18, 0.7), 0 0 60px rgba(25, 195, 177, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.12);
@@ -31,20 +31,20 @@
     #cta-sub-done, #typing, #tap, #tap-ring, .spark { opacity: 0; }
     .ico { width: 44px; height: 44px; display: block; }
     #cta-bell { transform-origin: 50% 10%; }
-    .act { position: absolute; top: 978px; width: 150px; height: 190px; display: flex; flex-direction: column; align-items: center; }
+    .act { position: absolute; top: 472px; width: 150px; height: 190px; display: flex; flex-direction: column; align-items: center; }
     .act .disc {
       width: 128px; height: 128px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
       background: rgba(11, 27, 51, 0.86); border: 3px solid rgba(244, 241, 234, 0.28); box-shadow: 0 14px 40px rgba(2, 8, 18, 0.6);
     }
     .act .disc svg { width: 64px; height: 64px; display: block; overflow: visible; }
-    .act .lab { margin-top: 14px; font-weight: 700; font-size: 28px; letter-spacing: 0.16em; color: rgba(244, 241, 234, 0.85); }
+    .act .lab { margin-top: 14px; font-weight: 700; font-size: 30px; letter-spacing: 0.16em; color: #F4F1EA; -webkit-text-stroke: 8px #0B1B33; paint-order: stroke fill; text-shadow: 0 4px 16px rgba(3, 9, 20, 0.9); }
     #act-like { left: 223px; } #act-com { left: 465px; } #act-save { left: 707px; }
     .fillp { fill: transparent; stroke: #F4F1EA; stroke-width: 2.2; stroke-linejoin: round; stroke-linecap: round; }
     #tap { position: absolute; left: 0; top: 0; width: 84px; height: 84px; margin: -42px 0 0 -42px; border-radius: 50%;
       background: rgba(244, 241, 234, 0.9); border: 6px solid #19C3B1; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45); }
     #tap-ring { position: absolute; left: 0; top: 0; width: 84px; height: 84px; margin: -42px 0 0 -42px; border-radius: 50%; border: 5px solid #F4F1EA; }
     .spark { position: absolute; width: 8px; height: 34px; margin: -17px 0 0 -4px; border-radius: 4px; background: #FF7A3D; box-shadow: 0 0 14px rgba(255, 122, 61, 0.9); }
-    #sparks { position: absolute; left: 844px; top: 836px; width: 0; height: 0; }
+    #sparks { position: absolute; left: 844px; top: 330px; width: 0; height: 0; }
     .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #19C3B1; margin: 0 3px; }
     #typing { position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
   </style>
@@ -105,8 +105,8 @@
       tl.to("#save-disc", { scale: 1, duration: 0.25, ease: "back.out(2)" }, E+0.82);
       tl.fromTo("#typing", { opacity: 0 }, { opacity: 0, duration: 0.01 }, E+0.05);
       // tap 1: subscribe
-      tl.fromTo("#tap", { x: 980, y: 1380, opacity: 0, scale: 1 }, { x: 860, y: 842, opacity: 1, duration: 0.42, ease: "power3.out" }, T0+0.67);
-      tl.fromTo("#tap-ring", { x: 860, y: 842, opacity: 0, scale: 1 }, { opacity: 0, duration: 0.01 }, T0+0.67);
+      tl.fromTo("#tap", { x: 980, y: 900, opacity: 0, scale: 1 }, { x: 860, y: 336, opacity: 1, duration: 0.42, ease: "power3.out" }, T0+0.67);
+      tl.fromTo("#tap-ring", { x: 860, y: 336, opacity: 0, scale: 1 }, { opacity: 0, duration: 0.01 }, T0+0.67);
       tl.to("#tap", { scale: 0.78, duration: 0.08, ease: "power2.in" }, T0+1.11);
       tl.to("#tap", { scale: 1, duration: 0.16, ease: "back.out(2)" }, T0+1.19);
       tl.fromTo("#tap-ring", { opacity: 0.9, scale: 0.8 }, { opacity: 0, scale: 2.4, duration: 0.45, ease: "power2.out", immediateRender: false }, T0+1.15);
@@ -120,18 +120,18 @@
         tl.to("#sk" + i, { x: Math.cos(a) * 240, y: Math.sin(a) * 150, opacity: 0, scaleY: 0.3, duration: 0.3, ease: "power2.in" }, T0+1.35);
       }
       // tap 2: like
-      tl.to("#tap", { x: 298, y: 1042, duration: 0.36, ease: "power3.inOut" }, T0+1.37);
+      tl.to("#tap", { x: 298, y: 536, duration: 0.36, ease: "power3.inOut" }, T0+1.37);
       tl.to("#tap", { scale: 0.78, duration: 0.08, ease: "power2.in" }, T0+1.75);
       tl.to("#tap", { scale: 1, duration: 0.16, ease: "back.out(2)" }, T0+1.83);
-      tl.fromTo("#tap-ring", { x: 298, y: 1042, opacity: 0.9, scale: 0.8 }, { opacity: 0, scale: 2.4, duration: 0.45, ease: "power2.out", immediateRender: false }, T0+1.79);
+      tl.fromTo("#tap-ring", { x: 298, y: 536, opacity: 0.9, scale: 0.8 }, { opacity: 0, scale: 2.4, duration: 0.45, ease: "power2.out", immediateRender: false }, T0+1.79);
       tl.to("#like-p", { fill: "#19C3B1", stroke: "#19C3B1", duration: 0.12 }, T0+1.79);
       tl.to("#like-disc", { scale: 1.2, duration: 0.1, ease: "power2.out" }, T0+1.79);
       tl.to("#like-disc", { scale: 1, duration: 0.3, ease: "back.out(2.4)" }, T0+1.89);
       // tap 3: comment (typing dots, finite)
-      tl.to("#tap", { x: 540, y: 1042, duration: 0.3, ease: "power3.inOut" }, T0+1.95);
+      tl.to("#tap", { x: 540, y: 536, duration: 0.3, ease: "power3.inOut" }, T0+1.95);
       tl.to("#tap", { scale: 0.78, duration: 0.07 }, T0+2.23);
       tl.to("#tap", { scale: 1, opacity: 0, duration: 0.25 }, T0+2.31);
-      tl.fromTo("#tap-ring", { x: 540, y: 1042, opacity: 0.9, scale: 0.8 }, { opacity: 0, scale: 2.4, duration: 0.4, ease: "power2.out", immediateRender: false }, T0+2.25);
+      tl.fromTo("#tap-ring", { x: 540, y: 536, opacity: 0.9, scale: 0.8 }, { opacity: 0, scale: 2.4, duration: 0.4, ease: "power2.out", immediateRender: false }, T0+2.25);
       tl.to("#typing", { opacity: 1, duration: 0.1 }, T0+2.27);
       ["#d0", "#d1", "#d2"].forEach((d, i) => {
         tl.fromTo(d, { y: 0 }, { y: -10, duration: 0.12, ease: "power2.out" }, T0+2.31 + i * 0.08);

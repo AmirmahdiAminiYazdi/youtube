@@ -125,7 +125,11 @@ const M = {
   dark: new THREE.MeshPhysicalMaterial({ color: col("#141a26"), roughness: 0.28, metalness: 0.2, clearcoat: 1, clearcoatRoughness: 0.08 }),
   frame: new THREE.MeshPhysicalMaterial({ color: col("#11151d"), roughness: 0.22, metalness: 0.1, clearcoat: 1, clearcoatRoughness: 0.05 }),
   steel: new THREE.MeshStandardMaterial({ color: col("#c0c8d2"), roughness: 0.25, metalness: 1 }),
-  paper: new THREE.MeshStandardMaterial({ color: col("#f6f2e8"), roughness: 0.85 }),
+  paper: new THREE.MeshStandardMaterial({ color: col("#f6f2e8"), roughness: 0.85, map: (() => { const c = document.createElement("canvas"); c.width = 256; c.height = 336; const g = c.getContext("2d");
+    g.fillStyle = "#f6f2e8"; g.fillRect(0, 0, 256, 336); g.fillStyle = "#1c335a"; g.fillRect(0, 0, 256, 46);
+    g.fillStyle = "#19C3B1"; g.fillRect(16, 14, 90, 18); for (let i = 0; i < 9; i++) { g.fillStyle = "rgba(28,51,90,0.55)"; g.fillRect(22, 74 + i * 26, 150 + ((i * 37) % 60), 7); }
+    g.strokeStyle = "#d8282a"; g.lineWidth = 7; g.beginPath(); g.ellipse(190, 290, 44, 28, -0.1, 0, 6.3); g.stroke();
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return t; })() }),
   glass: new THREE.MeshPhysicalMaterial({ color: col("#dff8f4"), roughness: 0.04, clearcoat: 1, transparent: true, opacity: 0.22, depthWrite: false }),
   glowTeal: new THREE.MeshBasicMaterial({ color: col(TEAL).multiplyScalar(2.2), transparent: true, depthWrite: false, toneMapped: false }),
   glowWhite: new THREE.MeshBasicMaterial({ color: new THREE.Color(2.6, 2.6, 2.5), transparent: true, depthWrite: false, toneMapped: false }),
@@ -170,7 +174,8 @@ function makeDesk(x, z, chairOrange) {
   for (const sx of [-0.18, 0.18]) for (const sz of [-0.15, 0.15]) chair.add(rod(V3(sx, 0, sz), V3(sx, 0.32, sz), 0.018, M.navy, 6));
   shadowAll(g); world.add(g); return g;
 }
-DESKS.forEach(([x, z], i) => makeDesk(x, z, i === 2));
+const deskG = DESKS.map(([x, z], i) => makeDesk(x, z, i === 2));
+const suspectClutter = deskG[2].children.filter((c) => c.material === M.paper || c.material === M.orange);
 // side table next to the robot, with the phone
 const SIDE = V3(1.25, 0, -1.25);
 makeDesk(SIDE.x, SIDE.z, false).children.forEach((c) => { if (c.isGroup) c.visible = false; });
@@ -178,6 +183,7 @@ const phone = new THREE.Group(); phone.position.set(SIDE.x - 0.12, DESK_H + 0.06
 { const body = new THREE.Mesh(new RoundedBoxGeometry(0.2, 0.025, 0.38, 3, 0.012), M.dark); phone.add(body);
   const scr = new THREE.Mesh(new THREE.PlaneGeometry(0.17, 0.33), new THREE.MeshBasicMaterial({ color: col(TEAL).multiplyScalar(1.6), toneMapped: false })); scr.rotation.x = -Math.PI / 2; scr.position.y = 0.014; scr.name = "scr"; phone.add(scr); shadowAll(phone); }
 const phoneScr = phone.getObjectByName("scr");
+const PHONE_REST = phone.position.clone(), PHONE_UP = V3(0.85, 1.75, -1.0);
 // back wall pieces (toy-like, like the Fable world)
 for (const [x, z, w, r] of [[-2.55, -1.6, 1.0, Math.PI / 2], [2.55, -0.4, 1.4, Math.PI / 2], [-0.9, -2.55, 1.2, 0]]) {
   const wall = new THREE.Group(); wall.position.set(x, 0, z); wall.rotation.y = r; world.add(wall);
@@ -185,7 +191,7 @@ for (const [x, z, w, r] of [[-2.55, -1.6, 1.0, Math.PI / 2], [2.55, -0.4, 1.4, M
   const cap = new THREE.Mesh(new RoundedBoxGeometry(w + 0.02, 0.08, 0.2, 3, 0.03), M.teal); cap.position.y = 0.64; wall.add(cap); shadowAll(wall);
 }
 // a wall clock board behind the robot ("EXAM" screen)
-const board = new THREE.Group(); board.position.set(-1.25, 0, -2.35); world.add(board);
+const board = new THREE.Group(); board.position.set(-2.0, 0, -2.3); board.rotation.y = 0.32; world.add(board);
 { const tex = canvasTex(512, 300, (g, w, h) => { g.fillStyle = "#0b1b33"; g.fillRect(0, 0, w, h); g.strokeStyle = "#19C3B1"; g.lineWidth = 8; g.strokeRect(8, 8, w - 16, h - 16);
     g.fillStyle = "#19C3B1"; g.font = `700 74px ${FONT}`; g.textAlign = "center"; g.fillText("EXAM", w / 2, 120); g.fillStyle = "#F4F1EA"; g.font = `700 52px ${FONT}`; g.fillText("NO PHONES", w / 2, 210); });
   board.userData.tex = tex;
@@ -295,8 +301,10 @@ const GL = { rimX: 0.215, rimW: 0.38, rimH: 0.27, endX: 0.5, templeX: 0.535 };
 const mics = [];
 for (const x of [-0.33, -0.12, 0.12, 0.33]) {
   const g = new THREE.Group(); g.position.set(x, GL.rimH / 2 + 0.006, 0.0); glasses.add(g);
-  g.add(new THREE.Mesh(new THREE.CylinderGeometry(0.016, 0.016, 0.014, 12), M.steel));
-  const dot = new THREE.Mesh(new THREE.SphereGeometry(0.011, 10, 8), M.glowTeal.clone()); dot.position.y = 0.01; g.add(dot); g.userData.dot = dot; mics.push(g);
+  const micMat = new THREE.MeshStandardMaterial({ color: col("#1b2433"), roughness: 0.75, metalness: 0.1 });
+  const base = new THREE.Mesh(new THREE.CylinderGeometry(0.034, 0.038, 0.026, 20), micMat); base.position.y = 0.008; g.add(base);
+  const mesh = new THREE.Mesh(new THREE.CylinderGeometry(0.024, 0.024, 0.01, 20), micMat); mesh.position.y = 0.024; g.add(mesh);
+  const dot = new THREE.Mesh(new THREE.TorusGeometry(0.03, 0.005, 8, 24), M.glowTeal.clone()); dot.rotation.x = Math.PI / 2; dot.position.y = 0.03; g.add(dot); g.userData.dot = dot; mics.push(g);
 }
 const camPart = new THREE.Group(); camPart.position.set(-(GL.endX - 0.05), 0.06, 0.03); glasses.add(camPart);
 { const cb = new THREE.Mesh(new THREE.CylinderGeometry(0.042, 0.046, 0.03, 24), M.dark); cb.rotation.x = Math.PI / 2; camPart.add(cb);
@@ -313,7 +321,8 @@ const ledHalo = new THREE.Sprite(new THREE.SpriteMaterial({ map: ledHaloTex, tra
 const speakers = [];
 for (const sx of [-1, 1]) {
   const g = new THREE.Group(); g.position.set(sx * (GL.templeX + sx * 0.024), 0.06, -0.33); glasses.add(g);
-  for (let i = 0; i < 4; i++) { const s = new THREE.Mesh(new THREE.BoxGeometry(0.006, 0.034, 0.012), M.glowTeal.clone()); s.position.z = -0.03 + i * 0.02; g.add(s); }
+  const pad = new THREE.Mesh(new RoundedBoxGeometry(0.03, 0.075, 0.2, 2, 0.012), M.dark); g.add(pad);
+  for (let i = 0; i < 6; i++) { const s = new THREE.Mesh(new THREE.BoxGeometry(0.008, 0.05, 0.014), M.glowTeal.clone()); s.position.set(sx * 0.016, 0, -0.075 + i * 0.03); g.add(s); }
   speakers.push(g);
 }
 shadowAll(glasses);
@@ -355,7 +364,7 @@ const bubble = new THREE.Group(); bubble.position.set(-0.75, 3.05, -0.55); world
   for (let i = 0; i < 3; i++) { const d = new THREE.Mesh(new THREE.SphereGeometry(0.04, 12, 8), M.white); d.position.set(-0.14 + i * 0.14, 0, 0.07); bubble.add(d); } }
 // sound rings (pool)
 const RINGS = [];
-for (let i = 0; i < 14; i++) { const r = new THREE.Mesh(new THREE.TorusGeometry(1, 0.06, 6, 40), M.glowTeal.clone()); r.visible = false; world.add(r); RINGS.push(r); }
+for (let i = 0; i < 14; i++) { const r = new THREE.Mesh(new THREE.TorusGeometry(1, 0.045, 6, 40), M.glowTeal.clone()); r.visible = false; world.add(r); RINGS.push(r); }
 // speaker arcs (pool)
 const ARCS = [];
 for (let i = 0; i < 10; i++) { const a = new THREE.Mesh(new THREE.TorusGeometry(1, 0.08, 6, 24, Math.PI * 0.8), M.glowTeal.clone()); a.visible = false; world.add(a); ARCS.push(a); }
@@ -363,8 +372,8 @@ for (let i = 0; i < 10; i++) { const a = new THREE.Mesh(new THREE.TorusGeometry(
 const frustMat = new THREE.MeshBasicMaterial({ color: col(TEAL), transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide });
 const frust = new THREE.Mesh(new THREE.ConeGeometry(1, 1, 4, 1, true), frustMat); world.add(frust);
 // the cloud
-const cloud = new THREE.Group(); cloud.position.set(0.85, 3.75, -1.9); world.add(cloud);
-const cloudMat = new THREE.MeshPhysicalMaterial({ color: col("#eafffb"), roughness: 0.5, emissive: col(TEAL), emissiveIntensity: 0.25, clearcoat: 0.5 });
+const CLOUD_Y = 2.45; const cloud = new THREE.Group(); cloud.position.set(1.05, CLOUD_Y, -1.75); world.add(cloud);
+const cloudMat = new THREE.MeshPhysicalMaterial({ color: col("#eafffb"), roughness: 0.55, emissive: col(TEAL), emissiveIntensity: 0.12, clearcoat: 0.4 });
 for (const [x, y, r] of [[0, 0, 0.32], [-0.33, -0.07, 0.24], [0.34, -0.06, 0.25], [0.15, 0.17, 0.24], [-0.16, 0.13, 0.22], [0, -0.1, 0.28]]) { const s = new THREE.Mesh(new THREE.SphereGeometry(r, 24, 16), cloudMat); s.position.set(x, y, 0); cloud.add(s); }
 // data beams (glasses -> phone -> cloud)
 const beamMat = new THREE.MeshBasicMaterial({ color: col(TEAL).multiplyScalar(2.2), transparent: true, depthWrite: false, toneMapped: false });
@@ -375,9 +384,13 @@ const tinyCam = new THREE.Group(); world.add(tinyCam);
 { tinyCam.add(new THREE.Mesh(new RoundedBoxGeometry(0.16, 0.1, 0.1, 3, 0.025), M.dark));
   const l = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 0.03, 16), M.steel); l.rotation.x = Math.PI / 2; l.position.z = 0.06; tinyCam.add(l);
   const r = new THREE.Mesh(new THREE.TorusGeometry(0.035, 0.006, 6, 20), M.glowOrange); r.position.z = 0.076; tinyCam.add(r); shadowAll(tinyCam); }
-tinyCam.position.set(SUSPECT.x + 0.25, DESK_H + 0.09, SUSPECT.z - 0.1);
-const phone2 = phone.clone(); world.add(phone2); phone2.position.set(SUSPECT.x - 0.22, DESK_H + 0.055, SUSPECT.z + 0.05); phone2.rotation.y = 0.5;
-const aiChip = new THREE.Group(); world.add(aiChip); aiChip.position.set(SUSPECT.x, DESK_H + 0.75, SUSPECT.z);
+tinyCam.position.set(SUSPECT.x + 0.33, DESK_H + 0.1, SUSPECT.z - 0.1);
+const phone2 = phone.clone(); world.add(phone2); phone2.position.set(SUSPECT.x - 0.34, DESK_H + 0.055, SUSPECT.z - 0.08); phone2.rotation.y = 0.2;
+const aiChip = new THREE.Group(); world.add(aiChip); aiChip.position.set(SUSPECT.x + 0.02, DESK_H + 0.75, SUSPECT.z + 0.1);
+// a copy of the glasses on the desk for the confession: suspected, but not named (the "?" hangs over it)
+const ghost = glasses.clone(true); world.add(ghost); ghost.visible = false;
+ghost.traverse((m) => { m.visible = true; m.scale && m.parent !== world && m !== ghost && m.scale.set(1, 1, 1); });
+const GHOST_P = V3(SUSPECT.x - 0.0, DESK_H + 0.115, SUSPECT.z - 0.12);
 let aiChipLabel = null;
 
 // ---------------- particles ----------------
@@ -424,15 +437,15 @@ const SHOTS = [
   { t1: 3.8, hand: 0.02, keys: [[0, [7.7, 7.2, 11.0], [-0.1, 1.15, -0.1], 30, 0.0008], [3.8, [7.0, 6.6, 10.0], [-0.1, 1.1, -0.1], 30, 0.0008]] },
   { t1: 6.9, hand: 0.02, keys: [[3.8, [5.6, 4.6, 8.6], [-0.3, 1.35, -0.7], 31, 0.0012], [6.9, [5.0, 4.1, 7.8], [-0.35, 1.4, -0.9], 31, 0.0012]] },
   { t1: 8.42, hand: 0.02, keys: [[6.9, [0.6, 3.1, 5.8], [-1.75, 0.7, 1.45], 30, 0.0005], [8.42, [-0.2, 2.6, 5.0], [-1.75, 0.7, 1.45], 30, 0.0005]] },
-  { t1: 12.9, hand: 0.012, keys: [[8.42, [3.4, 3.4, 5.8], [-0.8, 1.35, -0.1], 34, 0.0012], [9.25, R(0.85, 2.0, 3.5), R(0, 1.78, 0.3), 34, 0.002], [12.9, R(0.6, 1.92, 3.0), R(0, 1.74, 0.3), 34, 0.0025]] },
-  { t1: 15.95, hand: 0.01, keys: [[12.9, R(-0.25, 1.8, 2.6), R(-0.28, 1.68, 0.4), 32, 0.004], [15.95, R(-0.45, 1.74, 2.0), R(-0.38, 1.68, 0.45), 32, 0.006]] },
-  { t1: 17.25, hand: 0.008, keys: [[15.95, R(-0.45, 1.69, 0.62), [-1.75, 0.55, 0.85], 44, 0.0005], [17.25, R(-0.45, 1.66, 0.85), [-1.75, 0.55, 0.85], 40, 0.0005]] },
-  { t1: 20.55, hand: 0.01, keys: [[17.25, R(2.7, 2.0, 2.0), R(0.2, 1.68, 0.1), 32, 0.002], [20.55, R(2.45, 1.92, 1.65), R(0.25, 1.66, 0.05), 32, 0.0025]] },
-  { t1: 24.5, hand: 0.012, keys: [[20.55, R(0.3, 2.0, 3.6), R(0.15, 1.75, 0.2), 34, 0.002], [21.9, R(0.75, 2.2, 5.4), R(0.55, 2.05, -0.1), 40, 0.0012], [24.5, R(0.8, 2.35, 5.9), R(0.6, 2.25, -0.2), 40, 0.001]] },
-  { t1: 27.42, hand: 0.008, keys: [[24.5, R(0.8, 1.82, 2.6), R(0.35, 1.68, 0.45), 32, 0.004], [27.42, R(0.75, 1.78, 2.15), R(0.38, 1.68, 0.45), 32, 0.005]] },
-  { t1: 31.85, hand: 0.01, keys: [[27.42, R(0, 1.9, 4.8), R(0, 1.5, 0), 32, 0.0015], [31.85, R(0, 1.85, 3.9), R(0, 1.48, 0), 32, 0.002]] },
-  { t1: 36.65, hand: 0.015, keys: [[31.85, [1.8, 3.4, 5.8], [-1.6, 0.95, 1.2], 31, 0.0015], [36.65, [1.2, 3.0, 5.0], [-1.7, 0.95, 1.3], 31, 0.0015]] },
-  { t1: 41.15, hand: 0.012, keys: [[36.65, R(0.9, 1.6, 6.5), R(0, 0.8, 0), 32, 0.001], [41.15, R(-0.7, 1.6, 6.3), R(0, 0.8, 0), 32, 0.001]] },
+  { t1: 12.9, hand: 0.012, keys: [[8.42, [3.4, 3.4, 5.8], [-0.8, 1.35, -0.1], 34, 0.0012], [9.25, R(0.85, 1.95, 3.5), R(0, 1.5, 0.3), 34, 0.002], [12.9, R(0.6, 1.86, 3.0), R(0, 1.47, 0.3), 34, 0.0025]] },
+  { t1: 15.95, hand: 0.01, keys: [[12.9, R(-0.25, 1.76, 2.6), R(-0.28, 1.52, 0.4), 32, 0.004], [15.95, R(-0.45, 1.7, 2.0), R(-0.38, 1.54, 0.45), 32, 0.006]] },
+  { t1: 17.25, hand: 0.008, keys: [[15.95, R(-0.45, 1.69, 0.62), [-1.6, 0.36, 0.3], 44, 0.0005], [17.25, R(-0.45, 1.66, 0.85), [-1.6, 0.38, 0.3], 38, 0.0005]] },
+  { t1: 20.55, hand: 0.01, keys: [[17.25, R(2.7, 1.95, 2.0), R(0.2, 1.52, 0.1), 32, 0.002], [20.55, R(2.45, 1.88, 1.65), R(0.25, 1.5, 0.05), 32, 0.0025]] },
+  { t1: 24.5, hand: 0.012, keys: [[20.55, R(0.3, 1.95, 3.6), R(0.15, 1.42, 0.2), 34, 0.002], [21.9, R(0.75, 2.05, 5.4), R(0.55, 1.62, -0.1), 40, 0.0012], [24.5, R(0.8, 2.15, 5.9), R(0.6, 1.68, -0.2), 40, 0.001]] },
+  { t1: 27.42, hand: 0.008, keys: [[24.5, R(0.8, 1.8, 2.6), R(0.35, 1.53, 0.45), 32, 0.004], [27.42, R(0.75, 1.76, 2.15), R(0.38, 1.54, 0.45), 32, 0.005]] },
+  { t1: 31.85, hand: 0.01, keys: [[27.42, R(0, 2.0, 5.0), R(0, 1.68, 0), 32, 0.0015], [31.85, R(0, 1.95, 4.2), R(0, 1.66, 0), 32, 0.002]] },
+  { t1: 36.65, hand: 0.015, keys: [[31.85, [0.4, 2.85, 4.7], [-1.72, 0.6, 1.4], 31, 0.0015], [36.65, [0.1, 2.65, 4.35], [-1.74, 0.62, 1.42], 31, 0.0015]] },
+  { t1: 41.15, hand: 0.012, keys: [[36.65, R(0.9, 2.3, 6.6), R(0, 1.72, 0), 32, 0.001], [41.15, R(-0.7, 2.3, 6.4), R(0, 1.72, 0), 32, 0.001]] },
   { t1: 99, hand: 0.012, keys: [[41.15, [7.1, 6.0, 9.6], [0, 1.85, -0.4], 30, 0.0008], [46.4, [6.4, 5.6, 8.8], [0, 1.8, -0.4], 30, 0.0008]] },
 ];
 const WHIPS = [3.8, 6.9, 8.42, 12.9, 15.95, 17.25, 20.55, 24.5, 27.42, 31.85, 36.65, 41.15].map((t, i) => ({ t, amt: i % 2 ? -0.6 : 0.6 }));
@@ -493,7 +506,7 @@ const grade = new ShaderPass({
       else c = texture2D(tDiffuse, vUv);
       vec2 q = vUv - 0.5; q.y *= 1.3;
       c.rgb *= mix(0.62, 1.0, smoothstep(0.95, 0.28, length(q)));
-      c.rgb = mix(c.rgb, vec3(dot(c.rgb, vec3(0.3,0.59,0.11))) * vec3(0.75, 1.15, 1.1), uPov * 0.35); c.rgb *= 1.0 - uPov * 0.5;
+      c.rgb = mix(c.rgb, vec3(dot(c.rgb, vec3(0.3,0.59,0.11))) * vec3(0.75, 1.15, 1.1), uPov * 0.35); c.rgb *= 1.0 - uPov * 0.62;
       c.rgb += (h(vUv * vec2(1080.0, 1920.0) + uFrame * 7.13) - 0.5) * 0.024;
       c.rgb += uFlash * vec3(0.07, 0.2, 0.2);
       gl_FragColor = c; }`,
@@ -515,6 +528,8 @@ function renderAt(tIn) {
   world.position.y = Math.sin(t * 0.9) * 0.03; world.rotation.y = Math.sin(t * 0.25) * 0.01; world.updateMatrixWorld(true);
   ADD.begin();
 
+  board.visible = t < 8.42 || t >= 41.15;
+  for (const c of suspectClutter) c.visible = !(t > 32.3 && t < 36.7);
   // robot idle + gestures
   robot.position.y = ROBOT.y + Math.sin(t * 2.1) * 0.012;
   head.rotation.z = Math.sin(t * 1.1) * 0.03 + bump(t, T.hear, 1.4) * 0.12 - bump(t, T.isnt, 1.2) * 0.1;
@@ -534,10 +549,10 @@ function renderAt(tIn) {
   // big exam paper (frame 0: settled; punch on the numbers; leaves before the build)
   { const inK = t < 0.01 ? 1 : 1, out = eOut(seg(t, 8.05, 8.45));
     const k = (1 + bump(t, T.score, 0.3) * 0.12 + bump(t, T.of400, 0.28) * 0.08) * (1 - out * 0.9);
-    const side = sm(seg(t, 3.6, 4.1)); bigPaper.position.set(-0.55 - side * 0.95 + out * -2.5, 2.75 + side * 0.35 + Math.sin(t * 1.4) * 0.04 + out * 1.4, 0.55 - side * 0.6);
+    const side = sm(seg(t, 3.6, 4.1)); bigPaper.position.set(-0.55 - side * 0.35 + out * -2.5, 2.75 + side * 0.5 + Math.sin(t * 1.4) * 0.04 + out * 1.4, 0.55 - side * 0.9);
     bigPaper.visible = out < 0.99; bigPaper.scale.setScalar(k * inK * (1 - side * 0.3));
     face2cam(bigPaper); bigPaper.rotateZ(0.06 + Math.sin(t * 1.1) * 0.02); }
-  warm.position.set(-0.6, 3.1, 0.2); warm.intensity = 1.4 * (1 - seg(t, 7.6, 8.4)) * (0.8 + 0.4 * bump(t, T.score, 0.6));
+  warm.position.set(-0.6, 3.1, 0.2); warm.intensity = 1.4 * (1 - seg(t, 7.6, 8.4)) * (0.8 + 0.4 * bump(t, T.score, 0.6)) * (1 - 0.85 * sm(seg(t, 3.6, 4.1)));
   emit(t, { t0: T.score, t1: T.score + 0.12, n: 60, life: 0.9, org: V3(-0.55, 2.75, 0.55), vel: [0, 0, 0], spr: [3.2, 2.6, 2.0], drag: 3, s0: 0.05, s1: 0.0, col: cGold, a: 0.9, seed: 3 });
   emit(t, { t0: T.of400, t1: T.of400 + 0.1, n: 40, life: 0.8, org: V3(-0.2, 2.6, 0.55), vel: [0, 0, 0], spr: [2.6, 2.2, 1.6], drag: 3, s0: 0.045, s1: 0.0, col: cGold, a: 0.8, seed: 5 });
 
@@ -553,20 +568,20 @@ function renderAt(tIn) {
   { const blind = seg(t, T.next, T.next + 0.2) * (1 - seg(t, T.camera, T.camera + 0.3));
     lensMat.color.copy(col("#9ff3e8")).lerp(col("#05070b"), blind); lensMat.opacity = lerp(0.18, 0.86, blind) + bump(t, T.sees, 0.6) * 0.25; }
   // spotlight on the suspect desk
-  { const s = seg(t, T.blame - 0.05, T.blame + 0.15) * (1 - seg(t, 8.3, 8.7)) + seg(t, T.tinyCam - 0.2, T.tinyCam) * (1 - seg(t, 36.4, 36.8)) * 0.8;
-    coneMat.opacity = 0.03 * s; cone.visible = s > 0.01; spot.intensity = 2.2 * s; spot.target.position.copy(SUSPECT).setY(DESK_H); }
+  { const s = seg(t, T.blame - 0.05, T.blame + 0.15) * (1 - seg(t, 8.3, 8.7)) + seg(t, 32.4, 32.8) * (1 - seg(t, 36.4, 36.8)) * 0.3;
+    coneMat.opacity = 0.03 * s * (t > 30 ? 0.3 : 1); cone.visible = s > 0.01; spot.intensity = 2.2 * s; spot.target.position.copy(SUSPECT).setY(DESK_H); }
   if (suspectTag) {
     const s = pop(t, T.blame + 0.1, 0.35) * (1 - seg(t, T.plain - 0.1, T.plain + 0.1));
     suspectTag.visible = s > 0.01; suspectTag.scale.setScalar(Math.max(0.001, s)); suspectTag.position.set(SUSPECT.x, DESK_H + 0.72 + Math.sin(t * 3) * 0.03, SUSPECT.z); face2cam(suspectTag);
     // "?" over the glasses in the confession: the confession did not name glasses
     const q = pop(t, 32.6, 0.35) * (1 - seg(t, 36.4, 36.7)); const hp = headPose();
-    qTag.visible = q > 0.01; qTag.scale.setScalar(Math.max(0.001, q)); qTag.position.copy(hp.p).add(V3(0, 0.55 + Math.sin(t * 3) * 0.03, 0)); face2cam(qTag);
+    qTag.visible = q > 0.01; qTag.scale.setScalar(Math.max(0.001, q * 0.42)); _c.copy(GHOST_P).add(V3(0.0, 0.2 + Math.sin(t * 3) * 0.015, 0.06)); world.localToWorld(_c); qTag.position.copy(_c); face2cam(qTag);
     const bq = pop(t, T.isnt, 0.3) * (1 - seg(t, T.phone, T.phone + 0.15));
     brainQ.visible = bq > 0.01; brainQ.scale.setScalar(Math.max(0.001, bq)); brainQ.position.copy(hp.p).add(V3(0, 0.33 + Math.sin(t * 4) * 0.02, 0.05)); face2cam(brainQ);
   }
 
   // part 1: microphones + sound rings from the speech bubble
-  mics.forEach((m, i) => { partPop(m, t, T.mics + i * 0.07); m.userData.dot.material.color.copy(col(TEAL)).multiplyScalar(1.5 + 2.5 * bump(t, T.pMic + i * 0.04, 0.5) + 1.2 * bump(t, T.mics + 0.4 + i * 0.07, 0.5)); });
+  mics.forEach((m, i) => { partPop(m, t, T.mics + i * 0.07, 1.1); m.userData.dot.material.color.copy(col(TEAL)).multiplyScalar(0.9 + 1.6 * bump(t, T.pMic + i * 0.04, 0.5) + 1.0 * bump(t, T.mics + 0.4 + i * 0.07, 0.5)); });
   { const bs = pop(t, 8.95, 0.35) * (1 - seg(t, 12.75, 13.0)); bubble.visible = bs > 0.01; bubble.scale.setScalar(Math.max(0.001, bs)); bubble.position.y = 3.05 + Math.sin(t * 2.5) * 0.04; bubble.lookAt(camera.position); }
   { const hp = headPose(); _b.copy(hp.p).add(V3(0, 0.14, 0)); _a.copy(bubble.position); world.localToWorld(_a);
     RINGS.forEach((r, i) => {
@@ -574,9 +589,9 @@ function renderAt(tIn) {
       if (age < 0 || age > life || t > 12.75) { r.visible = false; return; }
       const u = age / life, caught = b + life * 0.8 > T.mics;
       if (caught) { _c.lerpVectors(_a, _b, eOut(u)); } else { _c.lerpVectors(_a, _b, u * 1.35).add(V3(0.6 * u * u, -0.25 * u * u, 0.4 * u * u)); }
-      r.visible = true; r.position.copy(_c); r.lookAt(caught ? _b : camera.position);
-      const s = caught ? lerp(0.16, 0.02, u) : lerp(0.12, 0.3, u); r.scale.set(s, s, s * 0.5);
-      r.material.opacity = (caught ? 1 : 0.7) * Math.sin(Math.PI * u); r.material.color.copy(caught ? col(TEAL) : col(WHITE)).multiplyScalar(2.0);
+      r.visible = true; r.position.copy(_c); r.lookAt(camera.position);
+      const s = caught ? lerp(0.12, 0.02, u) : lerp(0.08, 0.17, u); r.scale.set(s, s, s * 0.5);
+      r.material.opacity = (caught ? 0.9 : 0.55) * Math.sin(Math.PI * u); r.material.color.copy(col(TEAL)).multiplyScalar(caught ? 1.8 : 1.2);
     }); }
 
   // part 2: camera in the corner; "now it sees": a view cone sweeps the class
@@ -595,23 +610,25 @@ function renderAt(tIn) {
     const sp = speakers[side > 0 ? 1 : 0]; sp.updateWorldMatrix(true, false); _a.set(0, 0, 0.0); sp.localToWorld(_a);
     head.updateWorldMatrix(true, false); _b.set(side * 0.62, 0, 0); head.localToWorld(_b);
     const u = age / life; a.visible = true; a.position.lerpVectors(_a, _b, u * 0.8); a.lookAt(_b); a.rotateZ(Math.PI * 0.1);
-    a.scale.setScalar(lerp(0.04, 0.12, u)); a.material.opacity = Math.sin(Math.PI * u); a.material.color.copy(col(TEAL)).multiplyScalar(2.2);
+    a.scale.setScalar(lerp(0.07, 0.2, u)); a.material.opacity = Math.sin(Math.PI * u); a.material.color.copy(col(TEAL)).multiplyScalar(2.2);
   });
 
   // part 4: phone + cloud (the thinking happens off the frame)
-  { const ph = pop(t, T.phone - 0.05, 0.35); phone.scale.setScalar(Math.max(0.001, 0.4 + 0.6 * ph) * (1 + bump(t, T.phone, 0.3) * 0.25));
+  { const ph = pop(t, T.phone - 0.05, 0.35), up = sm(seg(t, T.phone - 0.1, T.phone + 0.45)) * (1 - sm(seg(t, 24.35, 24.6)));
+    phone.position.lerpVectors(PHONE_REST, PHONE_UP, up); phone.position.y += Math.sin(Math.PI * up) * 0.15 + up * Math.sin(t * 2.2) * 0.03;
+    phone.rotation.set(up * 1.25, -0.3 + up * 0.1, 0);
+    phone.scale.setScalar(Math.max(0.001, 0.4 + 0.6 * ph) * (1 + up * 0.35) * (1 + bump(t, T.phone, 0.3) * 0.25));
     phoneScr.material.color.copy(col(TEAL)).multiplyScalar(0.4 + 1.6 * ph + 1.5 * bump(t, T.thinking + 0.4, 0.5));
-    const cs = pop(t, T.cloud - 0.05, 0.45); cloud.visible = cs > 0.01; cloud.scale.setScalar(Math.max(0.001, cs) * (1 + bump(t, T.thinking, 0.5) * 0.12 + bump(t, T.pAI, 0.6) * 0.1));
-    cloud.position.y = 3.75 + Math.sin(t * 1.3) * 0.05;
-    cloudMat.emissiveIntensity = 0.25 + bump(t, T.thinking, 0.9) * 1.4 + bump(t, T.pAI, 0.8) * 1.0 + bump(t, T.cAI, 0.8) * 1.0;
+    const cs = pop(t, T.cloud - 0.05, 0.45) * (1 - seg(t, 24.4, 24.6)); cloud.visible = cs > 0.01; cloud.scale.setScalar(Math.max(0.001, cs) * (1 + bump(t, T.thinking, 0.5) * 0.12 + bump(t, T.pAI, 0.6) * 0.1));
+    cloud.position.y = CLOUD_Y + Math.sin(t * 1.3) * 0.05;
+    cloudMat.emissiveIntensity = 0.12 + bump(t, T.thinking, 0.9) * 0.9;
     if (!beam1) {
-      const hp = headPose(); world.updateMatrixWorld(true);
-      const g0 = world.worldToLocal(hp.p.clone().add(V3(0.3, 0.05, 0.0))), p0 = phone.position.clone().add(V3(0, 0.03, 0)), c0 = cloud.position.clone().add(V3(0, -0.25, 0));
+      const g0 = V3(...R(0.5, HEAD_Y + 0.09, 0.45)), p0 = PHONE_UP.clone().add(V3(-0.08, 0.05, 0.05)), c0 = V3(1.05, CLOUD_Y - 0.28, -1.75);
       beamCurve1 = new THREE.CatmullRomCurve3([g0, g0.clone().lerp(p0, 0.5).add(V3(0.25, 0.25, 0.1)), p0]);
-      beamCurve2 = new THREE.CatmullRomCurve3([p0, p0.clone().lerp(c0, 0.5).add(V3(0.35, 0, 0.2)), c0]);
+      beamCurve2 = new THREE.CatmullRomCurve3([p0, p0.clone().lerp(c0, 0.5).add(V3(0.2, 0.05, 0.15)), c0]);
       beam1 = new THREE.Mesh(new THREE.TubeGeometry(beamCurve1, 80, 0.016, 8, false), beamMat); beam2 = new THREE.Mesh(new THREE.TubeGeometry(beamCurve2, 80, 0.016, 8, false), beamMat); world.add(beam1, beam2);
     }
-    const fade = 1 - seg(t, 24.4, 24.7) + seg(t, T.pAI - 0.1, T.pAI) * (1 - seg(t, 31.0, 31.5));
+    const fade = 1 - seg(t, 24.3, 24.5);
     drawOn(beam1, seg(t, T.phone, T.phone + 0.5) * clamp01(fade)); drawOn(beam2, seg(t, T.cloud, T.cloud + 0.55) * clamp01(fade));
     // data beads up, answer beads down
     for (let i = 0; i < 6; i++) {
@@ -620,7 +637,7 @@ function renderAt(tIn) {
       const u2 = ((t - T.cloud - 0.4) * 0.8 + i / 6) % 1, on2 = t > T.cloud + 0.4 && fade > 0.5;
       if (on2 && u2 > 0) { beamCurve2.getPoint(t > T.thinking ? 1 - u2 : u2, _o); world.localToWorld(_o); ADD.push(_o.x, _o.y, _o.z, 0.07, t > T.thinking ? 2.4 : 0.4, t > T.thinking ? 1.6 : 2.2, t > T.thinking ? 0.6 : 2.0, 1); }
     }
-    emit(t, { t0: T.cloud + 0.3, t1: T.thinking + 0.6, n: 70, life: 1.3, org: () => cloud.position.clone().add(V3(0, -0.1, 0)), vel: [0, 0.35, 0], spr: [0.9, 0.3, 0.6], drag: 1.2, s0: 0.05, s1: 0.02, col: cWhite, a: 0.7, seed: 11 });
+    emit(t, { t0: T.cloud + 0.3, t1: T.thinking + 0.3, n: 70, life: 1.3, org: () => cloud.position.clone().add(V3(0, -0.1, 0)), vel: [0, 0.35, 0], spr: [0.9, 0.3, 0.6], drag: 1.2, s0: 0.05, s1: 0.02, col: cWhite, a: 0.7, seed: 11 });
   }
 
   // part 5: the recording light
@@ -637,9 +654,11 @@ function renderAt(tIn) {
   emit(t, { t0: T.face, t1: T.face + 0.12, n: 70, life: 1.0, org: () => { const hp = headPose(); return world.worldToLocal(hp.p.clone()); }, vel: [0, 0.2, 0], spr: [2.6, 2.4, 1.6], drag: 2.6, s0: 0.04, s1: 0.0, col: cTeal, a: 0.8, seed: 21 });
 
   // confession items on the suspect desk
+  { const k = pop(t, 32.45, 0.4) * (1 - seg(t, 36.5, 36.8)); ghost.visible = k > 0.01;
+    ghost.position.copy(GHOST_P); ghost.position.y += Math.sin(t * 2) * 0.01; ghost.rotation.set(-0.15, 0.12, 0); ghost.scale.setScalar(Math.max(0.001, k * 0.5)); }
   partPop(tinyCam, t, T.tinyCam, 1.9); tinyCam.rotation.y = 0.6 + Math.sin(t * 1.5) * 0.1; tinyCam.visible = tinyCam.visible && t < 36.8;
   partPop(phone2, t, T.cPhone, 1.4); phone2.visible = phone2.visible && t < 36.8;
-  { const k = pop(t, T.cAI, 0.35) * (1 - seg(t, 36.5, 36.8)); aiChip.visible = k > 0.01; aiChip.scale.setScalar(Math.max(0.001, k)); aiChip.position.y = DESK_H + 0.62 + Math.sin(t * 3) * 0.03; face2cam(aiChip); }
+  { const k = pop(t, T.cAI, 0.35) * (1 - seg(t, 36.5, 36.8)); aiChip.visible = k > 0.01; aiChip.scale.setScalar(Math.max(0.001, k * 0.6)); aiChip.position.y = DESK_H + 0.36 + Math.sin(t * 3) * 0.02; aiChip.position.x = SUSPECT.x + 0.36; aiChip.position.z = SUSPECT.z - 0.1; face2cam(aiChip); }
   emit(t, { t0: T.tinyCam, t1: T.tinyCam + 0.08, n: 30, life: 0.6, org: tinyCam.position, vel: [0, 0.4, 0], spr: [1.5, 1.2, 1.5], drag: 3, s0: 0.04, s1: 0, col: cGold, a: 0.8, seed: 31 });
   emit(t, { t0: T.cPhone, t1: T.cPhone + 0.08, n: 30, life: 0.6, org: phone2.position, vel: [0, 0.4, 0], spr: [1.5, 1.2, 1.5], drag: 3, s0: 0.04, s1: 0, col: cGold, a: 0.8, seed: 33 });
 

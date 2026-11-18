@@ -48,7 +48,7 @@ for gi, g in enumerate(groups):
     tweens.append(f'      tl.fromTo("#cl{gi}", {{ opacity: 0, y: 26, scale: 0.94 }}, {{ opacity: 1, y: 0, scale: 1, duration: 0.14, ease: "power3.out" }}, {start:.3f});')
     for wi, w in enumerate(g):
         sel = f"#c{gi}w{wi}"
-        tweens.append(f'      tl.fromTo("{sel}", {{ color: "#F4F1EA", scale: 1 }}, {{ color: "#19C3B1", scale: 1.14, duration: 0.09, ease: "power2.out" }}, {max(start, w["s"] - 0.03):.3f});')
+        tweens.append(f'      tl.fromTo("{sel}", {{ color: "#F4F1EA", scale: 1 }}, {{ color: "#19C3B1", scale: 1.08, duration: 0.09, ease: "power2.out" }}, {max(start, w["s"] - 0.03):.3f});')
         settle = "#19C3B1" if is_key(w["w"]) else "#F4F1EA"
         tweens.append(f'      tl.to("{sel}", {{ color: "{settle}", scale: 1, duration: 0.14, ease: "power2.inOut" }}, {w["e"]:.3f});')
     tweens.append(f'      tl.to("#cl{gi}", {{ opacity: 0, duration: 0.08, ease: "power2.in" }}, {end - 0.08:.3f});')
@@ -60,7 +60,7 @@ doc = f"""<template>
     #root {{ position: absolute; inset: 0; pointer-events: none; }}
     .cap {{ position: absolute; left: 0; top: 1178px; width: 1080px; height: 150px; overflow: visible; }}
     .line {{ width: 1080px; text-align: center; font-family: "BrandOutfit", sans-serif; font-weight: 700; font-size: 84px; line-height: 150px; }}
-    .cw {{ display: inline-block; color: #F4F1EA; margin: 0 0.08em; -webkit-text-stroke: 14px #0B1B33; paint-order: stroke fill;
+    .cw {{ display: inline-block; color: #F4F1EA; margin: 0 0.15em; transform-origin: 50% 55%; -webkit-text-stroke: 14px #0B1B33; paint-order: stroke fill;
           text-shadow: 0 8px 26px rgba(3, 9, 20, 0.85); }}
   </style>
   <div id="root" data-composition-id="captions" data-width="1080" data-height="1920">
