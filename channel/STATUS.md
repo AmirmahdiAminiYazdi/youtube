@@ -3,15 +3,15 @@
 Read this file first at the start of every session. The block between the AUTO markers is rewritten every day by `scripts/refresh_status.py` (scheduled task, early morning Europe/Berlin). Everything outside the markers is maintained by hand and by Claude during work sessions, and the daily job never touches it.
 
 <!-- AUTO:START -->
-_Auto-refreshed: 2026-11-18 16:10 (Europe/Berlin)._
+_Auto-refreshed: 2026-11-19 12:44 (Europe/Berlin)._
 
 ### Snapshot
 
-- Today: Wed 2026-11-18 (work day); next work day: Thu 2026-11-19
+- Today: Thu 2026-11-19 (work day); next work day: Fri 2026-11-20
 - Stage: pre-launch, nothing published yet
 - Next in the pipeline: #1 "3 Lines That Make AI Useful": next stage is Voiceover
-- Skills installed: 73 committed in `.claude/skills/`
-- Files: ideas 2, scripts 9, thumbnails 4, motion 309, voiceover 10, published 11, research 7
+- Skills installed: 73 committed in `.claude/skills/` (+1 fetched by `scripts/setup.sh`, present in this environment)
+- Files: ideas 2, scripts 9, thumbnails 4, motion 111, voiceover 10, published 11, research 7
 
 ### Pipeline (from `channel/ideas/first-12-ideas.md`)
 
@@ -32,7 +32,7 @@ _Auto-refreshed: 2026-11-18 16:10 (Europe/Berlin)._
 
 ### Last 10 commits
 
-- 2026-11-18  Status: smart-glasses Short re-rendered after the first render was lost
+- 2026-11-18  Smart-glasses package v2 (creator-studio): live YouTube query check, new title, description, tags, hashtags; cover prompt v2
 <!-- AUTO:END -->
 
 ## Current focus (update at the end of every work session)
@@ -53,6 +53,8 @@ _Auto-refreshed: 2026-11-18 16:10 (Europe/Berlin)._
 - Smart-glasses Short (2026-11-17, `special-smart-glasses`): topic from a live YouTube scan of AI news (Korea's tax exam top scorer, 397.5 of 400, confessed on 2026-11-15 to a tiny camera, a phone and generative AI; smart glasses were suspected but not named). Facts with two sources each: `channel/research/special-smart-glasses.facts.md`. Script (owner approved, hook 61): `channel/scripts/special-smart-glasses.md`, with the owner's new fixed line "If you love AI stories like this, like and subscribe to Brainmaxx." and a yes/no comment question last. Voice: ElevenLabs Eleven v4, "Jon - Catalyst", owner chose take 2 (46.29 s), mp3 and owner cover sent in chat; word times `channel/voiceover/special-smart-glasses.words.json`. Look copied from the latest published Short (Fable 5.2: floating slab, Brainmaxx robot with screen face, game HUD), checked live on YouTube with Claude in Chrome; the Fable and AI-lies projects are NOT in this repo (owner's Mac), so the robot and HUD were rebuilt in `channel/motion/special-smart-glasses/`. Cover prompt: `channel/thumbnails/special-smart-glasses.cover-prompt.md`. Upload package + SRT: `channel/published/special-smart-glasses.md`. Re-rendered 2026-11-18 from the repo source after the first render was lost (54 min, 2 workers; `check_short.py` 0 FAIL 0 WARN, -14.4 LUFS, no black frames); master and 8 Mbps copy sent in chat, not committed. v2 the same day after the owner asked for a bug pass: caption word spacing (active word scale 1.08, margin 0.15em), shots reframed so captions never cover the glasses or the desk items, cloud lowered into frame and hidden after its beat, phone floats up beside the robot, bigger matte microphones, sound rings face the camera (no stray lines), no beam re-draw in the hero shot, lens view aims at a textured exam paper and is darker, glasses copy with "?" on the confession desk, softer spotlight, EXAM board moved and shown only in wide shots, bigger speaker grilles and arcs, CTA moved above the robot with outlined labels, larger confession note. v2 `check_short.py` 0 FAIL 0 WARN, -14.4 LUFS, no black frames. NEXT: Gate B (owner watches), then the owner uploads.
 
 ## Decisions made
+
+- 2026-11-19: skill `lemo-opuscar` added (`.claude/skills/lemo-opuscar/`, unmodified from upstream github.com/lemomo-ai/lemo-opuscar at `00a7f9e`; SKILL.md is CC BY-NC 4.0, setup.sh is MIT, see `THIRD_PARTY_NOTICES.md`). The library is fetched into `~/lemo-opuscar` on first use, not committed. Bootstrap tested in the cloud container (clone and `setup.sh` run, no `deps`); not tested: `deps` (Playwright browser download) or any render, and ffmpeg here is 6.1 while the library wants 7+. Try it on the owner's Mac first.
 
 - 2026-11-17: every video ends with the fixed line "If you love AI stories like this, like and subscribe to Brainmaxx." and then a yes/no question for the comments (owner's rule). Stories are told for a broad Explore audience. The style reference for new Shorts is the latest published one (Fable 5.2 look), combined with the build-step-by-step chain when it fits.
 

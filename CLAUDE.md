@@ -46,6 +46,7 @@ Voice profile: it lives in this repo at `channel/voice.md`. The yt-* skills say 
 | Skill | Use it for |
 |---|---|
 | `step-by-step-short` (`/step-by-step-short <topic>`) | Whole "Built Step by Step" Short from one topic (airplane-style 3D build): fact sheet, scored script, owner gate, voiceover hand-off, HyperFrames render, QA gate, upload package |
+| `lemo-opuscar` (`/lemo-opuscar`) | Code-made films in 99 ready styles (watercolor, whiteboard, motion graphics, documentary ...); fetches the Lemo-Opuscar library into `~/lemo-opuscar` on first use. Needs Node 20+, ffmpeg 7+, Python 3.11+; not tested end to end in the cloud container. Credit "Lemo-Opuscar by Lemomo (LemoLab)" when sharing its docs; see `THIRD_PARTY_NOTICES.md` |
 | `youtube` (`/youtube audit, seo, script, hook, thumbnail, strategy, calendar, shorts, analyze, repurpose, monetize, competitor, metadata, ideate`) | Strategy, SEO, scripts, monetization, competitors |
 | `yt-plan`, `yt-script`, `yt-package`, `yt-seo`, `yt-chapters` | Idea to script to title/thumbnail/description/chapters |
 | `yt-retention`, `yt-edit`, `yt-viral`, `yt-audit`, `yt-comment`, `yt-shorts` | Retention curves, dead-air cuts, viral swipe file, audits, comment replies, Shorts |
